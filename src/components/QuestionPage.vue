@@ -1,6 +1,8 @@
 <template>
   <div class="main-body">
-    <link rel="stylesheet"
+    <div><Navbar/></div>
+    <div class="card">
+        <link rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
       integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
       crossorigin="anonymous">
@@ -15,20 +17,26 @@
     <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
-      <a href="http://localhost:8080/#/questionpage"><p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p></a>
+      <p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p>
     </div>
     <hr>
-    <div><AnswerAccepted/></div>
+    <div class="answers">
+        <Answers/>
+        <hr>
+        <Answers/>
+        <hr>
+        <Answers/>
+    </div>
     <hr>
     <div class="card-bottom">
       <div class="likes">
         <a href="/" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
-        <p class="likes-count">2500 upvotes</p>
+        <p class="likes-count">2500 likes</p>
         <p></p>
       </div>
       <div class="dislikes">
         <a href="/" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
-        <p class="dislike-count">1000 downvotes</p>
+        <p class="dislike-count">1000 dislikes</p>
       </div>
       <div class="comments">
         <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
@@ -37,24 +45,27 @@
         <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
       </div>
     </div>
+    </div>
+    <div><Footer/></div>
   </div>
 </template>
 
 <script>
-import AnswerAccepted from '@/components/AnswerAccepted.vue'
+import Answers from '@/components/AnswerAccepted.vue'
+import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
 export default {
-  name: 'Feed',
+  name: 'QuestionPage',
   components: {
-    AnswerAccepted
+    Answers,
+    Navbar,
+    Footer
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.main-body{
-  border: 1px solid black;
-}
 .card-top{
   display: flex;
   justify-content: space-between;
@@ -121,5 +132,14 @@ export default {
 }
 .timestamp{
   font-size: 12px;
+}
+.card{
+    margin-left: 40%;
+    margin-right: 100px;
+    border:2px solid black;
+    margin-top:150px;
+}
+.main-body{
+    margin-bottom:100px;
 }
 </style>
