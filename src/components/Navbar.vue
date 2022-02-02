@@ -26,26 +26,6 @@
 export default {
   name: 'Navbar',
   methods: {
-    goabout () {
-      this.$router.push('/about')
-      console.log(this.$router)
-    },
-    goprofile () {
-      this.$router.push('/profile')
-      console.log(this.$router)
-    },
-    gologin () {
-      this.$router.push('/login')
-      console.log(this.$router)
-    },
-    gohome () {
-      this.$router.push('/')
-      console.log(this.$router)
-    },
-    gocart () {
-      this.$router.push('/cart')
-      console.log(this.$router)
-    }
   }
 }
 </script>

@@ -5,7 +5,7 @@
         href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
-      <div class="container-fluid text-center" style="background-color: black">
+      <div class="container-fluid text-center mt-5" style="background-color: black">
           <div class="row pt-5" style="background-color: black;">
                 <div class="col-12 col-md-4 pb-5">
                     <p class="text-white font-weight-bold pb-3 h5 d-block">QUORA</p>
