@@ -9,7 +9,6 @@
         <div><Feed/></div>
         </div>
         <div class="emptyDiv">
-            <Ads/>
         </div>
     </div>
      <div><Footer/></div>
