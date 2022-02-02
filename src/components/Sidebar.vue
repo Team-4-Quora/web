@@ -1,16 +1,17 @@
 <template>
   <div class="sidebar">
     <div class=main-div>
-      <div>
-    <div id="checkboxes">
-      <label> <input type="checkbox" value="Music" v-model="blog.categories"/>Music</label>
-      <label ><input type="checkbox" value="Books" v-model="blog.categories"/>Books</label>
-      <label><input type="checkbox" value="Movies" v-model="blog.categories"/>Movies</label>
-      <label><input type="checkbox" value="Java" v-model="blog.categories"/>Java</label>
-      <label><input type="checkbox" value="VueJs" v-model="blog.categories"/>VueJs</label>
-    </div>
+    <div>
+      <h5>Categories:-</h5>
+      <div id="checkboxes">
+        <label> <input type="checkbox" value="Music" v-model="blog.categories"/>Music</label>
+        <label ><input type="checkbox" value="Books" v-model="blog.categories"/>Books</label>
+        <label><input type="checkbox" value="Movies" v-model="blog.categories"/>Movies</label>
+        <label><input type="checkbox" value="Java" v-model="blog.categories"/>Java</label>
+        <label><input type="checkbox" value="VueJs" v-model="blog.categories"/>VueJs</label>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
