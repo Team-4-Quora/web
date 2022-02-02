@@ -23,7 +23,7 @@
         <div><Feed/></div>
         <div><Feed/></div>
         </div>
-        <div class="emptyDiv"><QuestionPage/></div>
+        <div class="emptyDiv"></div>
     </div>
      <div><Footer/></div>
     </div>
