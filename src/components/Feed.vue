@@ -93,6 +93,8 @@ export default {
 .card-question-asked{
   padding-top: 5px;
   padding-left: 10px;
+  color: blue;
+  cursor: pointer;
 }
 .card-answer{
   display: flex;
