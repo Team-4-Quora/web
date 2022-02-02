@@ -9,7 +9,7 @@
         <div><Feed/></div>
         </div>
         <div class="emptyDiv">
-            <QuestionPage/>
+            <Ads/>
         </div>
     </div>
      <div><Footer/></div>
@@ -22,6 +22,7 @@ import Footer from '@/components/Footer.vue'
 import Feed from '@/components/Feed.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import QuestionPage from '@/components/QuestionPage.vue'
+import Ads from '@/components/Ads.vue'
 export default {
   name: 'Home',
   components: {
@@ -30,7 +31,8 @@ export default {
     Footer,
     Feed,
     Sidebar,
-    QuestionPage
+    QuestionPage,
+    Ads
   }
 }
 </script>
