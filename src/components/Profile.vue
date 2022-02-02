@@ -1,23 +1,28 @@
 <template>
-    <div>
-<div><Navbar/></div>
-    <div class="container py-5">
-        <div class="row pb-5" style="background-color: white;">
-            <div class="col-md-2"></div>
-            <div class="col-md-3">
-                 <img src="@/assets/profile.png" class="rounded-circle" width="200px" height="240px">
+    <div class="main-body">
+        <div><Navbar/></div>
+        <div class="user-details">
+            <div class="user-image">
+                <img class="image" src="@/assets/profile.png" alt="" width="200px" height="200px">
             </div>
-            <div class = "col-md-2 head-info">
-                <p>Name : </p>
-                <p>Email : </p>
-                <p>User Points - </p>
-                <p>Level - </p>
-                <p>Interests - </p>
+            <div class="user-info">
+                <h4>Name:- User</h4>
+                <h4>Email:- User@gmail.com</h4>
+                <h4>User Points:- 1500</h4>
+                <h4>Level:- Gold</h4>
+                <h4>Interests:- Food, Technology, Travelling</h4>
             </div>
-            <div class="col-md-2"></div>
         </div>
-    </div>
-<div><Footer/></div>
+        <hr>
+        <div class="follow-details">
+            <div class="following">
+
+            </div>
+            <div class="followers">
+
+            </div>
+        </div>
+        <div><Footer/></div>
     </div>
 </template>
 <script>
@@ -33,16 +38,22 @@ export default {
 }
 </script>
 <style scoped>
-.body-info{
-    border: red dotted 2px;
-    border-radius: 10%;
-    font-family: fantasy;
-    font-family: cursive;
-    font-size: 25px;
+.user-details{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 100px;
 }
-.head-info{
-    font-family: fantasy;
-    font-family: cursive;
-    font-size: 25px;
+.user-image{
+    padding-left: 350px;
+}
+.image{
+    border-radius: 50%;
+}
+.user-info{
+    padding-right: 350px;
+}
+h4{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
 }
 </style>

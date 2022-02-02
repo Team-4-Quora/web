@@ -18,8 +18,6 @@
       <a href="http://localhost:8080/#/questionpage"><p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p></a>
     </div>
     <hr>
-    <div><AnswerAccepted/></div>
-    <hr>
     <div class="card-bottom">
       <div class="likes">
         <a href="/" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
@@ -37,6 +35,8 @@
         <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
       </div>
     </div>
+    <hr>
+    <div><AnswerAccepted/></div>
   </div>
 </template>
 

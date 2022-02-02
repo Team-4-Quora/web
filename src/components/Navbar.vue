@@ -8,7 +8,6 @@
         <div class="container my-2">
             <div class="navbar-brand text-dark font-weight-bold"><img src="#" alt="" height="50px" width="50px">
             <a class="text-black fa-2x mx-5" href="#"><i class="fas fa-home"></i></a>
-            <a class="bg-white text-black fa-2x" href="#"><i class="fas fa-list-ul"></i></a>
 
              </div>
                 <div class="navbar-nav ml-5">
