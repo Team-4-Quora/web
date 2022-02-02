@@ -1,21 +1,6 @@
 <template>
 <div class="dashboard">
     <Navbar/>
-     <!-- <Sidebar/>
-    <div class="main-body">
-        <div><Navbar/></div>
-        <div class="feed">
-            <div class="feed-body">
-                <Feed/>
-            </div>
-            <div class="feed-body">
-                <Feed/>
-            </div>
-            <div class="feed-body">
-                <Feed/>
-            </div>
-        </div>
-    </div> -->
     <div class="abc">
         <div><Sidebar/></div>
         <div>
