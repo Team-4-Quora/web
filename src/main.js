@@ -23,5 +23,11 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  test: /\.scss$/,
+  use: [
+    'vue-style-loader',
+    'css-loader',
+    'sass-loader'
+  ]
 })
