@@ -1,6 +1,5 @@
 <template>
   <div class="main-body">
-    <div><Navbar/></div>
     <div class="card">
         <link rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
@@ -46,20 +45,15 @@
       </div>
     </div>
     </div>
-    <div><Footer/></div>
   </div>
 </template>
 
 <script>
 import Answers from '@/components/AnswerAccepted.vue'
-import Navbar from '@/components/Navbar.vue'
-import Footer from '@/components/Footer.vue'
 export default {
   name: 'QuestionPage',
   components: {
-    Answers,
-    Navbar,
-    Footer
+    Answers
   }
 }
 </script>

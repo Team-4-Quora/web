@@ -54,6 +54,8 @@ export default {
 <style scoped>
 .main-body{
   border: 1px solid black;
+  width:700px;
+  margin-top:50px;
 }
 .card-top{
   display: flex;
