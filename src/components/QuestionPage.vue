@@ -1,7 +1,6 @@
 <template>
   <div class="main-body">
-    <div class="card">
-        <link rel="stylesheet"
+    <link rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
       integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
       crossorigin="anonymous">
@@ -19,23 +18,15 @@
       <p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p>
     </div>
     <hr>
-    <div class="answers">
-        <Answers/>
-        <hr>
-        <Answers/>
-        <hr>
-        <Answers/>
-    </div>
-    <hr>
     <div class="card-bottom">
       <div class="likes">
         <a href="/" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
-        <p class="likes-count">2500 likes</p>
+        <p class="likes-count">2500 upvotes</p>
         <p></p>
       </div>
       <div class="dislikes">
         <a href="/" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
-        <p class="dislike-count">1000 dislikes</p>
+        <p class="dislike-count">1000 downvotes</p>
       </div>
       <div class="comments">
         <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
@@ -44,14 +35,24 @@
         <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
       </div>
     </div>
+    <hr>
+    <div class="add-answer">
+      <textarea name="askquestion" id="ask" cols="60" rows="5" placeholder="Add your answer here...."></textarea>
+      <button class="button-56" role="button">Submit</button>
     </div>
+    <hr>
+    <div><Answers/></div>
+    <div><Answers/></div>
+    <div><Answers/></div>
+    <div><Answers/></div>
+    <div><Answers/></div>
   </div>
 </template>
 
 <script>
-import Answers from '@/components/AnswerAccepted.vue'
+import Answers from '@/components/Answers.vue'
 export default {
-  name: 'QuestionPage',
+  name: 'Feed',
   components: {
     Answers
   }
@@ -60,6 +61,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.main-body{
+  border: 1px solid black;
+  width:610px;
+}
 .card-top{
   display: flex;
   justify-content: space-between;
@@ -127,10 +132,65 @@ export default {
 .timestamp{
   font-size: 12px;
 }
-.card{
-    margin-left: 40%;
-    margin-right: 100px;
-    border:2px solid black;
-    margin-top:150px;
+#ask{
+  margin-left: 40px;
+}
+.button-56 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-left: 220px;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
 }
 </style>

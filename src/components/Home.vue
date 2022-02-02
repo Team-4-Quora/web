@@ -8,7 +8,8 @@
         <div><Feed/></div>
         <div><Feed/></div>
         </div>
-        <div class="emptyDiv"></div>
+        <div class="emptyDiv">
+        </div>
     </div>
      <div><Footer/></div>
     </div>

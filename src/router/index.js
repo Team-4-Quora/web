@@ -15,7 +15,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/home',
+      path: '/',
       name: 'home',
       component: Home
     },
@@ -38,11 +38,6 @@ export default new Router({
       path: '/questionpage',
       name: 'QuestionPage',
       component: QuestionPage
-    },
-    {
-      path: '/',
-      name: 'Home',
-      component: Home
     },
     {
       path: '/ask',

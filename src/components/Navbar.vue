@@ -6,16 +6,15 @@
         crossorigin="anonymous">
       <nav class="navbar navbar-expand-sm fixed-top bg-light">
         <div class="container my-2">
-            <div class="navbar-brand text-dark font-weight-bold"><img src="#" alt="" height="50px" width="50px">
-            <a class="text-black fa-2x mx-5" href="#"><i class="fas fa-home"></i></a>
-            <!-- <a class="bg-white text-black fa-2x" href="#"><i class="fas fa-list-ul"></i></a> -->
-
+          <div class="home-logo">
+            <div class="navbar-brand text-dark font-weight-bold" @click="gohome()"><img src="#" alt="" height="50px" width="50px"></div>
+            <div class="text-black fa-2x mx-5" @click="gohome()" id="home"><i class="fas fa-home"></i></div>
              </div>
                 <div class="navbar-nav ml-5">
-                  <input class="form-control amber-border" type="text" size="50" placeholder="Search Quora" name="search">
-                  <button type="submit" class="btn btn-secondary"><i class="fa fa-search"></i></button>
-                  <b-nav-item class="nav-item nav-link text-dark h6 my-auto"><button type="button" class="btn btn-danger">Add&nbsp;Question</button></b-nav-item>
-                  <b-nav-item class="nav-item nav-link text-dark h6 my-auto text-black fa-2x"><a href="#"><i class="fas fa-user-circle"></i></a></b-nav-item>
+                  <input class="form-control amber-border" type="text" size="50" placeholder="Search Quora" name="search" />
+                  <button type="submit" class="btn btn-secondary" style="height:50px; margin-top:10px;"><i class="fa fa-search"></i></button>
+                  <b-nav-item class="nav-item nav-link text-dark h6 my-auto" @click="goaddques()"><button type="button" class="btn btn-danger">Add&nbsp;Question</button></b-nav-item>
+                  <b-nav-item class="nav-item nav-link text-dark h6 my-auto text-black fa-2x" @click="goprofile()"><i class="fas fa-user-circle"></i></b-nav-item>
               </div>
       </div>
     </nav>
@@ -26,6 +25,18 @@
 export default {
   name: 'Navbar',
   methods: {
+    gohome () {
+      this.$router.push('/')
+      console.log(this.$router)
+    },
+    goaddques () {
+      this.$router.push('/ask')
+      console.log(this.$router)
+    },
+    goprofile () {
+      this.$router.push('/profile')
+      console.log(this.$router)
+    }
   }
 }
 </script>
@@ -35,12 +46,22 @@ img{
     border-radius: 50%;
 }
 .main-navbar{
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 .cart{
   cursor: pointer;
 }
 #home{
   cursor: pointer;
+}
+.navbar{
+  height: 70px;
+}
+input{
+  height:50px;
+  margin-top:10px;
+}
+.home-logo{
+  display: flex;
 }
 </style>

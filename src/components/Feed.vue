@@ -15,10 +15,9 @@
     <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
-      <a href="http://localhost:8080/#/questionpage"><p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p></a>
+      <div><p class="card-question-asked" @click="goquespage()"><b>What is your salary? Are you happy with it?</b></p></div>
+<!-- <a href="http://localhost:8080/#/questionpage"><p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p></a> -->
     </div>
-    <hr>
-    <div><AnswerAccepted/></div>
     <hr>
     <div class="card-bottom">
       <div class="likes">
@@ -37,6 +36,8 @@
         <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
       </div>
     </div>
+    <hr>
+    <div><AnswerAccepted/></div>
   </div>
 </template>
 
@@ -46,6 +47,12 @@ export default {
   name: 'Feed',
   components: {
     AnswerAccepted
+  },
+  methods: {
+    goquespage () {
+      this.$router.push('/questionpage')
+      console.log(this.$router)
+    }
   }
 }
 </script>

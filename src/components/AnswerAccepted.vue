@@ -7,7 +7,6 @@
             <p class="timestamp">7:00 AM 1 Feb 2021</p>
             </div>
             <button type="button" class="btn btn-link">Follow</button>
-            <button type="button" class="accept">Accept</button>
         </div>
         <div class="card-answer">
             <p class="card-answer-title"><b>Answer:-</b></p>
@@ -24,9 +23,6 @@
           </div>
           <div class="comments">
             <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
-          </div>
-          <div class="share">
-            <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
           </div>
         </div>
     </div>
