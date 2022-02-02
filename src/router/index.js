@@ -3,10 +3,12 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Sidebar from '@/components/Sidebar'
 import Feed from '@/components/Feed'
-import Profile from '@/components/Profile'
 import Answers from '@/components/Answers'
 import QuestionPage from '@/components/QuestionPage'
 import AskQuestion from '@/components/AskQuestion'
+import Login from '@/components/Login'
+import SignUp from '@/components/SignUp'
+import Profile from '@/components/Profile'
 
 Vue.use(Router)
 
@@ -28,11 +30,6 @@ export default new Router({
       component: Feed
     },
     {
-      path: '/profile',
-      name: 'Profile',
-      component: Profile
-    },
-    {
       path: '/answers',
       name: 'Answers',
       component: Answers
@@ -51,6 +48,21 @@ export default new Router({
       path: '/ask',
       name: 'AskQuestion',
       component: AskQuestion
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/signup',
+      name: 'SignUp',
+      component: SignUp
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
     }
   ]
 })

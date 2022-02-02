@@ -38,7 +38,6 @@ export default {
     position: fixed;
 }
 #checkboxes input{
-  /* display:block; */
   margin-right:10px;
 }
 #checkboxes label{

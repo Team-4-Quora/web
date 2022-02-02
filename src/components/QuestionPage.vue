@@ -133,7 +133,4 @@ export default {
     border:2px solid black;
     margin-top:150px;
 }
-.main-body{
-    margin-bottom:100px;
-}
 </style>
