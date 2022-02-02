@@ -1,21 +1,18 @@
 <template>
-<div class="dashboard">
-    <Sidebar/>
     <div class="main-body">
         <div><Navbar/></div>
         <div class="feed">
-            <div class="feed-body">
-                <Feed/>
+            <div class="dashboard">
+                <Sidebar/>
             </div>
             <div class="feed-body">
                 <Feed/>
             </div>
-            <div class="feed-body">
-                <Feed/>
+            <div class="questions-page">
+                <QuestionPage/>
             </div>
         </div>
         <div><Footer/></div>
-    </div>
     </div>
 </template>
 <script>
@@ -24,6 +21,7 @@ import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import Feed from '@/components/Feed.vue'
 import Sidebar from '@/components/Sidebar.vue'
+import QuestionPage from '@/components/QuestionPage.vue'
 
 export default {
   name: 'Home',
@@ -32,25 +30,27 @@ export default {
     Navbar,
     Footer,
     Feed,
-    Sidebar
+    Sidebar,
+    QuestionPage
   }
 }
 </script>
 <style scoped>
 .feed{
-    margin-left: 40%;
     padding-top: 15px;
     padding-bottom: 15px;
-    width: 50%;
+    display: flex;
+    justify-content: space-between;
 }
 .feed-body{
     padding-top: 25px;
+    width: 500vw;
 }
 .dashboard {
 display: grid;
 grid-template-columns: 1fr 5fr;
 height: 100vh;
 width:130vw;
-
 }
+
 </style>

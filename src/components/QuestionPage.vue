@@ -1,6 +1,5 @@
 <template>
   <div class="main-body">
-    <div><Navbar/></div>
     <div class="card">
         <link rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
@@ -46,7 +45,6 @@
       </div>
     </div>
     </div>
-    <div><Footer/></div>
   </div>
 </template>
 
@@ -138,8 +136,5 @@ export default {
     margin-right: 100px;
     border:2px solid black;
     margin-top:150px;
-}
-.main-body{
-    margin-bottom:100px;
 }
 </style>

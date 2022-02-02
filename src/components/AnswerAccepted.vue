@@ -49,7 +49,7 @@ export default {
 .card-username{
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding-top: 10px;
-  padding-right: 400px;
+  padding-right: 400px
 }
 .card-answer{
   display: flex;
