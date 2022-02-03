@@ -52,7 +52,7 @@
 <script>
 import Answers from '@/components/Answers.vue'
 export default {
-  name: 'Feed',
+  name: 'QuestionPage',
   components: {
     Answers
   }

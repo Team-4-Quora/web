@@ -3,12 +3,14 @@
     <Navbar/>
     <div class="abc">
         <div><Sidebar/></div>
-        <div>
+        <div class="feed-area">
         <div><Feed/></div>
         <div><Feed/></div>
         <div><Feed/></div>
         </div>
         <div class="emptyDiv">
+            <Ads/>
+            <QuestionPage/>
         </div>
     </div>
      <div><Footer/></div>
@@ -60,5 +62,11 @@ width:130vw;
     border: 1px solid black;
   width:700px;
   margin-top:50px;
+  height: 100vh;
+    overflow: scroll;
+}
+.feed-area{
+    height: 100vh;
+    overflow: scroll;
 }
 </style>

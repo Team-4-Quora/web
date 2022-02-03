@@ -7,7 +7,7 @@
       <nav class="navbar navbar-expand-sm fixed-top bg-light">
         <div class="container my-2">
           <div class="home-logo">
-            <div class="navbar-brand text-dark font-weight-bold" @click="gohome()"><img src="#" alt="" height="50px" width="50px"></div>
+            <div class="navbar-brand text-dark font-weight-bold" @click="gohome()"><img src="@/assets/logo.png" alt="" height="50px" width="50px"></div>
             <div class="text-black fa-2x mx-5" @click="gohome()" id="home"><i class="fas fa-home"></i></div>
              </div>
                 <div class="navbar-nav ml-5">
