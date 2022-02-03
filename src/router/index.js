@@ -9,6 +9,7 @@ import Login from '@/components/Login'
 import Signup from '@/components/Signup'
 import Profile from '@/components/Profile'
 import Comment from '@/components/Comment'
+import QuestionPage from '@/components/QuestionPage'
 
 Vue.use(Router)
 
@@ -59,6 +60,12 @@ export default new Router({
       path: '/comment',
       name: 'Comment',
       component: Comment
+    },
+    {
+      path: '/questionpage',
+      name: 'Question Page',
+      component: QuestionPage
     }
+
   ]
 })

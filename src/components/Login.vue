@@ -32,7 +32,7 @@
                     <div style="text-align:center">
                       <span class="text">New to Quora</span>
                     </div>
-                    <a class="nav-item nav-link text-dark h6 mx-3 my-auto text-center" id="register-button" href="/#/signup"><i class="fas fa-hand-point-right"></i> Create A New Quora Account</a>
+                    <a class="nav-item nav-link text-dark h6 mx-3 my-auto text-center" id="register-button" ><i class="fas fa-hand-point-right"></i> Create A New Quora Account</a>
                   </div>
                 </form>
               </div>

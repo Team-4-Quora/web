@@ -34,6 +34,9 @@ export default {
     Sidebar,
     QuestionPage,
     Ads
+  },
+  created () {
+    this.$store.dispatch('getByCategory')
   }
 }
 </script>
