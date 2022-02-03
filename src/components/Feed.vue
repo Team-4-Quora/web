@@ -7,15 +7,15 @@
     <div class="card-top">
       <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
       <div class="name-section">
-        <h5 class="card-username"><b>User 1</b></h5>
-        <p class="timestamp">7:00 AM 1 Feb 2021</p>
+        <h5 class="card-username"><b>{{item.questionBy}}</b></h5>
+        <p class="timestamp">{{item.postedOn}}</p>
       </div>
       <button type="button" class="btn btn-link">Follow</button>
     </div>
     <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
-      <div><p class="card-question-asked" @click="goquespage()"><b>What is your salary? Are you happy with it?</b></p></div>
+      <div><p class="card-question-asked" @click="goquespage()"><b>{{item.text}}</b></p></div>
 <!-- <a href="http://localhost:8080/#/questionpage"><p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p></a> -->
     </div>
     <hr>
@@ -47,6 +47,7 @@ import AnswerAccepted from '@/components/AnswerAccepted.vue'
 import Comment from '@/components/Comment.vue'
 export default {
   name: 'Feed',
+  props: ['item'],
   components: {
     AnswerAccepted,
     Comment

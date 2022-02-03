@@ -4,9 +4,7 @@
     <div class="abc">
         <div><Sidebar/></div>
         <div class="feed-area">
-            <div><Feed/></div>
-            <div><Feed/></div>
-            <div><Feed/></div>
+            <Feed v-for="item in queCategory" :key="item.id" :item="item"/>
         </div>
         <div class="emptyDiv">
             <Ads/>
@@ -24,6 +22,7 @@ import Feed from '@/components/Feed.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import QuestionPage from '@/components/QuestionPage.vue'
 import Ads from '@/components/Ads.vue'
+import {mapGetters} from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -35,8 +34,8 @@ export default {
     QuestionPage,
     Ads
   },
-  created () {
-    this.$store.dispatch('getByCategory')
+  computed: {
+    ...mapGetters(['queCategory'])
   }
 }
 </script>
