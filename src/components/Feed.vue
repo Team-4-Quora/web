@@ -15,7 +15,7 @@
     <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
-      <div><p class="card-question-asked" @click="gospecific()"><b>What is your salary? Are you happy with it?</b></p></div>
+      <div><p class="card-question-asked" @click="goquespage()"><b>What is your salary? Are you happy with it?</b></p></div>
 <!-- <a href="http://localhost:8080/#/questionpage"><p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p></a> -->
     </div>
     <hr>
@@ -49,9 +49,10 @@ export default {
     AnswerAccepted
   },
   methods: {
-    gospecific () {
-      this.$router.push('/specific')
-      console.log(this.$router)
+    goquespage () {
+      // this.$router.push('/questionpage')
+      // this.$emit('vijayarocks', 'abc')
+      this.$root.$emit('shuklajirocks', 'abc')
     }
   }
 }

@@ -8,6 +8,8 @@ import AskQuestion from '@/components/AskQuestion'
 import Login from '@/components/Login'
 import SignUp from '@/components/SignUp'
 import Profile from '@/components/Profile'
+import QuestionPage from '@/components/QuestionPage'
+
 Vue.use(Router)
 
 export default new Router({
@@ -52,6 +54,12 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/questionpage',
+      name: 'Question Page',
+      component: QuestionPage
     }
+
   ]
 })

@@ -8,8 +8,13 @@
         <div><Feed/></div>
         <div><Feed/></div>
         </div>
-        <div class="emptyDiv">
-            <Ads/>
+        <div>
+            <!-- <div class="emptyDiv">
+                <Ads/>
+            </div> -->
+            <div v-if="singh" class="emptyDiv">
+             <QuestionPage/>
+            </div>
         </div>
     </div>
      <div><Footer/></div>
@@ -25,6 +30,11 @@ import QuestionPage from '@/components/QuestionPage.vue'
 import Ads from '@/components/Ads.vue'
 export default {
   name: 'Home',
+  data () {
+    return {
+      singh: null
+    }
+  },
   components: {
     Answers,
     Navbar,
@@ -33,6 +43,13 @@ export default {
     Sidebar,
     QuestionPage,
     Ads
+  },
+  created () {
+    this.$root.$on('shuklajirocks', data => { this.singh = data })
+  },
+  methods: {
+    apoorvarocks ($event) {
+    }
   }
 }
 </script>
@@ -46,13 +63,6 @@ export default {
 .feed-body{
     padding-top: 25px;
 }
-/* .dashboard {
-display: grid;
-grid-template-columns: 1fr 5fr;
-height: 100vh;
-width:130vw;
-
-} */
 .abc{
     display: flex;
     justify-content: space-between;

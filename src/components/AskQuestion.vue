@@ -6,9 +6,11 @@
             <div class="dropdown">
                 <button class="dropbtn">Category</button>
                 <div class="dropdown-content">
-                    <a href="#">Java</a>
-                    <a href="#">Technology</a>
-                    <a href="#">Food</a>
+                    <a href="#">Sports</a>
+                    <a href="#">LifeStyle</a>
+                    <a href="#">E-commerce</a>
+                    <a href="#">Education</a>
+                    <a href="#">Bollywood</a>
                 </div>
             </div>
         </div>
