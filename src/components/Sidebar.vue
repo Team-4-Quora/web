@@ -2,14 +2,15 @@
   <div class="sidebar">
     <div class=main-div>
     <div>
-      <h5>Categories:-</h5>
-      <div id="checkboxes">
-        <label> <input type="checkbox" value="Music" v-model="blog.categories"/>Music</label>
-        <label ><input type="checkbox" value="Books" v-model="blog.categories"/>Books</label>
-        <label><input type="checkbox" value="Movies" v-model="blog.categories"/>Movies</label>
-        <label><input type="checkbox" value="Java" v-model="blog.categories"/>Java</label>
-        <label><input type="checkbox" value="VueJs" v-model="blog.categories"/>VueJs</label>
+      <h5>Categories:</h5>
+      <div id="radios">
+        <input type="radio" id="sports" name="fav_category" value="sports">  Sports<br>
+        <input type="radio" id="lifestyle" name="fav_category" value="lifestyle">  LifeStyle<br>
+        <input type="radio" id="ecommerce" name="fav_category" value="ecommerce">  Ecommerce<br>
+        <input type="radio" id="education" name="fav_category" value="education">  Education<br>
+        <input type="radio" id="bollywood" name="fav_category" value="bollywood">  Bollywood<br>
       </div>
+      <button type="button" class="btn btn-secondary mt-2" @click="onSubmitCategory()">Submit</button>
     </div>
   </div>
   </div>
@@ -17,13 +18,21 @@
 
 <script>
 export default {
-  data () {
-    return {
-      blog: {
-        categories: []
+  name: 'Sidebar',
+  methods: {
+    onSubmitCategory () {
+      var radios = document.getElementsByName('fav_category')
+      for (var radio of radios) {
+        if (radio.checked) {
+          // console.log('hiiii', radio.value)
+          var categ = radio.value
+        }
       }
+      console.log(categ, 'hi')
+      this.$store.dispatch('getByCategory', {categ})
     }
   }
+
 }
 </script>
 

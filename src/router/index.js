@@ -6,8 +6,9 @@ import Feed from '@/components/Feed'
 import Answers from '@/components/Answers'
 import AskQuestion from '@/components/AskQuestion'
 import Login from '@/components/Login'
-import SignUp from '@/components/SignUp'
+import Signup from '@/components/Signup'
 import Profile from '@/components/Profile'
+import Comment from '@/components/Comment'
 import QuestionPage from '@/components/QuestionPage'
 
 Vue.use(Router)
@@ -47,13 +48,18 @@ export default new Router({
     },
     {
       path: '/signup',
-      name: 'SignUp',
-      component: SignUp
+      name: 'Signup',
+      component: Signup
     },
     {
       path: '/profile',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/comment',
+      name: 'Comment',
+      component: Comment
     },
     {
       path: '/questionpage',
