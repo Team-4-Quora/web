@@ -7,7 +7,7 @@
     <div class="card-top">
       <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
       <div class="name-section">
-        <h5 class="card-username"><b>Modi boi</b></h5>
+        <h5 class="card-username"><b>User 1</b></h5>
         <p class="timestamp">7:00 AM 1 Feb 2021</p>
       </div>
       <button type="button" class="btn btn-link">Follow</button>
@@ -15,7 +15,7 @@
     <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
-      <div><p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p></div>
+      <div><p class="card-question-asked" @click="goquespage()"><b>What is your salary? Are you happy with it?</b></p></div>
 <!-- <a href="http://localhost:8080/#/questionpage"><p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p></a> -->
     </div>
     <hr>
@@ -49,6 +49,11 @@ export default {
     AnswerAccepted
   },
   methods: {
+    goquespage () {
+      // this.$router.push('/questionpage')
+      // this.$emit('vijayarocks', 'abc')
+      this.$root.$emit('shuklajirocks', 'abc')
+    }
   }
 }
 </script>
