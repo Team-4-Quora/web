@@ -8,7 +8,6 @@ import AskQuestion from '@/components/AskQuestion'
 import Login from '@/components/Login'
 import SignUp from '@/components/SignUp'
 import Profile from '@/components/Profile'
-
 Vue.use(Router)
 
 export default new Router({

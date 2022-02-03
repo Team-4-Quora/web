@@ -10,7 +10,6 @@
         </div>
         <div class="emptyDiv">
             <Ads/>
-            <QuestionPage/>
         </div>
     </div>
      <div><Footer/></div>

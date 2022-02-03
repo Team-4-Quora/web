@@ -62,8 +62,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .main-body{
-  border: 1px solid black;
   width:610px;
+  padding-left: 15px;
 }
 .card-top{
   display: flex;
