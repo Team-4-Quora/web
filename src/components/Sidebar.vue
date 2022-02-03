@@ -2,15 +2,15 @@
   <div class="sidebar">
     <div class=main-div>
     <div>
-      <h5>Categories:-</h5>
+      <h5>Categories:</h5>
       <div id="radios">
-        <!-- <label> <input type="checkbox" value="sports" v-model="blog.categories"/>Sports</label>
-        <label ><input type="checkbox" value="lifestyle" v-model="blog.categories"/>Lifestyle</label>
-        <label><input type="checkbox" value="E-commerce" v-model="blog.categories"/>E-commerce</label>
-        <label><input type="checkbox" value="Education" v-model="blog.categories"/>Education</label>
-        <label><input type="checkbox" value="Bollywood" v-model="blog.categories"/>Bollywood</label> -->
-        <input type="radio" id="html" name="fav_language" value="HTML"><label for="html">HTML</label><br><input type="radio" id="css" name="fav_language" value="CSS"><label for="css">CSS</label><br>  <input type="radio" id="javascript" name="fav_language" value="JavaScript"> <label for="javascript">JavaScript</label>
+        <input type="radio" id="sports" name="fav_category" value="sports">  Sports<br>
+        <input type="radio" id="lifestyle" name="fav_category" value="lifestyle">  LifeStyle<br>
+        <input type="radio" id="ecommerce" name="fav_category" value="ecommerce">  Ecommerce<br>
+        <input type="radio" id="education" name="fav_category" value="education">  Education<br>
+        <input type="radio" id="bollywood" name="fav_category" value="bollywood">  Bollywood<br>
       </div>
+      <button type="button" class="btn btn-secondary mt-2" @click="onSubmitCategory()">Submit</button>
     </div>
   </div>
   </div>
@@ -18,13 +18,21 @@
 
 <script>
 export default {
-  data () {
-    return {
-      blog: {
-        categories: []
+  name: 'Sidebar',
+  methods: {
+    onSubmitCategory () {
+      var radios = document.getElementsByName('fav_category')
+      for (var radio of radios) {
+        if (radio.checked) {
+          // console.log('hiiii', radio.value)
+          var categ = radio.value
+        }
       }
+      console.log(categ, 'hi')
+      this.$store.dispatch('getByCategory', {categ})
     }
   }
+
 }
 </script>
 

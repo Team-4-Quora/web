@@ -15,7 +15,10 @@
             <p class="card-answer-title"><b>Answer:-</b></p>
             <p class="card-answered"><b>When I passed out 12th with average marks (75%), took admission in college. My father already told me just after passing 12th that we can not afford your study expenses to study much further but we’ll somehow manage your College & Coaching Centre Fee for only graduation period and after that you’ll have to work as an apprentice at any kind shop (In other words, you have to earn on your own). That hit me as hard as a over speed truck. I can not tell you what was going in my mind at that time. I totally understood their situation and compulsion as well that they have done what they everything could do for me and now it’s my turn. I wasn’t much mature then, was somewhere around 19 yrs old. So I made a firm decision that I would work hard day and night. I still remember the day when I had to submit admission fee of college and I asked my mother to give me fee (It was somewhere around 6,700) but she did not have that much money at that particular point of time but she she said you don’t worry. I would go to Zamindar to have the due money, where she worked as labour such as cutting wheat crop etc.</b></p>
         </div>
-        <div class="accept-button"><button class="button-7" role="button">Accept</button></div>
+        <div class="buttons">
+          <div class="accept-button"><button class="button-7" role="button">Accept</button></div>
+          <div class="delete-button"><button class="button-8" role="button">Delete</button></div>
+        </div>
     </div>
 </template>
 <script>
@@ -73,9 +76,7 @@ export default {
 .dislike-count{
   font-size: 10px;
 }
-.accept-button{
-  padding-left: 270px;
-}
+
 /* CSS */
 .button-7 {
   background-color: #0095ff;
@@ -112,8 +113,51 @@ export default {
   box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
 }
 
-.button-7:active {
-  background-color: #0064bd;
+.button-8:active {
+  background-color: #bd0000;
   box-shadow: none;
+}
+.button-8 {
+  background-color: #bd0000;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-8:hover,
+.button-8:focus {
+  background-color: #bd0000;
+}
+
+.button-8:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.button-8:active {
+  background-color: #bd0000;
+  box-shadow: none;
+}
+.buttons{
+  display: flex;
+  justify-content: space-between;
 }
 </style>

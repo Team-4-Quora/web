@@ -26,11 +26,5 @@ new Vue({
   router,
   store,
   components: { App },
-<<<<<<< HEAD
-  template: '<App/>',
-  render: (h) => h(App)
-}).$mount('#app')
-=======
   template: '<App/>'
 })
->>>>>>> ee997e78b637453bf6fdc6b9d61ccb121c874af1

@@ -1,12 +1,13 @@
 import axios from 'axios'
 
 const state = {
-//   products: []
+  queCategory: []
 
 }
 
 const getters = {
-//   allProducts: state => state.products
+  queCategory: state => state.queCategory
+
 }
 
 const actions = {
@@ -17,17 +18,15 @@ const actions = {
       text: text,
       category: category
     }).then((res) => console.log('added successfully'))
+  },
+  async getByCategory ({commit}, {categ}) {
+    console.log('fetch by category action', categ)
+    const response = await axios.get(`http://localhost:8081/qna/question/fetch/category/${categ}`)
+    commit('setByCategory', response.data)
   }
-  // },
-  // async getByCategory ({commit}) {
-  //   console.log('get by category')
-  //   // const response = await axios.get(`http://10.177.1.70:8187/order/user/${userId}`)
-  //   commit('setOrderHistory', response.data)
-  // }
-
 }
 const mutations = {
-
+  setByCategory: (state, queCategory) => (state.queCategory = queCategory)
 }
 
 export default {
