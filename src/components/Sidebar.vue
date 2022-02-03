@@ -4,11 +4,11 @@
     <div>
       <h5>Categories:-</h5>
       <div id="checkboxes">
-        <label> <input type="checkbox" value="Music" v-model="blog.categories"/>Music</label>
-        <label ><input type="checkbox" value="Books" v-model="blog.categories"/>Books</label>
-        <label><input type="checkbox" value="Movies" v-model="blog.categories"/>Movies</label>
-        <label><input type="checkbox" value="Java" v-model="blog.categories"/>Java</label>
-        <label><input type="checkbox" value="VueJs" v-model="blog.categories"/>VueJs</label>
+        <label> <input type="checkbox" value="sports" v-model="blog.categories"/>Sports</label>
+        <label ><input type="checkbox" value="lifestyle" v-model="blog.categories"/>Lifestyle</label>
+        <label><input type="checkbox" value="E-commerce" v-model="blog.categories"/>E-commerce</label>
+        <label><input type="checkbox" value="Education" v-model="blog.categories"/>Education</label>
+        <label><input type="checkbox" value="Bollywood" v-model="blog.categories"/>Bollywood</label>
       </div>
     </div>
   </div>
