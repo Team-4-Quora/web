@@ -21,32 +21,35 @@
     <hr>
     <div class="card-bottom">
       <div class="likes">
-        <a href="/" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
+        <a href="#" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
         <p class="likes-count">2500 upvotes</p>
         <p></p>
       </div>
       <div class="dislikes">
-        <a href="/" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
+        <a href="#" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
         <p class="dislike-count">1000 downvotes</p>
       </div>
       <div class="comments">
-        <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
+        <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
       </div>
       <div class="share">
-        <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
+        <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
       </div>
     </div>
-    <hr>
     <div><AnswerAccepted/></div>
+    <h5 class="mx-5">Comments</h5>
+    <div><Comment/></div>
   </div>
 </template>
 
 <script>
 import AnswerAccepted from '@/components/AnswerAccepted.vue'
+import Comment from '@/components/Comment.vue'
 export default {
   name: 'Feed',
   components: {
-    AnswerAccepted
+    AnswerAccepted,
+    Comment
   },
   methods: {
     goquespage () {
@@ -63,7 +66,6 @@ export default {
 .main-body{
   border: 1px solid black;
   width:700px;
-  margin-top:50px;
 }
 .card-top{
   display: flex;

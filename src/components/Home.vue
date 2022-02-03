@@ -1,20 +1,16 @@
 <template>
-<div class="dashboard">
-    <Navbar/>
+<div>
+    <div><Navbar/></div>
     <div class="abc">
         <div><Sidebar/></div>
         <div class="feed-area">
-        <div><Feed/></div>
-        <div><Feed/></div>
-        <div><Feed/></div>
+            <div><Feed/></div>
+            <div><Feed/></div>
+            <div><Feed/></div>
         </div>
-        <div>
-            <!-- <div class="emptyDiv">
-                <Ads/>
-            </div> -->
-            <div v-if="singh" class="emptyDiv">
-             <QuestionPage/>
-            </div>
+        <div class="emptyDiv">
+            <Ads/>
+            <QuestionPage/>
         </div>
     </div>
      <div><Footer/></div>
@@ -30,11 +26,6 @@ import QuestionPage from '@/components/QuestionPage.vue'
 import Ads from '@/components/Ads.vue'
 export default {
   name: 'Home',
-  data () {
-    return {
-      singh: null
-    }
-  },
   components: {
     Answers,
     Navbar,
@@ -45,37 +36,26 @@ export default {
     Ads
   },
   created () {
-    this.$root.$on('shuklajirocks', data => { this.singh = data })
-  },
-  methods: {
-    apoorvarocks ($event) {
-    }
+    this.$store.dispatch('getByCategory')
   }
 }
 </script>
 <style scoped>
-.feed{
-    margin-left: 150px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    width: 50%;
-}
-.feed-body{
-    padding-top: 25px;
-}
+
 .abc{
     display: flex;
     justify-content: space-between;
 }
 .emptyDiv{
-    border: 1px solid black;
+  border: 1px solid black;
   width:700px;
-  margin-top:50px;
+  margin-top:30px;
   height: 100vh;
-    overflow: scroll;
+  overflow: scroll;
 }
 .feed-area{
     height: 100vh;
+    width: 800px;
     overflow: scroll;
 }
 </style>

@@ -2,22 +2,23 @@
     <div class="main-body">
         <div><Navbar/></div>
         <h1 class="title">Ask Your Question Here</h1>
+        <br>
         <div class="category">
-            <div class="dropdown">
-                <button class="dropbtn">Category</button>
-                <div class="dropdown-content">
-                    <a href="#">Sports</a>
-                    <a href="#">LifeStyle</a>
-                    <a href="#">E-commerce</a>
-                    <a href="#">Education</a>
-                    <a href="#">Bollywood</a>
-                </div>
-            </div>
+          <div>
+              <label for="category" id="detail">Choose your interested category: </label>
+              <select id="categories">
+                <option value="sports">Sports</option>
+                <option value="lifestyle">LifeStyle</option>
+                <option value="ecommerce">E-commerce</option>
+                <option value="education">Education</option>
+                <option value="bollywood">Bollywood</option>
+              </select>
+          </div>
         </div>
         <div class="ask-quesiton-body">
-            <textarea name="askquestion" id="ask" cols="100" rows="5"></textarea>
+            <textarea id="ask" cols="100" rows="5"></textarea>
             <br>
-            <button class="button button1">Ask</button>
+            <button class="button button1" @click="addQuestion()">Ask</button>
         </div>
         <div><Footer/></div>
     </div>
@@ -30,6 +31,20 @@ export default {
   components: {
     Navbar,
     Footer
+  },
+  methods: {
+    addQuestion () {
+      var val = document.getElementById('categories')
+      var cat = val.options[val.selectedIndex].value
+      console.log('category', cat)
+      var que = document.getElementById('ask').value
+      console.log('que', que)
+      this.$store.dispatch('addQuestion', {
+        questionBy: 'abc@gmail.com',
+        text: que,
+        category: cat
+      })
+    }
   }
 }
 </script>

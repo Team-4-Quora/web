@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -23,7 +24,13 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
+<<<<<<< HEAD
   template: '<App/>',
   render: (h) => h(App)
 }).$mount('#app')
+=======
+  template: '<App/>'
+})
+>>>>>>> ee997e78b637453bf6fdc6b9d61ccb121c874af1
