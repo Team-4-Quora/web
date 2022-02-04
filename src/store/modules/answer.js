@@ -23,6 +23,11 @@ const actions = {
     const response = await axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`)
     commit('setAnswerslist', response.data)
     console.log('Action end', response.data)
+  },
+  async acceptans ({commit}, {id, ansId}) {
+    console.log('accepted started', id, ansId)
+    axios.post(`http://localhost:8081/qna/question/accepted/${id}/${ansId}`, {
+    }).then((res) => console.log('accepted successfully'))
   }
 }
 const mutations = {

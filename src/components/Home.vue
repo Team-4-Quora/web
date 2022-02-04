@@ -45,8 +45,6 @@ export default {
   },
   methods: {
     questionClicked (item) {
-    //   this.quesId = item1.id
-    //   this.showAd = false
       this.question = item
     }
   }

@@ -38,15 +38,16 @@
     <hr>
     <div class="add-answer">
       <textarea name="askquestion" id="ask" cols="60" rows="5" placeholder="Add your answer here...."></textarea>
-      <button class="button-56" role="button" @click="addAnswer()">Submit</button>
+      <button class="button-56" role="button" @click="addAnswer(question.id)">Submit</button>
     </div>
     <hr>
-    <div><Answers/></div>
+    <Answers v-for="item in allAnswerslist" :key="item.id" :item="item"/>
   </div>
 </template>
 
 <script>
 import Answers from '@/components/Answers.vue'
+import { mapGetters } from 'vuex'
 export default {
   name: 'QuestionPage',
   props: ['question'],
@@ -55,23 +56,33 @@ export default {
   },
   data () {
     return {
-      singh: null
+      questionId: this.question.id
+    }
+  },
+  watch: {
+    'question' () {
+      this.$store.dispatch('getAnswerslist', {questionId: this.question.id})
     }
   },
   created () {
-    this.$root.$on('shuklajirocks', data => { this.singh = data })
+    console.log('created question id', this.questionId)
+    let questionId = this.questionId
+    this.$store.dispatch('getAnswerslist', {questionId})
   },
   methods: {
     addAnswer (questionId) {
-      var que = document.getElementById('ask').value
-      console.log('que', que)
+      var answer = document.getElementById('ask').value
+      console.log('answer', answer)
       console.log(questionId, 'questionid')
       this.$store.dispatch('addAnswer', {
         questionId: questionId,
-        message: que,
+        message: answer,
         answerBy: 'hi@gmail.com'
       })
     }
+  },
+  computed: {
+    ...mapGetters(['allAnswerslist'])
   }
 }
 </script>
