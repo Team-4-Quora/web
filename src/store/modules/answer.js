@@ -16,7 +16,7 @@ const actions = {
       questionId: questionId,
       message: message,
       answerBy: answerBy
-    }).then((res) => console.log('added successfully'))
+    }).then((res) => console.log(' answer added successfully'))
   },
   async getAnswerslist ({commit}, {questionId}) {
     console.log(questionId, 'action start')
