@@ -7,7 +7,7 @@
     <div class="card-top">
       <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
       <div class="name-section">
-        <h5 class="card-username"><b>{{item.questionBy}}</b></h5>
+        <h5 class="card-username"><b>{{item.id}}</b></h5>
         <p class="timestamp">{{item.postedOn}}</p>
       </div>
       <button type="button" class="btn btn-link">Follow</button>
@@ -21,7 +21,7 @@
     <hr>
     <div class="card-bottom">
       <div class="likes">
-        <a href="#" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
+        <a href="#" class="bg-white text-black fa-2x"><i @click="incReaction()" class="far fa-smile-wink"></i></a>
         <p class="likes-count">2500 upvotes</p>
         <p></p>
       </div>
@@ -57,6 +57,13 @@ export default {
       // this.$router.push('/questionpage')
       // this.$emit('vijayarocks', 'abc')
       this.$root.$emit('shuklajirocks', 'abc')
+    },
+    incReaction () {
+      this.$store.dispatch('addReaction', {
+        questionId: this.item.id,
+        reactionBy: 'dev@gmail.com',
+        isLike: true
+      })
     }
   }
 }
