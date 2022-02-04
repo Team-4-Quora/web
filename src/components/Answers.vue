@@ -7,41 +7,35 @@
         <div class="card-top">
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
-            <h5 class="card-username"><b>hii</b></h5>
-            <p class="timestamp">7:00 AM 1 Feb 2021</p>
+            <h5 class="card-username"><b>{{item.answerBy}}</b></h5>
+            <p class="timestamp">{{item.postedOn}}</p>
             </div>
         </div>
         <div class="card-answer">
             <p class="card-answer-title"><b>Answer:-</b></p>
-            <p class="card-answered"><b>When I passed out 12th with average marks (75%), took admission in college. My father already told me just after passing 12th that we can not afford your study expenses to study much further but we’ll somehow manage your College & Coaching Centre Fee for only graduation period and after that you’ll have to work as an apprentice at any kind shop (In other words, you have to earn on your own). That hit me as hard as a over speed truck. I can not tell you what was going in my mind at that time. I totally understood their situation and compulsion as well that they have done what they everything could do for me and now it’s my turn. I wasn’t much mature then, was somewhere around 19 yrs old. So I made a firm decision that I would work hard day and night. I still remember the day when I had to submit admission fee of college and I asked my mother to give me fee (It was somewhere around 6,700) but she did not have that much money at that particular point of time but she she said you don’t worry. I would go to Zamindar to have the due money, where she worked as labour such as cutting wheat crop etc.</b></p>
+            <p class="card-answered"><b>{{item.message}}</b></p>
         </div>
         <div class="buttons">
-          <div class="accept-button"><button class="button-7" role="button" id="set" @click="acceptans()">Accept</button></div>
+          <div class="accept-button"><button class="button-7" role="button" @click="acceptans()">Accept</button></div>
           <div class="delete-button"><button class="button-8" role="button">Delete</button></div>
         </div>
     </div>
 </template>
 <script>
-import {mapGetters} from 'vuex'
 export default {
   name: 'Answers',
-  computed: {
-    ...mapGetters(['allAnswerslist'])
-  },
-  created () {
-    let questionId = '61fa66c54d1f3037f9fbb81b'
-    console.log(questionId, 'created method')
-    this.$store.dispatch('getAnswerslist', {questionId})
-  },
+  props: ['item'],
   methods: {
     acceptans () {
-      console.log('setaccept', this.allAnswerslist.id)
+      console.log('answerid', this.item.id)
+      console.log('questionid', this.item.questionId)
       this.$store.dispatch('acceptans', {
-        questionId: '61fcb90f337ade364fec740a',
-        id: this.allAnswerslist.id
+        id: this.item.questionId,
+        ansId: this.item.id
       })
     }
   }
+
 }
 </script>
 <style scoped>

@@ -67,8 +67,6 @@ export default {
       })
     },
     questionClicked () {
-      // console.log('question clicked')
-      // console.log(this.item)
       this.$emit('questionClicked', this.item)
     }
   }
