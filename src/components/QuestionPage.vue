@@ -38,7 +38,7 @@
     <hr>
     <div class="add-answer">
       <textarea name="askquestion" id="ask" cols="60" rows="5" placeholder="Add your answer here...."></textarea>
-      <button class="button-56" role="button">Submit</button>
+      <button class="button-56" role="button" @click="addAnswer()">Submit</button>
     </div>
     <hr>
     <div><Answers/></div>
@@ -63,6 +63,17 @@ export default {
   },
   created () {
     this.$root.$on('shuklajirocks', data => { this.singh = data })
+  },
+  methods: {
+    addAnswer () {
+      var que = document.getElementById('ask').value
+      console.log('que', que)
+      this.$store.dispatch('addAnswer', {
+        questionId: '61fa66c54d1f3037f9fbb81b',
+        message: que,
+        answerBy: 'saurav@gmail.com'
+      })
+    }
   }
 }
 </script>
