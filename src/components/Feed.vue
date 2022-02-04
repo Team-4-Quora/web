@@ -15,7 +15,8 @@
     <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
-      <div><p class="card-question-asked" @click="goquespage()"><b>{{item.text}}</b></p></div>
+      <div><p class="card-question-asked" @click="questionClicked()"><b>{{item.text}}</b></p></div>
+      <!-- <router-link :to="{name: 'QuestionPage'}" class="stretched-link">{{item.text}}</router-link> -->
 <!-- <a href="http://localhost:8080/#/questionpage"><p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p></a> -->
     </div>
     <hr>
@@ -53,10 +54,10 @@ export default {
     Comment
   },
   methods: {
-    goquespage () {
-      // this.$router.push('/questionpage')
-      // this.$emit('vijayarocks', 'abc')
-      this.$root.$emit('shuklajirocks', 'abc')
+    questionClicked () {
+      // console.log('question clicked')
+      // console.log(this.item)
+      this.$emit('questionClicked', this.item)
     }
   }
 }

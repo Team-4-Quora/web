@@ -4,11 +4,11 @@
     <div class="abc">
         <div><Sidebar/></div>
         <div class="feed-area">
-            <Feed v-for="item in queCategory" :key="item.id" :item="item"/>
+            <Feed v-for="item in queCategory" :key="item.id" :item="item" @questionClicked="questionClicked"/>
         </div>
         <div class="emptyDiv">
-            <Ads/>
-            <QuestionPage/>
+            <Ads v-if="!question"/>
+            <QuestionPage v-if="question" :question="question"/>
         </div>
     </div>
      <div><Footer/></div>
@@ -25,6 +25,12 @@ import Ads from '@/components/Ads.vue'
 import {mapGetters} from 'vuex'
 export default {
   name: 'Home',
+  data () {
+    return {
+
+      question: null
+    }
+  },
   components: {
     Answers,
     Navbar,
@@ -36,6 +42,13 @@ export default {
   },
   computed: {
     ...mapGetters(['queCategory'])
+  },
+  methods: {
+    questionClicked (item) {
+    //   this.quesId = item1.id
+    //   this.showAd = false
+      this.question = item
+    }
   }
 }
 </script>

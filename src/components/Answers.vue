@@ -7,7 +7,7 @@
         <div class="card-top">
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
-            <h5 class="card-username"><b>{{allAnswerslist}}</b></h5>
+            <h5 class="card-username"><b>hii</b></h5>
             <p class="timestamp">7:00 AM 1 Feb 2021</p>
             </div>
         </div>
