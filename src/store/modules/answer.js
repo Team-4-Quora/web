@@ -1,12 +1,11 @@
 import axios from 'axios'
 
 const state = {
-//   products: []
-
+  answerslist: []
 }
 
 const getters = {
-//   allProducts: state => state.products
+  allAnswerslist: state => state.answerslist
 }
 
 const actions = {
@@ -17,17 +16,21 @@ const actions = {
       message: message,
       answerBy: answerBy
     }).then((res) => console.log('added successfully'))
+  },
+  async getAnswerslist ({commit}, {questionId}) {
+    console.log(questionId, 'action start')
+    const response = await axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`)
+    commit('setAnswerslist', response.data)
+    console.log('Action end', response.data)
+  },
+  async acceptans ({commit}, {questionId, id}) {
+    console.log('accepted started', questionId, id)
+    axios.post(`http://localhost:8081/qna/question/accepted/${questionId}/${id}`, {
+    }).then((res) => console.log('accepted successfully'))
   }
-  // },
-  // async getByCategory ({commit}) {
-  //   console.log('get by category')
-  //   // const response = await axios.get(`http://10.177.1.70:8187/order/user/${userId}`)
-  //   commit('setOrderHistory', response.data)
-  // }
-
 }
 const mutations = {
-
+  setAnswerslist: (state, answerslist) => (state.answerslist = answerslist)
 }
 
 export default {

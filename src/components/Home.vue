@@ -6,9 +6,12 @@
         <div class="feed-area">
             <Feed v-for="item in queCategory" :key="item.id" :item="item"/>
         </div>
-        <div class="emptyDiv">
+        <!-- <div class="emptyDiv">
             <Ads/>
             <QuestionPage/>
+        </div> -->
+        <div v-if="singh" class="emptyDiv">
+          <QuestionPage/>
         </div>
     </div>
      <div><Footer/></div>
@@ -25,6 +28,11 @@ import Ads from '@/components/Ads.vue'
 import {mapGetters} from 'vuex'
 export default {
   name: 'Home',
+  data () {
+    return {
+      singh: null
+    }
+  },
   components: {
     Answers,
     Navbar,
@@ -36,6 +44,9 @@ export default {
   },
   computed: {
     ...mapGetters(['queCategory'])
+  },
+  created () {
+    this.$root.$on('shuklajirocks', data => { this.singh = data })
   }
 }
 </script>

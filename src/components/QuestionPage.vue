@@ -42,10 +42,6 @@
     </div>
     <hr>
     <div><Answers/></div>
-    <div><Answers/></div>
-    <div><Answers/></div>
-    <div><Answers/></div>
-    <div><Answers/></div>
   </div>
 </template>
 
@@ -69,7 +65,7 @@ export default {
       var que = document.getElementById('ask').value
       console.log('que', que)
       this.$store.dispatch('addAnswer', {
-        questionId: '61fa66c54d1f3037f9fbb81b',
+        questionId: '61fcbed1337ade364fec7410',
         message: que,
         answerBy: 'saurav@gmail.com'
       })
