@@ -4,7 +4,10 @@
     <div class="abc">
         <div><Sidebar/></div>
         <div class="feed-area">
-            <Feed v-for="item in queCategory" :key="item.id" :item="item" @questionClicked="questionClicked"/>
+          <div v-for="item in queCategory" :key="item.id">
+            <Feed :item="item" @questionClicked="questionClicked"/>
+          </div>
+            <!-- <Feed v-for="item in queCategory" :key="item.id" :item="item" @questionClicked="questionClicked"/> -->
         </div>
         <div class="emptyDiv">
             <Ads v-if="!question"/>

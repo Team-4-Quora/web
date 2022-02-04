@@ -30,8 +30,7 @@
 <script>
 
 export default {
-  name: 'AnswerAccepted',
-  props: ['item1']
+  name: 'AnswerAccepted'
 }
 </script>
 <style scoped>

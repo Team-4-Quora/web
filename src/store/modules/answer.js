@@ -19,7 +19,7 @@ const actions = {
     }).then((res) => console.log(' answer added successfully'))
   },
   async getAnswerslist ({commit}, {questionId}) {
-    console.log(questionId, 'action start')
+    console.log(questionId, ' ::: action start')
     const response = await axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`)
     commit('setAnswerslist', response.data)
     console.log('Action end', response.data)

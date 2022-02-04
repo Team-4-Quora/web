@@ -92,6 +92,7 @@ export default {
 .main-body{
   width:610px;
   padding-left: 15px;
+  overflow-x:hidden;
 }
 .card-top{
   display: flex;
