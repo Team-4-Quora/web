@@ -7,17 +7,16 @@
     <div class="card-top">
       <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
       <div class="name-section">
-        <h5 class="card-username"><b>{{item.id}}</b></h5>
-        <p class="timestamp">{{item.postedOn}}</p>
+        <h5 class="card-username"><b>{{item.questionBy}}</b></h5>
+        <p class="timestamp" style="display:inline">{{item.postedOn}}</p>
+        <span><button type="button" class="btn btn-link" style="margin-right:0">Follow</button></span>
+
       </div>
-      <button type="button" class="btn btn-link">Follow</button>
     </div>
     <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
       <div><p class="card-question-asked" @click="questionClicked()"><b>{{item.text}}</b></p></div>
-      <!-- <router-link :to="{name: 'QuestionPage'}" class="stretched-link">{{item.text}}</router-link> -->
-<!-- <a href="http://localhost:8080/#/questionpage"><p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p></a> -->
     </div>
     <hr>
     <div class="card-bottom">
@@ -37,28 +36,33 @@
         <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
       </div>
     </div>
-    <div><AnswerAccepted/></div>
-    <h5 class="mx-5">Comments</h5>
-    <div><Comment/></div>
+    <AnswerAccepted v-for="item1 in allAnswerslist" :key="item1.id" :item1="item1"/>
   </div>
 </template>
 
 <script>
 import AnswerAccepted from '@/components/AnswerAccepted.vue'
-import Comment from '@/components/Comment.vue'
+import {mapGetters} from 'vuex'
 export default {
   name: 'Feed',
   props: ['item'],
   components: {
-    AnswerAccepted,
-    Comment
+    AnswerAccepted
+  },
+  computed: {
+    ...mapGetters(['allAnswerslist'])
+  },
+  watch: {
+    'item' () {
+      this.$store.dispatch('getAnswerslist', {questionId: this.item.id})
+    }
+  },
+  created () {
+    console.log('created question id', this.item.id)
+    let questionId = this.item.id
+    this.$store.dispatch('getAnswerslist', {questionId})
   },
   methods: {
-    goquespage () {
-      // this.$router.push('/questionpage')
-      // this.$emit('vijayarocks', 'abc')
-      this.$root.$emit('shuklajirocks', 'abc')
-    },
     incReaction () {
       this.$store.dispatch('addReaction', {
         questionId: this.item.id,
@@ -76,6 +80,7 @@ export default {
 .main-body{
   border: 1px solid black;
   width:700px;
+  overflow-x:hidden;
 }
 .card-top{
   display: flex;

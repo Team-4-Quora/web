@@ -28,8 +28,10 @@
     </div>
 </template>
 <script>
+
 export default {
-  name: 'AnswerAccepted'
+  name: 'AnswerAccepted',
+  props: ['item1']
 }
 </script>
 <style scoped>
