@@ -42,10 +42,6 @@
     </div>
     <hr>
     <div><Answers/></div>
-    <div><Answers/></div>
-    <div><Answers/></div>
-    <div><Answers/></div>
-    <div><Answers/></div>
   </div>
 </template>
 

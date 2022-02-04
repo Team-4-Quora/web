@@ -7,7 +7,7 @@
         <div class="card-top">
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
-            <h5 class="card-username"><b>User 2</b></h5>
+            <h5 class="card-username"><b>{{allAnswerslist}}</b></h5>
             <p class="timestamp">7:00 AM 1 Feb 2021</p>
             </div>
         </div>
@@ -22,8 +22,17 @@
     </div>
 </template>
 <script>
+import {mapGetters} from 'vuex'
 export default {
-  name: 'Answers'
+  name: 'Answers',
+  computed: {
+    ...mapGetters(['allAnswerslist'])
+  },
+  created () {
+    let questionId = '61fa66c54d1f3037f9fbb81b'
+    console.log(questionId, 'created method')
+    this.$store.dispatch('getAnswerslist', {questionId})
+  }
 }
 </script>
 <style scoped>
