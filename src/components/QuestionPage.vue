@@ -7,32 +7,32 @@
     <div class="card-top">
       <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
       <div class="name-section">
-        <h5 class="card-username"><b>{{singh}}</b></h5>
-        <p class="timestamp">7:00 AM 1 Feb 2021</p>
+        <h5 class="card-username"><b>{{question.questionBy}}</b></h5>
+        <p class="timestamp">{{question.postedOn}}</p>
       </div>
       <button type="button" class="btn btn-link">Follow</button>
     </div>
     <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
-      <p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p>
+      <p class="card-question-asked"><b>{{question.text}}</b></p>
     </div>
     <hr>
     <div class="card-bottom">
       <div class="likes">
-        <a href="/" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
+        <a href="#" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
         <p class="likes-count">2500 upvotes</p>
         <p></p>
       </div>
       <div class="dislikes">
-        <a href="/" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
+        <a href="#" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
         <p class="dislike-count">1000 downvotes</p>
       </div>
       <div class="comments">
-        <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
+        <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
       </div>
       <div class="share">
-        <a href="/" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
+        <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
       </div>
     </div>
     <hr>
@@ -49,6 +49,7 @@
 import Answers from '@/components/Answers.vue'
 export default {
   name: 'QuestionPage',
+  props: ['question'],
   components: {
     Answers
   },
@@ -61,13 +62,14 @@ export default {
     this.$root.$on('shuklajirocks', data => { this.singh = data })
   },
   methods: {
-    addAnswer () {
+    addAnswer (questionId) {
       var que = document.getElementById('ask').value
       console.log('que', que)
+      console.log(questionId, 'questionid')
       this.$store.dispatch('addAnswer', {
-        questionId: '61fcbed1337ade364fec7410',
+        questionId: questionId,
         message: que,
-        answerBy: 'saurav@gmail.com'
+        answerBy: 'hi@gmail.com'
       })
     }
   }

@@ -7,7 +7,7 @@
     <div class="card-top">
       <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
       <div class="name-section">
-        <h5 class="card-username"><b>{{item.questionBy}}</b></h5>
+        <h5 class="card-username"><b>{{item.id}}</b></h5>
         <p class="timestamp">{{item.postedOn}}</p>
       </div>
       <button type="button" class="btn btn-link">Follow</button>
@@ -15,13 +15,14 @@
     <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
-      <div><p class="card-question-asked" @click="goquespage()"><b>{{item.text}}</b></p></div>
+      <div><p class="card-question-asked" @click="questionClicked()"><b>{{item.text}}</b></p></div>
+      <!-- <router-link :to="{name: 'QuestionPage'}" class="stretched-link">{{item.text}}</router-link> -->
 <!-- <a href="http://localhost:8080/#/questionpage"><p class="card-question-asked"><b>What is your salary? Are you happy with it?</b></p></a> -->
     </div>
     <hr>
     <div class="card-bottom">
       <div class="likes">
-        <a href="#" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
+        <a href="#" class="bg-white text-black fa-2x"><i @click="incReaction()" class="far fa-smile-wink"></i></a>
         <p class="likes-count">2500 upvotes</p>
         <p></p>
       </div>
@@ -57,12 +58,22 @@ export default {
       // this.$router.push('/questionpage')
       // this.$emit('vijayarocks', 'abc')
       this.$root.$emit('shuklajirocks', 'abc')
+    },
+    incReaction () {
+      this.$store.dispatch('addReaction', {
+        questionId: this.item.id,
+        reactionBy: 'tv@gmail.com',
+        isLike: true
+      })
+    },
+    questionClicked () {
+      // console.log('question clicked')
+      // console.log(this.item)
+      this.$emit('questionClicked', this.item)
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .main-body{
   border: 1px solid black;
