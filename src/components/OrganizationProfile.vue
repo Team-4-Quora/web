@@ -10,6 +10,7 @@
                     <h3>Description:- {{allorgDetails.description}}</h3>
                 </div>
             </div>
+            <b-nav-item class="nav-item nav-link text-dark h6 my-auto" ><button type="button" class="btn btn-primary" @click="clickFollow(allorgDetails.id)">Follow</button></b-nav-item>
             <div class="moderator-card"><ModeratorCard/></div>
             <hr>
             <div class="moderator-card"><Followers/></div>
@@ -27,6 +28,7 @@ import Pending from '@/components/Pending.vue'
 import { mapGetters } from 'vuex'
 export default{
   name: 'OrganizationProfile',
+  props: ['item', 'item1'],
   components: {
     Navbar,
     Footer,
@@ -41,6 +43,22 @@ export default{
     this.$store.dispatch('getOrgDetails', {
       orgId: '61fede80895b3f403ca3fa6f'
     })
+  },
+  methods: {
+    clickFollow (orgId) {
+      console.log('email')
+      this.$store.dispatch('addFollowerOrg', {
+        requesterId: 'abc@gmail.com',
+        email: 'anush@gmail.com',
+        orgId: orgId,
+        status: 0
+      })
+      // this.$store.dispatch('addFollower', {
+      //   requesterId: 'abc@gmail.com',
+      //   email: questionBy,
+      //   status: 0
+      // })
+    }
   }
 }
 </script>
@@ -68,5 +86,9 @@ h3{
 }
 .moderator-card{
     margin-top: 100px;
+}
+.btn{
+    margin-top: 50px;
+    margin-left: 380px;
 }
 </style>

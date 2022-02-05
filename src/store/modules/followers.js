@@ -1,11 +1,9 @@
 import axios from 'axios'
 
 const state = {
-//   orgDetails: []
 }
 
 const getters = {
-//   allorgDetails: state => state.orgDetails
 }
 
 const actions = {
@@ -17,10 +15,25 @@ const actions = {
       email: email,
       status: status
     }).then((res) => console.log('follwer added successfully'))
+  },
+  async addFollowerOrg ({commit}, {requesterId, email, orgId, status}) {
+    console.log('action started', requesterId, email, orgId, status)
+    axios.post('http://localhost:8082/follower/add', {
+      requesterId: requesterId,
+      email: email,
+      orgId: orgId,
+      status: status
+    }).then((res) => console.log('follwer added successfully'))
+  },
+  async acceptRequestUser ({commit}, {email, requesterId}) {
+    console.log('action started', email, requesterId)
+    axios.post(`http://localhost:8082/follower/accept/${email}/${requesterId}`, {
+      requesterId: requesterId,
+      email: email
+    }).then((res) => console.log('follwer added successfully'))
   }
 }
 const mutations = {
-//   setByOrgDetails: (state, orgDetails) => (state.orgDetails = orgDetails)
 }
 
 export default {

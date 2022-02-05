@@ -1,11 +1,13 @@
 import axios from 'axios'
 
 const state = {
-  orgDetails: []
+  orgDetails: [],
+  orgFollower: []
 }
 
 const getters = {
-  allorgDetails: state => state.orgDetails
+  allorgDetails: state => state.orgDetails,
+  allorgFollower: state => state.orgFollower
 }
 
 const actions = {
@@ -26,7 +28,8 @@ const actions = {
   }
 }
 const mutations = {
-  setByOrgDetails: (state, orgDetails) => (state.orgDetails = orgDetails)
+  setByOrgDetails: (state, orgDetails) => (state.orgDetails = orgDetails),
+  setByOrgFollower: (state, orgFollower) => (state.orgFollower = orgFollower)
 }
 
 export default {

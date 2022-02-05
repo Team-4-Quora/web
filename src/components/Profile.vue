@@ -90,18 +90,20 @@
                 </div>
             </div>
         </div>
+        <div class="pending"><Pending/></div>
         <div><Footer/></div>
     </div>
 </template>
 <script>
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-
+import Pending from '@/components/Pending'
 export default {
   name: 'Profile',
   components: {
     Navbar,
-    Footer
+    Footer,
+    Pending
   },
   methods: {
     becomeorg () {
@@ -271,5 +273,8 @@ h4{
     height: 86px;
     line-height: 88px;
   }
+}
+.pending{
+    margin-top: 50px;
 }
 </style>
