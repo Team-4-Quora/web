@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 const state = {
   answerslist: []
@@ -9,6 +10,7 @@ const getters = {
 }
 
 const actions = {
+  // adding a answer
   async addAnswer ({commit}, {questionId, message, answerBy}) {
     console.log('action started', questionId, message, answerBy)
     axios.post('http://localhost:8081/qna/answer/add', {
@@ -16,17 +18,21 @@ const actions = {
       message: message,
       answerBy: answerBy
     }).then((res) => console.log(' answer added successfully'))
+    swal('', 'Answer added', 'success')
   },
+  // getting the list of all answers belonging to a particular question
   async getAnswerslist ({commit}, {questionId}) {
     console.log(questionId, ' ::: action start')
     const response = await axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`)
     commit('setAnswerslist', response.data)
     console.log('Action end', response.data)
   },
+  // accepting an answer
   async acceptans ({commit}, {ansId}) {
     console.log('accepted started', ansId)
     axios.post(`http://localhost:8081/qna/answer/accepted/${ansId}`, {
     }).then((res) => console.log('accepted successfully'))
+    swal('', 'Answer accepted', 'success')
   }
 }
 const mutations = {

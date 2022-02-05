@@ -1,34 +1,43 @@
 import axios from 'axios'
 
 const state = {
-//   answerslist: []
-
+  queReactions: [], // all reactions on question
+  ansReactions: [] // all reactions on answers
 }
 
 const getters = {
-//   allAnswerslist: state => state.answerslist
+  allqueReactions: state => state.queReactions
 }
 
 const actions = {
-  async addReaction ({commit}, {questionId, reactionBy, isLike}) {
-    console.log('action started', questionId, reactionBy, isLike)
+  // adding reaction to questions
+  async addReaction ({commit}, {questionId, reactionBy, like}) {
+    console.log('action started', questionId, reactionBy, like)
     axios.post('http://localhost:8081/qna/reaction/add', {
       questionId: questionId,
       reactionBy: reactionBy,
-      isLike: isLike
-    }).then((res) => console.log('added successfully'))
+      like: like
+    }).then((res) => console.log(like, 'added successfully'))
   },
-  async addReactionAns ({commit}, {answerId, reactionBy, isLike}) {
-    console.log('action started', answerId, reactionBy, isLike)
+  // adding reaction to answers
+  async addReactionAns ({commit}, {answerId, reactionBy, like}) {
+    console.log('action started', answerId, reactionBy, like)
     axios.post('http://localhost:8081/qna/reaction/add', {
       answerId: answerId,
       reactionBy: reactionBy,
-      isLike: isLike
+      like: like
     }).then((res) => console.log('added successfully'))
+  },
+  // fetching all reactions on a question
+  async getByQueReactions ({commit}, {id}) {
+    console.log('fetch by email action', id)
+    const response = await axios.get(`http://localhost:8081/qna/reaction/fetch/question/${id}`)
+    commit('setByQueReactions', response.data)
   }
+
 }
 const mutations = {
-//   setAnswerslist: (state, answerslist) => (state.answerslist = answerslist)
+  setByQueReactions: (state, queReactions) => (state.queReactions = queReactions)
 }
 
 export default {

@@ -20,12 +20,12 @@
     <div class="card-bottom">
       <div class="likes">
         <a href="#" class="bg-white text-black fa-1x"><i @click="incReaction()" class="far fa-smile-wink"></i></a>
-        <p class="likes-count">2500 upvotes</p>
+        <p class="likes-count">{{likeCount}} Upvotes</p>
         <p></p>
       </div>
       <div class="dislikes">
         <a href="#" class="bg-white text-black fa-1x"><i @click="decReaction()" class="far fa-angry"></i></a>
-        <p class="dislike-count">1000 downvotes</p>
+        <p class="dislike-count">{{disLikeCount}} Downvotes</p>
       </div>
       <div class="share">
         <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-share"></i></a>
@@ -48,23 +48,23 @@
         </div>
         <div class="bottom">
           <div class="likes">
-            <a href="#" class="bg-white text-black fa-1x"><i @click="incReactionAns()" class="far fa-smile-wink"></i></a>
-            <p class="likes-count">2500 upvotes</p>
+            <a href="#" class="bg-white text-black fa-1x"><i @click="incReactionAns(item1.id)" class="far fa-smile-wink"></i></a>
+            <p class="likes-count"> {{ansLikeCount}} Upvotes</p>
           </div>
           <div class="dislikes">
-            <a href="#" class="bg-white text-black fa-1x"><i @click="decReactionAns()" class="far fa-angry"></i></a>
-            <p class="dislike-count">1000 downvotes</p>
+            <a href="#" class="bg-white text-black fa-1x"><i @click="decReactionAns(item1.id)" class="far fa-angry"></i></a>
+            <p class="dislike-count">{{ansDisLikeCount}} Downvotes</p>
           </div>
           <div class="comments">
             <a href="#" class="bg-white text-black  fa-1x"><i @click="addComment(item1.id)" class="fas fa-comment-dots"></i></a>
           </div>
         </div>
-        <ListOfComments/>
         <ListOfComments v-for="comment in commentsList" :key="comment.id" :comment="comment"/>
          <Comment v-if="showComment === true" :id="item1.id"/>
     </div>
       </div>
     </div>
+    <hr>
   </div>
 </template>
 
@@ -83,8 +83,16 @@ export default {
     return {
       answersList: [],
       commentsList: [],
+      queReactionsList: [],
+      ansReactionsList: [],
       moment: moment,
-      showComment: null
+      showComment: null,
+      likeCount: 0,
+      disLikeCount: 0,
+      totalCount: 0,
+      ansTotalCount: 0,
+      ansLikeCount: 0,
+      ansDisLikeCount: 0
     }
   },
   components: {
@@ -95,39 +103,64 @@ export default {
   created () {
     let questionId = this.item.id
     console.log(questionId, 'questionid')
-    axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`).then((res) => { this.answersList = res.data; console.log(res.data) }).catch(err => console.log(err))
-    // axios.get(`http://localhost:8081/qna/comment/fetch/${answerId}`).then((res) => { this.commentsList = res.data; console.log(res.data) }).catch(err => console.log(err))
+
+    axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`).then((res) => {
+      this.answersList = res.data
+      console.log(res.data)
+    }).catch(err => console.log(err))
+    axios.get(`http://localhost:8081/qna/reaction/fetch/question/${questionId}`).then((res) => {
+      this.queReactionsList = res.data
+      console.log('queresponse', res.data)
+      this.totalCount = this.queReactionsList.length
+      this.likeCount = this.queReactionsList.filter(x => x.like === true).length
+      this.disLikeCount = this.totalCount - this.likeCount
+    }).catch(err => console.log(err))
   },
   methods: {
     incReaction () {
       this.$store.dispatch('addReaction', {
         questionId: this.item.id,
         reactionBy: 'bag@gmail.com',
-        isLike: true
+        like: true
       })
     },
     decReaction () {
       this.$store.dispatch('addReaction', {
         questionId: this.item.id,
         reactionBy: 'bag@gmail.com',
-        isLike: false
+        like: false
       })
     },
-    incReactionAns () {
+    incReactionAns (answerId) {
       console.log('inc')
-      // this.$store.dispatch('addReactionAns', {
-      //   answerId: this.item1.id,
-      //   reactionBy: 'bag@gmail.com',
-      //   isLike: true
-      // })
+      this.ansId = answerId
+      this.$store.dispatch('addReactionAns', {
+        answerId: answerId,
+        reactionBy: 'bag@gmail.com',
+        like: true
+      })
+      axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
+        this.ansReactionsList = res.data
+        console.log(res.data)
+        this.ansTotalCount = this.ansReactionsList.length
+        this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
+        this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
+      }).catch(err => console.log(err))
     },
-    decReactionAns () {
-      console.log('dec', this.item1)
-      // this.$store.dispatch('addReactionAns', {
-      //   answerId: this.item1.id,
-      //   reactionBy: 'bag@gmail.com',
-      //   isLike: false
-      // })
+    decReactionAns (answerId) {
+      console.log('dec')
+      this.$store.dispatch('addReactionAns', {
+        answerId: answerId,
+        reactionBy: 'abc@gmail.com',
+        like: false
+      })
+      axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
+        this.ansReactionsList = res.data
+        console.log(res.data)
+        this.ansTotalCount = this.ansReactionsList.length
+        this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
+        this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
+      }).catch(err => console.log(err))
     },
     questionClicked () {
       this.$emit('questionClicked', this.item)
@@ -142,7 +175,6 @@ export default {
 </script>
 <style scoped>
 .main-body{
-  border: 1px solid black;
   width:700px;
   overflow-x:hidden;
 }

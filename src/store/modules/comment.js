@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 const state = {
 //   queCategory: []
@@ -19,6 +20,7 @@ const actions = {
       commentBy: commentBy,
       parentComponent: parentComponent
     }).then((res) => console.log('comment added successfully'))
+    swal('', 'Comment posted', 'success')
   }
 }
 const mutations = {
