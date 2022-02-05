@@ -9,13 +9,19 @@
       <hr>
     </div>
     <textarea placeholder="Write your comment here!" class="pb-cmnt-textarea"></textarea>
-    <a href="/comment" class="mx-3">Reply</a>
+     <div class="mx-3" @click="tocomm()" style="cursor:pointer">Reply</div>
+     <!-- <a href="/comment" class="mx-3">Reply</a> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Comment'
+  name: 'Comment',
+  methods: {
+    tocomm () {
+      this.$router.push('/comment')
+    }
+  }
 }
 </script>
 
