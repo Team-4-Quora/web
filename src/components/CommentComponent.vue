@@ -3,7 +3,7 @@
       <div class="comment-layer-first">
         <textarea name="comment-level-first" id="comment" cols="45" rows="5" placeholder="Add your answer here...."></textarea>
         <div class="comment-buttons">
-          <button class="submit-comment-button" role="button">Submit</button>
+          <button class="submit-comment-button" role="button" @click="addComment()" >Submit</button>
           <button class="reply-comment-button" role="button">Reply</button>
         </div>
       </div>
@@ -11,7 +11,10 @@
 </template>
 <script>
 export default{
-  name: 'CommentComponent'
+  name: 'CommentComponent',
+  props: ['item1'],
+  methods: {
+  }
 }
 </script>
 

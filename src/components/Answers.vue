@@ -55,6 +55,7 @@ export default {
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding-top: 10px;
   padding-right: 450px;
+  color: #e85a4f;
 }
 .card-answer{
   display: flex;
@@ -71,6 +72,7 @@ export default {
   padding-right: 5px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 15px;
+  color: #8e8d8a;
 }
 .timestamp{
     font-size: 12px;

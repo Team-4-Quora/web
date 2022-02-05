@@ -17,6 +17,7 @@
       <p class="card-question-title"><b>Question:-</b></p>
       <div><p class="card-question-asked" @click="questionClicked()"><b>{{item.text}}</b></p></div>
     </div>
+    {{queReactionsList}}
     <div class="card-bottom">
       <div class="likes">
         <a href="#" class="bg-white text-black fa-1x"><i @click="incReaction()" class="far fa-smile-wink"></i></a>
@@ -27,14 +28,10 @@
         <a href="#" class="bg-white text-black fa-1x"><i @click="decReaction()" class="far fa-angry"></i></a>
         <p class="dislike-count">1000 downvotes</p>
       </div>
-      <!-- <div class="comments">
-        <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-comment-dots"></i></a>
-      </div> -->
       <div class="share">
         <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-share"></i></a>
       </div>
     </div>
-    <!-- <AnswerAccepted/> -->
     <div v-for="item1 in answersList" :key="item1.id">
       <div v-if="item1.accepted === true">
             <div class="main-body">
@@ -52,11 +49,11 @@
         </div>
         <div class="bottom">
           <div class="likes">
-            <a href="#" class="bg-white text-black fa-1x"><i @click="incReactionAns()" class="far fa-smile-wink"></i></a>
+            <a href="#" class="bg-white text-black fa-1x"><i @click="incReactionAns(item1.id)" class="far fa-smile-wink"></i></a>
             <p class="likes-count">2500 upvotes</p>
           </div>
           <div class="dislikes">
-            <a href="#" class="bg-white text-black fa-1x"><i @click="decReactionAns()" class="far fa-angry"></i></a>
+            <a href="#" class="bg-white text-black fa-1x"><i @click="decReactionAns(item1.id)" class="far fa-angry"></i></a>
             <p class="dislike-count">1000 downvotes</p>
           </div>
           <div class="comments">
@@ -65,14 +62,13 @@
         </div>
     </div>
       </div>
-      <div><CommentComponent/></div>
     </div>
+    <hr>
   </div>
 </template>
 
 <script>
 import AnswerAccepted from '@/components/AnswerAccepted.vue'
-import CommentComponent from '@/components/CommentComponent.vue'
 // import {mapGetters} from 'vuex'
 import axios from 'axios'
 var moment = require('moment')
@@ -82,56 +78,51 @@ export default {
   data () {
     return {
       answersList: [],
-      moment: moment
+      moment: moment,
+      queReactionsList: []
     }
   },
   components: {
-    AnswerAccepted,
-    CommentComponent
+    AnswerAccepted
   },
-  // computed: {
-  //   ...mapGetters(['allAnswerslist'])
-  // },
-  // watch: {
-  //   'item' () {
-  //     console.log('watch', this.item.id)
-  //     this.$store.dispatch('getAnswerslist', {questionId: this.item.id})
-  //   }
-  // },
   created () {
     let questionId = this.item.id
+    console.log('question id', questionId)
+    axios.get(`http://localhost:8081/qna/reaction/fetch/question/${questionId}`).then((res) => { this.queReactionsList = res.data; console.log(res.data) }).catch(err => console.log(err))
     axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`).then((res) => { this.answersList = res.data; console.log(res.data) }).catch(err => console.log(err))
+    console.log('list of reactions', this.reactionsList)
+    console.log('list of answers', this.answersList)
   },
   methods: {
     incReaction () {
       this.$store.dispatch('addReaction', {
         questionId: this.item.id,
         reactionBy: 'bag@gmail.com',
-        isLike: true
+        like: true
       })
     },
     decReaction () {
       this.$store.dispatch('addReaction', {
         questionId: this.item.id,
         reactionBy: 'bag@gmail.com',
-        isLike: false
+        like: false
       })
     },
-    incReactionAns () {
+    incReactionAns (answerId) {
       console.log('inc')
-      // this.$store.dispatch('addReactionAns', {
-      //   answerId: this.item1.id,
-      //   reactionBy: 'bag@gmail.com',
-      //   isLike: true
-      // })
+      this.$store.dispatch('addReactionAns', {
+        answerId: answerId,
+        reactionBy: 'bag@gmail.com',
+        like: true
+      })
     },
-    decReactionAns () {
-      console.log('dec', this.item1)
-      // this.$store.dispatch('addReactionAns', {
-      //   answerId: this.item1.id,
-      //   reactionBy: 'bag@gmail.com',
-      //   isLike: false
-      // })
+    decReactionAns (answerId) {
+      console.log('dec')
+      this.$store.dispatch('addReactionAns', {
+        answerId: answerId,
+        reactionBy: 'abc@gmail.com',
+        like: false
+      })
     },
     questionClicked () {
       this.$emit('questionClicked', this.item)
@@ -141,7 +132,6 @@ export default {
 </script>
 <style scoped>
 .main-body{
-  border: 1px solid black;
   width:700px;
   overflow-x:hidden;
 }
