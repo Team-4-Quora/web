@@ -66,6 +66,5 @@ export default new Router({
       name: 'Question Page',
       component: QuestionPage
     }
-
   ]
 })

@@ -13,27 +13,25 @@
 
       </div>
     </div>
-    <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
       <div><p class="card-question-asked" @click="questionClicked()"><b>{{item.text}}</b></p></div>
     </div>
-    <hr>
     <div class="card-bottom">
       <div class="likes">
-        <a href="#" class="bg-white text-black fa-2x"><i @click="incReaction()" class="far fa-smile-wink"></i></a>
+        <a href="#" class="bg-white text-black fa-1x"><i @click="incReaction()" class="far fa-smile-wink"></i></a>
         <p class="likes-count">2500 upvotes</p>
         <p></p>
       </div>
       <div class="dislikes">
-        <a href="#" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
+        <a href="#" class="bg-white text-black fa-1x"><i class="far fa-angry"></i></a>
         <p class="dislike-count">1000 downvotes</p>
       </div>
       <div class="comments">
-        <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
+        <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-comment-dots"></i></a>
       </div>
       <div class="share">
-        <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
+        <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-share"></i></a>
       </div>
     </div>
     <!-- <AnswerAccepted/> -->
@@ -54,37 +52,40 @@
         </div>
         <div class="bottom">
           <div class="likes">
-            <a href="#" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
+            <a href="#" class="bg-white text-black fa-1x"><i @click="incReactionAns()" class="far fa-smile-wink"></i></a>
             <p class="likes-count">2500 upvotes</p>
           </div>
           <div class="dislikes">
-            <a href="#" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
+            <a href="#" class="bg-white text-black fa-1x"><i class="far fa-angry"></i></a>
             <p class="dislike-count">1000 downvotes</p>
           </div>
           <div class="comments">
-            <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
+            <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-comment-dots"></i></a>
           </div>
         </div>
     </div>
       </div>
+      <div><CommentComponent/></div>
     </div>
   </div>
 </template>
 
 <script>
 import AnswerAccepted from '@/components/AnswerAccepted.vue'
+import CommentComponent from '@/components/CommentComponent.vue'
 // import {mapGetters} from 'vuex'
 import axios from 'axios'
 export default {
   name: 'Feed',
-  props: ['item'],
+  props: ['item', 'item1'],
   data () {
     return {
       answersList: []
     }
   },
   components: {
-    AnswerAccepted
+    AnswerAccepted,
+    CommentComponent
   },
   // computed: {
   //   ...mapGetters(['allAnswerslist'])
@@ -103,7 +104,14 @@ export default {
     incReaction () {
       this.$store.dispatch('addReaction', {
         questionId: this.item.id,
-        reactionBy: 'tv@gmail.com',
+        reactionBy: 'pen@gmail.com',
+        isLike: true
+      })
+    },
+    incReactionAns () {
+      this.$store.dispatch('addReactionAns', {
+        answerId: this.item1.id,
+        reactionBy: 'pencil@gmail.com',
         isLike: true
       })
     },
