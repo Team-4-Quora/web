@@ -4,7 +4,10 @@
     <div class="abc">
         <div><Sidebar/></div>
         <div class="feed-area">
-            <Feed v-for="item in queCategory" :key="item.id" :item="item" @questionClicked="questionClicked"/>
+          <div v-for="item in queCategory" :key="item.id">
+            <Feed :item="item" @questionClicked="questionClicked"/>
+          </div>
+            <!-- <Feed v-for="item in queCategory" :key="item.id" :item="item" @questionClicked="questionClicked"/> -->
         </div>
         <div class="emptyDiv">
             <Ads v-if="!question"/>
@@ -27,7 +30,6 @@ export default {
   name: 'Home',
   data () {
     return {
-
       question: null
     }
   },
@@ -67,5 +69,12 @@ export default {
     height: 100vh;
     width: 800px;
     overflow: scroll;
+    margin-top: 30px;
 }
+/* .main-body[data-v-6ab2da64] {
+    border: 1px solid black;
+    width: 700px;
+    margin-top: 30px;
+    height: 100vh;
+} */
 </style>

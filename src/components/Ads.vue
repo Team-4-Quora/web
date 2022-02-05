@@ -17,4 +17,7 @@ export default {
     margin-top: 50px;
     margin-left: 10%;
 }
+.main-body{
+    overflow-x:hidden;
+}
 </style>
