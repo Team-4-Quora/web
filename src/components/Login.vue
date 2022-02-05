@@ -9,7 +9,7 @@
                 <h3 class="h3class">Log in</h3>
                 <form  method="post">
                   <div class="form-group">
-                    <div style="margin-bottom:10px" id="data"><label>Email address:</label></div>
+                    <div style="margin-bottom:10px" id="data" ><label>Email address:</label></div>
                     <input type="email" class="form-control" placeholder="Enter email" required/>
                   </div>
                   <div class="form-group">

@@ -1,0 +1,63 @@
+<template>
+    <div class="main-body">
+        <div><Navbar/></div>
+        <div class="heading">
+            <h1 class="profile-heading">Organization Profile</h1>
+            <div class="profile-details">
+                <img class="profile-image" src="@/assets/logo.png" alt="" width="200px" height="200px">
+                <div class="details">
+                    <h3>Name:- </h3>
+                    <h3>Description:- </h3>
+                </div>
+            </div>
+            <div class="moderator-card"><ModeratorCard/></div>
+            <hr>
+            <div class="moderator-card"><Followers/></div>
+            <hr>
+            <div class="moderator-card"><Pending/></div>
+        </div>
+    </div>
+</template>
+<script>
+import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
+import ModeratorCard from '@/components/ModeratorCard.vue'
+import Followers from '@/components/Followers.vue'
+import Pending from '@/components/Pending.vue'
+export default{
+  name: 'OrganizationProfile',
+  components: {
+    Navbar,
+    Footer,
+    ModeratorCard,
+    Followers,
+    Pending
+  }
+}
+</script>
+<style scoped>
+.profile-heading{
+    text-align: center;
+    font-family: cursive;
+    color: blue;
+    font-weight: bold;
+}
+.heading{
+    margin-top:90px;
+}
+.profile-image{
+    margin-left: 350px;
+    margin-top: 50px;
+    border-radius: 50%;
+}
+.profile-details{
+    display: flex;
+}
+h3{
+    margin-left: 150px;
+    margin-top: 70px;
+}
+.moderator-card{
+    margin-top: 100px;
+}
+</style>

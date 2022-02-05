@@ -8,7 +8,7 @@
       <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
       <div class="name-section">
         <h5 class="card-username"><b>{{item.questionBy}}</b></h5>
-        <p class="timestamp" style="display:inline">{{item.postedOn}}</p>
+        <p class="timestamp" style="display:inline"></p>
         <span><button type="button" class="btn btn-link" style="margin-right:0">Follow</button></span>
 
       </div>
@@ -24,12 +24,12 @@
         <p></p>
       </div>
       <div class="dislikes">
-        <a href="#" class="bg-white text-black fa-1x"><i class="far fa-angry"></i></a>
+        <a href="#" class="bg-white text-black fa-1x"><i @click="decReaction()" class="far fa-angry"></i></a>
         <p class="dislike-count">1000 downvotes</p>
       </div>
-      <div class="comments">
+      <!-- <div class="comments">
         <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-comment-dots"></i></a>
-      </div>
+      </div> -->
       <div class="share">
         <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-share"></i></a>
       </div>
@@ -56,7 +56,7 @@
             <p class="likes-count">2500 upvotes</p>
           </div>
           <div class="dislikes">
-            <a href="#" class="bg-white text-black fa-1x"><i class="far fa-angry"></i></a>
+            <a href="#" class="bg-white text-black fa-1x"><i @click="decReactionAns()" class="far fa-angry"></i></a>
             <p class="dislike-count">1000 downvotes</p>
           </div>
           <div class="comments">
@@ -75,12 +75,14 @@ import AnswerAccepted from '@/components/AnswerAccepted.vue'
 import CommentComponent from '@/components/CommentComponent.vue'
 // import {mapGetters} from 'vuex'
 import axios from 'axios'
+var moment = require('moment')
 export default {
   name: 'Feed',
   props: ['item', 'item1'],
   data () {
     return {
-      answersList: []
+      answersList: [],
+      moment: moment
     }
   },
   components: {
@@ -104,16 +106,32 @@ export default {
     incReaction () {
       this.$store.dispatch('addReaction', {
         questionId: this.item.id,
-        reactionBy: 'pen@gmail.com',
+        reactionBy: 'bag@gmail.com',
         isLike: true
       })
     },
-    incReactionAns () {
-      this.$store.dispatch('addReactionAns', {
-        answerId: this.item1.id,
-        reactionBy: 'pencil@gmail.com',
-        isLike: true
+    decReaction () {
+      this.$store.dispatch('addReaction', {
+        questionId: this.item.id,
+        reactionBy: 'bag@gmail.com',
+        isLike: false
       })
+    },
+    incReactionAns () {
+      console.log('inc')
+      // this.$store.dispatch('addReactionAns', {
+      //   answerId: this.item1.id,
+      //   reactionBy: 'bag@gmail.com',
+      //   isLike: true
+      // })
+    },
+    decReactionAns () {
+      console.log('dec', this.item1)
+      // this.$store.dispatch('addReactionAns', {
+      //   answerId: this.item1.id,
+      //   reactionBy: 'bag@gmail.com',
+      //   isLike: false
+      // })
     },
     questionClicked () {
       this.$emit('questionClicked', this.item)

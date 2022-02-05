@@ -10,6 +10,8 @@ import Signup from '@/components/Signup'
 import Profile from '@/components/Profile'
 import Comment from '@/components/Comment'
 import QuestionPage from '@/components/QuestionPage'
+import Organization from '@/components/Organization'
+import OrganizationProfile from '@/components/OrganizationProfile'
 
 Vue.use(Router)
 
@@ -65,6 +67,16 @@ export default new Router({
       path: '/questionpage',
       name: 'Question Page',
       component: QuestionPage
+    },
+    {
+      path: '/org',
+      name: 'Organization',
+      component: Organization
+    },
+    {
+      path: '/orgprofile',
+      name: 'OrganizationProfile',
+      component: OrganizationProfile
     }
   ]
 })

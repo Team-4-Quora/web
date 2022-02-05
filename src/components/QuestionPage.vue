@@ -26,9 +26,9 @@
         <a href="#" class="bg-white text-black fa-1x"><i class="far fa-angry"></i></a>
         <p class="dislike-count">1000 downvotes</p>
       </div>
-      <div class="comments">
+      <!-- <div class="comments">
         <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-comment-dots"></i></a>
-      </div>
+      </div> -->
       <div class="share">
         <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-share"></i></a>
       </div>
