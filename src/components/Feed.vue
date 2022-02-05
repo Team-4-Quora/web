@@ -145,6 +145,9 @@ export default {
   width:700px;
   overflow-x:hidden;
 }
+h5{
+  color: #4f4a41;
+}
 .card-top{
   display: flex;
   justify-content: space-between;
@@ -153,11 +156,13 @@ export default {
   border-radius: 50%;
   margin-left: 10px;
   margin-top: 10px;
+  border: black 1px solid;
 }
 .card-username{
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding-top: 10px;
   padding-right: 450px;
+  color: #e85a4f;
 }
 .btn{
   height: 40px;
@@ -167,19 +172,20 @@ export default {
   padding-top: 10px;
 }
 .card-question-title{
-  color: blueviolet;
+  color: #e85a4f;
   padding-top: 5px;
   padding-left: 15px;
 }
 .card-question-asked{
   padding-top: 5px;
   padding-left: 10px;
-  color: blue;
+  color: black;
   cursor: pointer;
 }
 .card-answer{
   display: flex;
   padding-top: 5px;
+  color: #8e8d8a;
 }
 .card-answer-title{
   color: cadetblue;

@@ -1,8 +1,8 @@
 <template>
-<div>
+<div class="main-body">
     <div><Navbar/></div>
     <div class="abc">
-        <div><Sidebar/></div>
+        <div class="sidebar"><Sidebar/></div>
         <div class="feed-area">
           <div v-for="item in queCategory" :key="item.id">
             <Feed :item="item" @questionClicked="questionClicked"/>
@@ -53,7 +53,9 @@ export default {
 }
 </script>
 <style scoped>
-
+.main-body{
+  background-color: #EAE7DC;
+}
 .abc{
     display: flex;
     justify-content: space-between;
@@ -77,4 +79,7 @@ export default {
     margin-top: 30px;
     height: 100vh;
 } */
+.sidebar{
+  margin-top: 15px;
+}
 </style>
