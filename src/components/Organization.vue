@@ -9,22 +9,18 @@
         <div class="login-box">
   <form>
     <div class="user-box">
-      <input type="text" name="" required="">
+      <input id="one" type="text" name="" required="">
+      <label>Owner</label>
+    </div>
+    <div class="user-box">
+      <input id="two" type="text" name="" required="">
       <label>Name</label>
     </div>
     <div class="user-box">
-      <input type="text" name="" required="">
+      <input id="three" type="text" name="" required="">
       <label>Description</label>
     </div>
-    <div class="user-box">
-      <input type="text" name="" required="">
-      <label>Image URL</label>
-    </div>
-    <a href="#">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+    <a href="" @click="createorg()">
       Submit
     </a>
   </form>
@@ -39,6 +35,21 @@ export default{
   components: {
     Navbar,
     Footer
+  },
+  methods: {
+    createorg () {
+      var owner = document.getElementById('one').value
+      console.log('owner', owner)
+      var name = document.getElementById('two').value
+      console.log('name', name)
+      var description = document.getElementById('three').value
+      console.log('description', description)
+      this.$store.dispatch('addOrganization', {
+        owner: owner,
+        name: name,
+        description: description
+      })
+    }
   }
 }
 </script>

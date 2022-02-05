@@ -9,7 +9,7 @@
       <div class="name-section">
         <h5 class="card-username"><b>{{item.questionBy}}</b></h5>
         <p class="timestamp" style="display:inline"></p>
-        <span><button type="button" class="btn btn-link" style="margin-right:0">Follow</button></span>
+        <span><button type="button" class="btn btn-link" style="margin-right:0" @click="clickFollow(item.questionBy)">Follow</button></span>
 
       </div>
     </div>
@@ -168,7 +168,22 @@ export default {
     addComment (answerId) {
       this.showComment = true
       console.log('comment clicked', answerId)
-      axios.get(`http://localhost:8081/qna/comment/fetch/${answerId}`).then((res) => { this.commentsList = res.data; console.log(res.data) }).catch(err => console.log(err))
+      axios.get(`http://localhost:8081/qna/comment/fetch/${answerId}`).then((res) => {
+        this.commentsList = res.data; console.log(res.data)
+      }).catch(err => console.log(err))
+    },
+    clickFollow (questionBy) {
+      console.log('email', questionBy)
+      this.$store.dispatch('addFollower', {
+        requesterId: 'xyz@gmail.com',
+        email: questionBy,
+        status: 0
+      })
+      // this.$store.dispatch('addFollower', {
+      //   requesterId: 'abc@gmail.com',
+      //   email: questionBy,
+      //   status: 0
+      // })
     }
   }
 }

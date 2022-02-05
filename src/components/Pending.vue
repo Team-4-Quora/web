@@ -8,70 +8,7 @@
                     <div class="card-body">
                         <div class="card-title" ><h4>Name</h4></div>
                     </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
+                    <button class="accept-button">Accept</button>
                 </div>
             </div>
         </div>
@@ -122,5 +59,9 @@ export default{
 }
 #card-whole{
     cursor: pointer;
+}
+.accept-button{
+    background-color: blue;
+    color: white;
 }
 </style>
