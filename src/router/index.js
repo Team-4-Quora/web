@@ -11,6 +11,7 @@ import Profile from '@/components/Profile'
 import Comment from '@/components/Comment'
 import QuestionPage from '@/components/QuestionPage'
 import Organization from '@/components/Organization'
+import Search from '@/components/Search'
 import OrganizationProfile from '@/components/OrganizationProfile'
 
 Vue.use(Router)
@@ -77,6 +78,11 @@ export default new Router({
       path: '/orgprofile',
       name: 'OrganizationProfile',
       component: OrganizationProfile
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: Search
     }
 
   ]
