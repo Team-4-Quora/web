@@ -37,15 +37,15 @@
                                         <label for="category" id="detail">Choose your interested category: </label>
                                         <div class="cat">
                                         <input type="checkbox" id="category1" name="category1" value="Category1">
-                                        <label>Category1</label><br>
+                                        <label>Sports</label><br>
                                         <input type="checkbox" id="category2" name="category2" value="category2">
-                                        <label>Category2</label><br>
+                                        <label>Lifestyle</label><br>
                                         <input type="checkbox" id="category3" name="category3" value="category3">
-                                        <label>Category3</label><br>
+                                        <label>Ecommerce</label><br>
                                          <input type="checkbox" id="category4" name="category4" value="category4">
-                                        <label>Category4</label><br>
+                                        <label>Education</label><br>
                                          <input type="checkbox" id="category5" name="category5" value="category5">
-                                        <label>Category5</label><br>
+                                        <label>Bollywood</label><br>
                                         </div>
                                     </div>
                                     <div class="text-center">

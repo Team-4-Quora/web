@@ -30,7 +30,8 @@ export default {
   name: 'Home',
   data () {
     return {
-      question: null
+      question: null,
+      title: null
     }
   },
   components: {
