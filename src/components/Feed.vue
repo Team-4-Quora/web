@@ -30,12 +30,15 @@
         <p class="dislike-count">1000 downvotes</p>
       </div>
       <div class="comments">
-        <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
+        <a href="#" class="bg-white text-black  fa-2x" @click="queComment()"><i class="fas fa-comment-dots"></i></a>
       </div>
       <div class="share">
         <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
       </div>
     </div>
+    <Comment v-if="quecomm == 'hi'" @replyClicked="replyClicked"/>
+    <Comment v-if="quecom == 'hi'"/>
+    <!-- <Comment v-if="quecom == 'hi'"/> -->
     <!-- <AnswerAccepted/> -->
     <div v-for="item1 in answersList" :key="item1.id">
       <div v-if="item1.accepted === true">
@@ -73,6 +76,8 @@
 
 <script>
 import AnswerAccepted from '@/components/AnswerAccepted.vue'
+import Comment from '@/components/Comment.vue'
+
 // import {mapGetters} from 'vuex'
 import axios from 'axios'
 export default {
@@ -80,11 +85,14 @@ export default {
   props: ['item'],
   data () {
     return {
-      answersList: []
+      answersList: [],
+      quecomm: null,
+      quecom: null
     }
   },
   components: {
-    AnswerAccepted
+    AnswerAccepted,
+    Comment
   },
   // computed: {
   //   ...mapGetters(['allAnswerslist'])
@@ -109,6 +117,15 @@ export default {
     },
     questionClicked () {
       this.$emit('questionClicked', this.item)
+    },
+    queComment () {
+      console.log('que comment clicked', this.quecomm)
+      this.quecomm = 'hi'
+      console.log('que comment clicked-1', this.quecomm)
+    },
+    replyClicked () {
+      this.quecom = 'hi'
+      console.log('parent item clicked')
     }
   }
 }

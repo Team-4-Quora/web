@@ -30,7 +30,6 @@ export default {
       console.log('answerid', this.item.id)
       console.log('questionid', this.item.questionId)
       this.$store.dispatch('acceptans', {
-        id: this.item.questionId,
         ansId: this.item.id
       })
     }

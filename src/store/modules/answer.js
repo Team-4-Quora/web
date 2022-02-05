@@ -23,9 +23,9 @@ const actions = {
     commit('setAnswerslist', response.data)
     console.log('Action end', response.data)
   },
-  async acceptans ({commit}, {id, ansId}) {
-    console.log('accepted started', id, ansId)
-    axios.post(`http://localhost:8081/qna/question/accepted/${id}/${ansId}`, {
+  async acceptans ({commit}, {ansId}) {
+    console.log('accepted started', ansId)
+    axios.post(`http://localhost:8081/qna/answer/accepted/${ansId}`, {
     }).then((res) => console.log('accepted successfully'))
   }
 }
