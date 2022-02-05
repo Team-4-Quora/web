@@ -17,6 +17,14 @@ const actions = {
       reactionBy: reactionBy,
       isLike: isLike
     }).then((res) => console.log('added successfully'))
+  },
+  async addReactionAns ({commit}, {answerId, reactionBy, isLike}) {
+    console.log('action started', answerId, reactionBy, isLike)
+    axios.post('http://localhost:8081/qna/reaction/add', {
+      answerId: answerId,
+      reactionBy: reactionBy,
+      isLike: isLike
+    }).then((res) => console.log('added successfully'))
   }
 }
 const mutations = {

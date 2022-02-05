@@ -8,19 +8,33 @@
       </div>
       <hr>
     </div>
-    <textarea placeholder="Write your comment here!" class="pb-cmnt-textarea"></textarea>
-     <div class="mx-3" @click="replyClicked()" style="cursor:pointer">Reply</div>
-     <!-- <a href="/comment" class="mx-3">Reply</a> -->
+    <textarea placeholder="Write your comment here!" id="comment" class="pb-cmnt-textarea"></textarea>
+      <div class="btn">
+        <button type="button" class="btn btn-success" @click="submitComment()">Submit</button>
+        <button type="button" class="btn btn-secondary">Reply</button>
+      </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Comment',
+  props: ['id'],
   methods: {
     replyClicked () {
       console.log('Reply clicked')
       this.$emit('replyClicked')
+    },
+    submitComment () {
+      console.log('submited the comment')
+      var comment = document.getElementById('comment').value
+      console.log('comment', comment)
+      console.log('id', this.id)
+      this.$store.dispatch('submitComment', {
+        answerId: this.id,
+        message: comment,
+        commentBy: 'hi@gmail.com',
+        parentComponent: null })
     }
   }
 }
@@ -52,6 +66,9 @@ textarea {
         height: 130px;
         width: 100%;
         border: 1px solid #F2F2F2;
+}
+.btn{
+  margin-left: 100px;
 }
 
 </style>

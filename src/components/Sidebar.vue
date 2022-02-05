@@ -4,11 +4,11 @@
     <div>
       <h5>Categories:</h5>
       <div id="radios">
-        <input type="radio" id="sports" name="fav_category" value="sports">  Sports<br>
-        <input type="radio" id="lifestyle" name="fav_category" value="lifestyle">  LifeStyle<br>
-        <input type="radio" id="ecommerce" name="fav_category" value="ecommerce">  Ecommerce<br>
-        <input type="radio" id="education" name="fav_category" value="education">  Education<br>
-        <input type="radio" id="bollywood" name="fav_category" value="bollywood">  Bollywood<br>
+        <input class="opt" type="radio" id="sports" name="fav_category" value="sports">  Sports<br>
+        <input class="opt" type="radio" id="lifestyle" name="fav_category" value="lifestyle">  LifeStyle<br>
+        <input class="opt" type="radio" id="ecommerce" name="fav_category" value="ecommerce">  Ecommerce<br>
+        <input class="opt" type="radio" id="education" name="fav_category" value="education">  Education<br>
+        <input class="opt" type="radio" id="bollywood" name="fav_category" value="bollywood">  Bollywood<br>
       </div>
       <button type="button" class="btn btn-secondary mt-2" @click="onSubmitCategory()">Submit</button>
     </div>
@@ -37,8 +37,14 @@ export default {
 </script>
 
 <style scoped>
+h5{
+  color: black;
+}
+.opt{
+  background-color:  #8e8d8a;
+}
 .sidebar{
-  background-color: #E3E2DF;
+  background-color: #d8c3a5;
   display: flex;
   flex-direction: column;
   height:100%;

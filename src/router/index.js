@@ -12,6 +12,7 @@ import Comment from '@/components/Comment'
 import QuestionPage from '@/components/QuestionPage'
 import Organization from '@/components/Organization'
 import OrganizationProfile from '@/components/OrganizationProfile'
+import ListOfComments from '@/components/ListOfComments'
 
 Vue.use(Router)
 
@@ -77,7 +78,11 @@ export default new Router({
       path: '/orgprofile',
       name: 'OrganizationProfile',
       component: OrganizationProfile
+    },
+    {
+      path: '/listofcomments',
+      name: 'ListOfComments',
+      component: ListOfComments
     }
-
   ]
 })
