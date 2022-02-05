@@ -58,7 +58,7 @@ export default {
 }
 .title{
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: blue;
+    color: #950740;
     text-align: center;
     padding-top: 30px;
 }

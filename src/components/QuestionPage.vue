@@ -105,6 +105,7 @@ export default {
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding-top: 10px;
   padding-right: 450px;
+  color: #e85a4f;
 }
 .btn{
   height: 40px;
