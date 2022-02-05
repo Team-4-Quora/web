@@ -17,7 +17,7 @@
         </div>
         <div class="buttons">
           <div class="accept-button"><button class="button-7" role="button" @click="acceptans()">Accept</button></div>
-          <div class="delete-button"><button class="button-8" role="button">Delete</button></div>
+          <!-- <div class="delete-button"><button class="button-8" role="button">Delete</button></div> -->
         </div>
     </div>
 </template>
@@ -30,7 +30,6 @@ export default {
       console.log('answerid', this.item.id)
       console.log('questionid', this.item.questionId)
       this.$store.dispatch('acceptans', {
-        id: this.item.questionId,
         ansId: this.item.id
       })
     }
@@ -171,5 +170,8 @@ export default {
 .buttons{
   display: flex;
   justify-content: space-between;
+}
+.accept-button{
+  margin-left: 250px;
 }
 </style>

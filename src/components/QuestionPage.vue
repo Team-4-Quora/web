@@ -12,27 +12,25 @@
       </div>
       <button type="button" class="btn btn-link">Follow</button>
     </div>
-    <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
       <p class="card-question-asked"><b>{{question.text}}</b></p>
     </div>
-    <hr>
     <div class="card-bottom">
       <div class="likes">
-        <a href="#" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
+        <a href="#" class="bg-white text-black fa-1x"><i class="far fa-smile-wink"></i></a>
         <p class="likes-count">2500 upvotes</p>
         <p></p>
       </div>
       <div class="dislikes">
-        <a href="#" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
+        <a href="#" class="bg-white text-black fa-1x"><i class="far fa-angry"></i></a>
         <p class="dislike-count">1000 downvotes</p>
       </div>
-      <div class="comments">
-        <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
-      </div>
+      <!-- <div class="comments">
+        <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-comment-dots"></i></a>
+      </div> -->
       <div class="share">
-        <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
+        <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-share"></i></a>
       </div>
     </div>
     <hr>

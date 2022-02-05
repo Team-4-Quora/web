@@ -8,32 +8,30 @@
       <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
       <div class="name-section">
         <h5 class="card-username"><b>{{item.questionBy}}</b></h5>
-        <p class="timestamp" style="display:inline">{{item.postedOn}}</p>
+        <p class="timestamp" style="display:inline"></p>
         <span><button type="button" class="btn btn-link" style="margin-right:0">Follow</button></span>
 
       </div>
     </div>
-    <hr>
     <div class="card-question">
       <p class="card-question-title"><b>Question:-</b></p>
       <div><p class="card-question-asked" @click="questionClicked()"><b>{{item.text}}</b></p></div>
     </div>
-    <hr>
     <div class="card-bottom">
       <div class="likes">
-        <a href="#" class="bg-white text-black fa-2x"><i @click="incReaction()" class="far fa-smile-wink"></i></a>
+        <a href="#" class="bg-white text-black fa-1x"><i @click="incReaction()" class="far fa-smile-wink"></i></a>
         <p class="likes-count">2500 upvotes</p>
         <p></p>
       </div>
       <div class="dislikes">
-        <a href="#" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
+        <a href="#" class="bg-white text-black fa-1x"><i @click="decReaction()" class="far fa-angry"></i></a>
         <p class="dislike-count">1000 downvotes</p>
       </div>
-      <div class="comments">
-        <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
-      </div>
+      <!-- <div class="comments">
+        <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-comment-dots"></i></a>
+      </div> -->
       <div class="share">
-        <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-share"></i></a>
+        <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-share"></i></a>
       </div>
     </div>
     <!-- <AnswerAccepted/> -->
@@ -54,37 +52,42 @@
         </div>
         <div class="bottom">
           <div class="likes">
-            <a href="#" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
+            <a href="#" class="bg-white text-black fa-1x"><i @click="incReactionAns()" class="far fa-smile-wink"></i></a>
             <p class="likes-count">2500 upvotes</p>
           </div>
           <div class="dislikes">
-            <a href="#" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
+            <a href="#" class="bg-white text-black fa-1x"><i @click="decReactionAns()" class="far fa-angry"></i></a>
             <p class="dislike-count">1000 downvotes</p>
           </div>
           <div class="comments">
-            <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
+            <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-comment-dots"></i></a>
           </div>
         </div>
     </div>
       </div>
+      <div><CommentComponent/></div>
     </div>
   </div>
 </template>
 
 <script>
 import AnswerAccepted from '@/components/AnswerAccepted.vue'
+import CommentComponent from '@/components/CommentComponent.vue'
 // import {mapGetters} from 'vuex'
 import axios from 'axios'
+var moment = require('moment')
 export default {
   name: 'Feed',
-  props: ['item'],
+  props: ['item', 'item1'],
   data () {
     return {
-      answersList: []
+      answersList: [],
+      moment: moment
     }
   },
   components: {
-    AnswerAccepted
+    AnswerAccepted,
+    CommentComponent
   },
   // computed: {
   //   ...mapGetters(['allAnswerslist'])
@@ -103,9 +106,32 @@ export default {
     incReaction () {
       this.$store.dispatch('addReaction', {
         questionId: this.item.id,
-        reactionBy: 'tv@gmail.com',
+        reactionBy: 'bag@gmail.com',
         isLike: true
       })
+    },
+    decReaction () {
+      this.$store.dispatch('addReaction', {
+        questionId: this.item.id,
+        reactionBy: 'bag@gmail.com',
+        isLike: false
+      })
+    },
+    incReactionAns () {
+      console.log('inc')
+      // this.$store.dispatch('addReactionAns', {
+      //   answerId: this.item1.id,
+      //   reactionBy: 'bag@gmail.com',
+      //   isLike: true
+      // })
+    },
+    decReactionAns () {
+      console.log('dec', this.item1)
+      // this.$store.dispatch('addReactionAns', {
+      //   answerId: this.item1.id,
+      //   reactionBy: 'bag@gmail.com',
+      //   isLike: false
+      // })
     },
     questionClicked () {
       this.$emit('questionClicked', this.item)
@@ -119,6 +145,9 @@ export default {
   width:700px;
   overflow-x:hidden;
 }
+h5{
+  color: #4f4a41;
+}
 .card-top{
   display: flex;
   justify-content: space-between;
@@ -127,11 +156,13 @@ export default {
   border-radius: 50%;
   margin-left: 10px;
   margin-top: 10px;
+  border: black 1px solid;
 }
 .card-username{
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding-top: 10px;
   padding-right: 450px;
+  color: #e85a4f;
 }
 .btn{
   height: 40px;
@@ -141,19 +172,20 @@ export default {
   padding-top: 10px;
 }
 .card-question-title{
-  color: blueviolet;
+  color: #e85a4f;
   padding-top: 5px;
   padding-left: 15px;
 }
 .card-question-asked{
   padding-top: 5px;
   padding-left: 10px;
-  color: blue;
+  color: black;
   cursor: pointer;
 }
 .card-answer{
   display: flex;
   padding-top: 5px;
+  color: #8e8d8a;
 }
 .card-answer-title{
   color: cadetblue;
