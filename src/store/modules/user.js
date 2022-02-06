@@ -15,7 +15,9 @@ const actions = {
       password: password,
       appId: appId,
       name: name
-    }).then((res) => console.log('register added successfully'))
+    }).then((res) => {
+      console.log('register added successfully')
+    })
   },
   async loginuser ({commit}, {email, password, appId}) {
     console.log('action started', email, password, appId)

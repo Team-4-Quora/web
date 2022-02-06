@@ -6,8 +6,7 @@
                 <img class="image" src="@/assets/profile.png" alt="" width="200px" height="200px">
             </div>
             <div class="user-info">
-                <h4>Name:- User</h4>
-                <h4 id="email">Email:- User@gmail.com</h4>
+                <h4 id="email">Email:- {{user.email}}</h4>
                 <h4 id="points">User Points:- 1500</h4>
                 <h4 id="level">Level:- Gold</h4>
                 <h4>Interests:- Food, Technology, Travelling</h4>
@@ -113,6 +112,16 @@ export default {
     Navbar,
     Footer,
     Pending
+  },
+  data () {
+    return {
+      user: {
+        email: ''
+      }
+    }
+  },
+  created () {
+    this.user.email = localStorage.getItem('email')
   },
   computed: {
     ...mapGetters(['addPendingRequest'])
