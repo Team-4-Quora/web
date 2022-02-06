@@ -23,7 +23,11 @@ const actions = {
       userEmail: email,
       password: password,
       appId: appId
-    }).then((res) => console.log('logged in successfully'))
+    }).then((res) => {
+      console.log('logged in successfully', res.data)
+      localStorage.setItem('jwt', res.data.jwt)
+      localStorage.setItem('email', email)
+    })
   }
 }
 const mutations = {
