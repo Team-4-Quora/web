@@ -199,6 +199,7 @@ h5{
 .card-top{
   display: flex;
   justify-content: space-between;
+  background-color: #d8cdb9;
 }
 .card-image{
   border-radius: 50%;

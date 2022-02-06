@@ -24,6 +24,7 @@ export default{
         email: email,
         requesterId: requesterId
       })
+      window.location.reload()
     }
   }
 }

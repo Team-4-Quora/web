@@ -87,6 +87,8 @@ export default {
         message: answer,
         answerBy: 'hi@gmail.com'
       })
+      window.location.reload()
+      // this.$router.go(0)
     }
   },
   computed: {

@@ -32,6 +32,7 @@ export default {
       this.$store.dispatch('acceptans', {
         ansId: this.item.id
       })
+      this.$router.go()
     }
   }
 

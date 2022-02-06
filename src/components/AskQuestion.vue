@@ -23,7 +23,7 @@
               <button class="button" @click="addQuestion()">Ask</button>
             </div>
         </div>
-        <div><Footer/></div>
+        <div class="foot"><Footer/></div>
     </div>
 </template>
 <script>
@@ -47,6 +47,7 @@ export default {
         text: que,
         category: cat
       })
+      window.location.reload('http://localhost:8084/')
     }
   }
 }
@@ -179,6 +180,9 @@ button::after {
 button:hover::after, button:focus::after {
   animation: none;
   display: none;
+}
+.foot{
+  margin-top: 130px;
 }
 
 @keyframes ring {

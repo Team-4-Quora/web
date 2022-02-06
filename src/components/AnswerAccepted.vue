@@ -1,30 +1,32 @@
 <template>
-    <div class="main-body">
+              <div class="main-body">
         <div class="card-top">
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
-            <h5 class="card-username"><b>User 2</b></h5>
-            <p class="timestamp">7:00 AM 1 Feb 2021</p>
+            <h5 class="card-username"><b>{{item1.answerBy}}</b></h5>
+            <p class="timestamp">{{item1.postedOn}}</p>
             </div>
             <button type="button" class="btn btn-link">Follow</button>
         </div>
         <div class="card-answer">
             <p class="card-answer-title"><b>Answer:-</b></p>
-            <p class="card-answered"><b></b></p>
+            <p class="card-answered"><b>{{item1.message}}</b></p>
         </div>
         <div class="bottom">
           <div class="likes">
-            <a href="#" class="bg-white text-black fa-2x"><i class="far fa-smile-wink"></i></a>
-            <p class="likes-count">2500 upvotes</p>
+            <a href="#" class="bg-white text-black fa-1x"><i @click="incReactionAns(item1.id)" class="far fa-smile-wink"></i></a>
+            <p class="likes-count"> {{ansLikeCount}} Upvotes</p>
           </div>
           <div class="dislikes">
-            <a href="#" class="bg-white text-black fa-2x"><i class="far fa-angry"></i></a>
-            <p class="dislike-count">1000 downvotes</p>
+            <a href="#" class="bg-white text-black fa-1x"><i @click="decReactionAns(item1.id)" class="far fa-angry"></i></a>
+            <p class="dislike-count">{{ansDisLikeCount}} Downvotes</p>
           </div>
           <div class="comments">
-            <a href="#" class="bg-white text-black  fa-2x"><i class="fas fa-comment-dots"></i></a>
+            <a href="#" class="bg-white text-black  fa-1x"><i @click="addComment(item1.id)" class="fas fa-comment-dots"></i></a>
           </div>
         </div>
+        <ListOfComments v-for="comment in commentsList" :key="comment.id" :comment="comment"/>
+         <Comment v-if="showComment === true" :id="item1.id"/>
     </div>
 </template>
 <script>

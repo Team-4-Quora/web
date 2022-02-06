@@ -35,6 +35,7 @@ export default {
         message: comment,
         commentBy: 'hi@gmail.com',
         parentComponent: null })
+      window.location.reload()
     }
   }
 }

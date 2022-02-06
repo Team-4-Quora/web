@@ -23,6 +23,7 @@
                 <Pending v-for="pending in pendingList" :key="pending.id" :pending="pending"/>
             </div>
         </div>
+        <div><Footer/></div>
     </div>
 </template>
 <script>
@@ -49,7 +50,7 @@ export default{
   },
   created () {
     this.$store.dispatch('getOrgDetails', {
-      orgId: '61fede80895b3f403ca3fa6f'
+      orgId: '61ff7a7248df98793d3eee41'
     })
     this.$store.dispatch('addPendingRequest', {
       mail: 'xyz@gmail.com'
