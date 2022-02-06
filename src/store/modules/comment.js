@@ -20,7 +20,7 @@ const actions = {
       commentBy: commentBy,
       parentComponent: parentComponent
     }).then((res) => console.log('comment added successfully'))
-    swal('', 'Comment posted', 'success')
+    swal('', 'Comment Posted', 'success')
   }
 }
 const mutations = {
