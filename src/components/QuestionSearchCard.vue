@@ -1,10 +1,10 @@
 <template>
          <div>
-                <div class="card shadow h-100">
+                 <div class="card shadow h-100">
                     <div class="card-body">
                         <div class="card-title py-3" >
-                            <h4 class="px-5">Username  - </h4>
-                            <p class="px-5">Question :</p>
+                            <h4 class="px-5">Username : {{item.questionBy}} </h4>
+                            <p class="px-5">Question : {{item.text}}</p>
                         </div>
                     </div>
                 </div>
@@ -12,7 +12,8 @@
 </template>
 <script>
 export default{
-  name: 'QuestionSearchCard'
+  name: 'QuestionSearchCard',
+  props: ['item']
 }
 </script>
 <style scoped>
@@ -28,7 +29,7 @@ h4{
     background-color:#edc7b7;
 }
 .card{
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 300px;
+    margin-right: 300px;
 }
 </style>

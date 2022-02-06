@@ -46,7 +46,7 @@ export default {
       let val = document.getElementById('search').value
       console.log('search', val)
       this.$store.dispatch('getSearchDetails', {val})
-      this.$router.push('/questionsearchcard')
+      this.$router.push('/searchque')
     }
   }
 }

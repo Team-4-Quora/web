@@ -4,7 +4,7 @@ const state = {
 }
 
 const getters = {
-  queCategory: state => state.searchDetails
+  searchDetails: state => state.searchDetails
 }
 
 const actions = {
