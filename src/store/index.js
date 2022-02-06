@@ -6,6 +6,8 @@ import reaction from './modules/reaction'
 import comment from './modules/comment'
 import organization from './modules/organization'
 import followers from './modules/followers'
+import user from './modules/user'
+import search from './modules/search'
 
 Vue.use(Vuex)
 
@@ -16,6 +18,8 @@ export default new Vuex.Store({
     reaction,
     comment,
     organization,
-    followers
+    followers,
+    user,
+    search
   }
 })

@@ -19,6 +19,11 @@ const actions = {
       reactionBy: reactionBy,
       like: like
     }).then((res) => console.log(like, 'added successfully'))
+    if (like === true) {
+      swal('', 'Liked', 'success')
+    } else {
+      swal('', 'Disiked', 'error')
+    }
   },
   // adding reaction to answers
   async addReactionAns ({commit}, {answerId, reactionBy, like}) {
@@ -28,10 +33,10 @@ const actions = {
       reactionBy: reactionBy,
       like: like
     }).then((res) => console.log('added successfully'))
-    if (this.like === true) {
+    if (like === true) {
       swal('', 'Liked', 'success')
     } else {
-      swal('', 'Disiked', 'success')
+      swal('', 'Disiked', 'error')
     }
   },
   // fetching all reactions on a question

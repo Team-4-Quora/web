@@ -16,6 +16,8 @@
                   </div>
                   <!-- <input class="form-control amber-border" type="text" size="50" placeholder="Search Quora" name="search" @click="search ()"/> -->
                   <button type="submit" class="btn btn-secondary" style="height:50px; margin-top:10px;" @click="search ()"><i class="fa fa-search"></i></button>
+                  <input class="form-control amber-border" type="text" size="50" placeholder="Search Quora" id="search" />
+                  <button type="submit" class="btn btn-secondary" style="height:50px; margin-top:10px;"><i @click="onSearch()" class="fa fa-search"></i></button>
                   <b-nav-item class="nav-item nav-link text-dark h6 my-auto" @click="goaddques()"><button type="button" class="btn btn-danger">Add&nbsp;Question</button></b-nav-item>
                   <b-nav-item class="nav-item nav-link text-dark h6 my-auto" @click="gologin()"><button type="button" class="btn btn-danger">Login</button></b-nav-item>
                   <b-nav-item class="nav-item nav-link text-dark h6 my-auto text-black fa-2x" @click="goprofile()"><i class="fas fa-user-circle"></i></b-nav-item>
@@ -49,6 +51,12 @@ export default {
     gologin () {
       this.$router.push('/login')
       console.log(this.$router)
+    },
+    onSearch () {
+      let val = document.getElementById('search').value
+      console.log('search', val)
+      this.$store.dispatch('getSearchDetails', {val})
+      this.$router.push('/questionsearchcard')
     }
   }
 }
