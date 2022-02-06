@@ -90,6 +90,9 @@ export default {
 }
 </script>
 <style scoped>
+.main-body{
+  background-color: #EAE7DC;
+}
 #signup{
   color: #9a1750;
   font-weight: bold;

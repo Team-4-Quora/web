@@ -19,7 +19,10 @@
         <div class="container text-center d-flex align-items-strech flex-wrap">
             <Followers v-for="follower in followersList" :key="follower.id" :follower="follower"/>
         </div>
-        <div class="pending"><Pending/></div>
+        <h2 class="followers-text">Pending Request:-</h2>
+        <div class="container text-center d-flex align-items-strech flex-wrap">
+            <Pending v-for="pending in pendingList" :key="pending.id" :pending="pending"/>
+        </div>
         <div><Footer/></div>
     </div>
 </template>
@@ -39,7 +42,8 @@ export default {
   },
   computed: {
     ...mapGetters(['addPendingRequest']),
-    ...mapGetters(['followersList'])
+    ...mapGetters(['followersList']),
+    ...mapGetters(['pendingList'])
   },
   methods: {
     becomeorg () {
@@ -51,10 +55,16 @@ export default {
     this.$store.dispatch('getFollowersDetails', {
       mail: 'xyz@gmail.com'
     })
+    this.$store.dispatch('addPendingRequest', {
+      mail: 'xyz@gmail.com'
+    })
   }
 }
 </script>
 <style scoped>
+.main-body{
+  background-color: #EAE7DC;
+}
 .user-details{
     display: flex;
     justify-content: space-between;
