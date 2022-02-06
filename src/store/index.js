@@ -4,6 +4,8 @@ import question from './modules/question'
 import answer from './modules/answer'
 import reaction from './modules/reaction'
 import comment from './modules/comment'
+import organization from './modules/organization'
+import followers from './modules/followers'
 
 Vue.use(Vuex)
 
@@ -12,6 +14,8 @@ export default new Vuex.Store({
     question,
     answer,
     reaction,
-    comment
+    comment,
+    organization,
+    followers
   }
 })

@@ -13,7 +13,8 @@ import QuestionPage from '@/components/QuestionPage'
 import Organization from '@/components/Organization'
 // import Search from '@/components/Search'
 import OrganizationProfile from '@/components/OrganizationProfile'
-import SampleComment from '@/components/SampleComment'
+import ListOfComments from '@/components/ListOfComments'
+import ProfileAnotherUser from '@/components/ProfileAnotherUser'
 
 Vue.use(Router)
 
@@ -84,9 +85,14 @@ export default new Router({
     // name: 'search',
     // component: Search
     {
-      path: '/samplecomment',
-      name: 'SampleComment',
-      component: SampleComment
+      path: '/listofcomments',
+      name: 'ListOfComments',
+      component: ListOfComments
+    },
+    {
+      path: '/profileanother',
+      name: 'ProfileAnotherUser',
+      component: ProfileAnotherUser
     }
   ]
 })

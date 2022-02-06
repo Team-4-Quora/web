@@ -7,7 +7,6 @@
           <div v-for="item in queCategory" :key="item.id">
             <Feed :item="item" @questionClicked="questionClicked"/>
           </div>
-            <!-- <Feed v-for="item in queCategory" :key="item.id" :item="item" @questionClicked="questionClicked"/> -->
         </div>
         <div class="emptyDiv">
             <Ads v-if="!question"/>
@@ -30,7 +29,8 @@ export default {
   name: 'Home',
   data () {
     return {
-      question: null
+      question: null,
+      title: null
     }
   },
   components: {

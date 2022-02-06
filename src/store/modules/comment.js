@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 const state = {
 //   queCategory: []
@@ -11,13 +12,15 @@ const getters = {
 }
 
 const actions = {
-  async addComment ({commit}, {answerId, message, commentBy}) {
-    console.log('action started', answerId, message, commentBy)
+  async submitComment ({commit}, {answerId, message, commentBy, parentComponent}) {
+    console.log('action started', answerId, message, commentBy, parentComponent)
     axios.post('http://localhost:8081/qna/comment/add', {
       answerId: answerId,
       message: message,
-      commentBy: commentBy
-    }).then((res) => console.log('added successfully'))
+      commentBy: commentBy,
+      parentComponent: parentComponent
+    }).then((res) => console.log('comment added successfully'))
+    swal('', 'Comment posted', 'success')
   }
 }
 const mutations = {

@@ -9,7 +9,7 @@
       <div class="name-section">
         <h5 class="card-username"><b>{{item.questionBy}}</b></h5>
         <p class="timestamp" style="display:inline"></p>
-        <span><button type="button" class="btn btn-link" style="margin-right:0">Follow</button></span>
+        <span><button type="button" class="btn btn-link" style="margin-right:0" @click="clickFollow(item.questionBy)">Follow</button></span>
 
       </div>
     </div>
@@ -17,16 +17,15 @@
       <p class="card-question-title"><b>Question:-</b></p>
       <div><p class="card-question-asked" @click="questionClicked()"><b>{{item.text}}</b></p></div>
     </div>
-    {{queReactionsList}}
     <div class="card-bottom">
       <div class="likes">
         <a href="#" class="bg-white text-black fa-1x"><i @click="incReaction()" class="far fa-smile-wink"></i></a>
-        <p class="likes-count">2500 upvotes</p>
+        <p class="likes-count">{{likeCount}} Upvotes</p>
         <p></p>
       </div>
       <div class="dislikes">
         <a href="#" class="bg-white text-black fa-1x"><i @click="decReaction()" class="far fa-angry"></i></a>
-        <p class="dislike-count">1000 downvotes</p>
+        <p class="dislike-count">{{disLikeCount}} Downvotes</p>
       </div>
       <div class="share">
         <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-share"></i></a>
@@ -34,7 +33,8 @@
     </div>
     <div v-for="item1 in answersList" :key="item1.id">
       <div v-if="item1.accepted === true">
-            <div class="main-body">
+        <AnswerAccepted  :item1="item1"/>
+            <!-- <div class="main-body">
         <div class="card-top">
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
@@ -50,17 +50,19 @@
         <div class="bottom">
           <div class="likes">
             <a href="#" class="bg-white text-black fa-1x"><i @click="incReactionAns(item1.id)" class="far fa-smile-wink"></i></a>
-            <p class="likes-count">2500 upvotes</p>
+            <p class="likes-count"> {{ansLikeCount}} Upvotes</p>
           </div>
           <div class="dislikes">
             <a href="#" class="bg-white text-black fa-1x"><i @click="decReactionAns(item1.id)" class="far fa-angry"></i></a>
-            <p class="dislike-count">1000 downvotes</p>
+            <p class="dislike-count">{{ansDisLikeCount}} Downvotes</p>
           </div>
           <div class="comments">
-            <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-comment-dots"></i></a>
+            <a href="#" class="bg-white text-black  fa-1x"><i @click="addComment(item1.id)" class="fas fa-comment-dots"></i></a>
           </div>
         </div>
-    </div>
+        <ListOfComments v-for="comment in commentsList" :key="comment.id" :comment="comment"/>
+         <Comment v-if="showComment === true" :id="item1.id"/>
+    </div> -->
       </div>
     </div>
     <hr>
@@ -69,29 +71,51 @@
 
 <script>
 import AnswerAccepted from '@/components/AnswerAccepted.vue'
+import Comment from '@/components/Comment.vue'
+import ListOfComments from '@/components/ListOfComments.vue'
+
 // import {mapGetters} from 'vuex'
 import axios from 'axios'
 var moment = require('moment')
 export default {
   name: 'Feed',
-  props: ['item', 'item1'],
+  props: ['item'],
   data () {
     return {
       answersList: [],
+      commentsList: [],
+      queReactionsList: [],
+      ansReactionsList: [],
       moment: moment,
-      queReactionsList: []
+      showComment: null,
+      likeCount: 0,
+      disLikeCount: 0,
+      totalCount: 0,
+      ansTotalCount: 0,
+      ansLikeCount: 0,
+      ansDisLikeCount: 0
     }
   },
   components: {
-    AnswerAccepted
+    AnswerAccepted,
+    Comment,
+    ListOfComments
   },
   created () {
     let questionId = this.item.id
-    console.log('question id', questionId)
-    axios.get(`http://localhost:8081/qna/reaction/fetch/question/${questionId}`).then((res) => { this.queReactionsList = res.data; console.log(res.data) }).catch(err => console.log(err))
-    axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`).then((res) => { this.answersList = res.data; console.log(res.data) }).catch(err => console.log(err))
-    console.log('list of reactions', this.reactionsList)
-    console.log('list of answers', this.answersList)
+    console.log(questionId, 'questionid')
+
+    axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`).then((res) => {
+      this.answersList = res.data
+      console.log(res.data)
+    }).catch(err => console.log(err))
+    axios.get(`http://localhost:8081/qna/reaction/fetch/question/${questionId}`).then((res) => {
+      this.queReactionsList = res.data
+      console.log('queresponse', res.data)
+      this.totalCount = this.queReactionsList.length
+      this.likeCount = this.queReactionsList.filter(x => x.like === true).length
+      this.disLikeCount = this.totalCount - this.likeCount
+    }).catch(err => console.log(err))
   },
   methods: {
     incReaction () {
@@ -110,11 +134,19 @@ export default {
     },
     incReactionAns (answerId) {
       console.log('inc')
+      this.ansId = answerId
       this.$store.dispatch('addReactionAns', {
         answerId: answerId,
         reactionBy: 'bag@gmail.com',
         like: true
       })
+      // axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
+      //   this.ansReactionsList = res.data
+      //   console.log(res.data)
+      //   this.ansTotalCount = this.ansReactionsList.length
+      //   this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
+      //   this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
+      // }).catch(err => console.log(err))
     },
     decReactionAns (answerId) {
       console.log('dec')
@@ -123,9 +155,36 @@ export default {
         reactionBy: 'abc@gmail.com',
         like: false
       })
+      // axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
+      //   this.ansReactionsList = res.data
+      //   console.log(res.data)
+      //   this.ansTotalCount = this.ansReactionsList.length
+      //   this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
+      //   this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
+      // }).catch(err => console.log(err))
     },
     questionClicked () {
       this.$emit('questionClicked', this.item)
+    },
+    addComment (answerId) {
+      this.showComment = true
+      console.log('comment clicked', answerId)
+      axios.get(`http://localhost:8081/qna/comment/fetch/${answerId}`).then((res) => {
+        this.commentsList = res.data; console.log(res.data)
+      }).catch(err => console.log(err))
+    },
+    clickFollow (questionBy) {
+      console.log('requestor email', questionBy)
+      this.$store.dispatch('addFollower', {
+        requesterId: questionBy,
+        email: 'xyz@gmail.com',
+        status: 0
+      })
+      // this.$store.dispatch('addFollower', {
+      //   requesterId: 'abc@gmail.com',
+      //   email: questionBy,
+      //   status: 0
+      // })
     }
   }
 }
@@ -141,6 +200,7 @@ h5{
 .card-top{
   display: flex;
   justify-content: space-between;
+  background-color: #d8cdb9;
 }
 .card-image{
   border-radius: 50%;

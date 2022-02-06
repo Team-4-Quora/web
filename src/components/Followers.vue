@@ -1,85 +1,21 @@
 <template>
-    <div class="main-body">
-        <h2 class="followers-text">Followers:-</h2>
-        <div class="container pt-4 text-center d-flex flex-nowrap overflow-auto scrollbar">
+<div>
+    <div class="container">
             <div id="card-whole" class="col-12 col-md-2 ">
                 <div class="card shadow h-100 item">
                   <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
                     <div class="card-body">
-                        <div class="card-title" ><h4>Follower Name</h4></div>
+                        <div class="card-title" ><h4>{{follower.requesterId}}</h4></div>
                     </div>
                 </div>
             </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Follower Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Follower Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Follower Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Follower Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Follower Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Follower Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Follower Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Follower Name</h4></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+</div>
 </template>
 <script>
 export default{
-  name: 'Followers'
+  name: 'Followers',
+  props: ['follower']
 }
 </script>
 <style scoped>

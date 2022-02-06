@@ -17,7 +17,7 @@
                     <input type="password" class="form-control" placeholder="Enter Password" required v-model="posts.password"/>
                   </div>
                   <div class="submit-button">
-                    <button type="submit" class="btn btn-secondary" id="button">Log in</button>
+                    <button type="submit" class="btn btn-secondary" id="button" @click="loginpost()">Log in</button>
                   </div>
                   <hr />
                   <div style="text-align:center">or</div>
@@ -30,9 +30,9 @@
                   <div>
                     <hr />
                     <div style="text-align:center">
-                      <span class="text">New to Quora</span>
+                      <span class="text">New to KTP</span>
                     </div>
-                    <a class="nav-item nav-link text-dark h6 mx-3 my-auto text-center" id="register-button" ><i class="fas fa-hand-point-right"></i> Create A New Quora Account</a>
+                    <a @click="gosignup()" class="nav-item nav-link text-dark h6 mx-3 my-auto text-center" id="register-button" ><i class="fas fa-hand-point-right"></i> Create A New Kuch Toh Pooch Account</a>
                   </div>
                 </form>
               </div>
@@ -62,23 +62,16 @@ export default {
     Footer
   },
   methods: {
-    postData (e) {
-      this.axios.post('http://localhost:8082/user/login', this.posts)
-        .then((result) => {
-          localStorage.setItem('jwtToken', result.data.token)
-          // sessionStorage.setItem('name', result.data.name)
-          // sessionStorage.setItem('email', result.data.email)
-          // sessionStorage.setItem('points', result.data.points)
-          // sessionStorage.setItem('userId', result.data.id)
-          // this.$router.push('/')
-        })
-        .catch((err) => {
-          console.log(err.message)
-          // return swal('', 'Invalid Email/Password', 'error')
-        })
-      e.preventDefault()
+    gosignup () {
+      this.$router.push('/signup')
+      console.log(this.$router)
+    },
+    loginpost () {
+      this.$router.push('/')
+      console.log(this.$router)
     }
-  }
+  },
+  types: ['vue-sweetalert2']
 }
 </script>
 <style scoped>
@@ -115,5 +108,7 @@ a{
   font-weight: bold;
   font-style: italic;
 }
-
+#register-button{
+  cursor: pointer;
+}
 </style>

@@ -11,13 +11,15 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueSessionStorage from 'vue-sessionstorage'
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(VueSessionStorage)
 
 library.add(faShoppingCart)
-
+Vue.use(VueSweetalert2)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 /* eslint-disable no-new */

@@ -1,85 +1,32 @@
 <template>
-    <div class="main-body">
-        <h2 class="followers-text">Pending Request:-</h2>
-        <div class="container pt-4 text-center d-flex flex-nowrap overflow-auto scrollbar">
+<div>
+    <div class="container">
             <div id="card-whole" class="col-12 col-md-2 ">
                 <div class="card shadow h-100 item">
                   <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
                     <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
+                        <div class="card-title" ><h4>{{pending.requesterId}}</h4></div>
                     </div>
+                    <button class="accept-button" @click="acceptFollowRequest(pending.email,pending.requesterId)">Accept</button>
                 </div>
             </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+</div>
 </template>
 <script>
+
 export default{
-  name: 'Pending'
+  name: 'Pending',
+  props: ['pending'],
+  methods: {
+    acceptFollowRequest (email, requesterId) {
+      this.$store.dispatch('acceptRequestUser', {
+        email: email,
+        requesterId: requesterId
+      })
+      window.location.reload()
+    }
+  }
 }
 </script>
 <style scoped>
@@ -122,5 +69,9 @@ export default{
 }
 #card-whole{
     cursor: pointer;
+}
+.accept-button{
+    background-color: blue;
+    color: white;
 }
 </style>

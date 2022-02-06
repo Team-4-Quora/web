@@ -25,6 +25,7 @@
     "vue-axios": "^3.4.0",
     "vue-router": "^3.0.1",
     "vue-sessionstorage": "^1.0.0",
+    "vue-sweetalert2": "^5.0.2",
     "vuex": "^3.6.2"
   },
   "devDependencies": {

@@ -19,16 +19,13 @@
     <div class="card-bottom">
       <div class="likes">
         <a href="#" class="bg-white text-black fa-1x"><i class="far fa-smile-wink"></i></a>
-        <p class="likes-count">2500 upvotes</p>
+        <p class="likes-count">{{likeCount}} Upvotes</p>
         <p></p>
       </div>
       <div class="dislikes">
         <a href="#" class="bg-white text-black fa-1x"><i class="far fa-angry"></i></a>
-        <p class="dislike-count">1000 downvotes</p>
+        <p class="dislike-count">{{totalCount}} Downvotes</p>
       </div>
-      <!-- <div class="comments">
-        <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-comment-dots"></i></a>
-      </div> -->
       <div class="share">
         <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-share"></i></a>
       </div>
@@ -54,7 +51,9 @@ export default {
   },
   data () {
     return {
-      questionId: this.question.id
+      questionId: this.question.id,
+      likeCount: 0,
+      totalCount: 0
     }
   },
   watch: {
@@ -66,6 +65,17 @@ export default {
     console.log('created question id', this.questionId)
     let questionId = this.questionId
     this.$store.dispatch('getAnswerslist', {questionId})
+    console.log(questionId, 'questionid')
+    this.axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`).then((res) => {
+      this.answersList = res.data
+      console.log(res.data)
+    }).catch(err => console.log(err))
+    this.axios.get(`http://localhost:8081/qna/reaction/fetch/question/${questionId}`).then((res) => {
+      this.queReactionsList = res.data
+      console.log(res.data)
+      this.totalCount = this.queReactionsList.length
+      this.likeCount = this.queReactionsList.filter(x => x.like === true).length
+    }).catch(err => console.log(err))
   },
   methods: {
     addAnswer (questionId) {
@@ -77,6 +87,8 @@ export default {
         message: answer,
         answerBy: 'hi@gmail.com'
       })
+      window.location.reload()
+      // this.$router.go(0)
     }
   },
   computed: {

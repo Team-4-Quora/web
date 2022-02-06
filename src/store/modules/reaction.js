@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 const state = {
   queReactions: [], // all reactions on question
@@ -27,6 +28,11 @@ const actions = {
       reactionBy: reactionBy,
       like: like
     }).then((res) => console.log('added successfully'))
+    if (this.like === true) {
+      swal('', 'Liked', 'success')
+    } else {
+      swal('', 'Disiked', 'success')
+    }
   },
   // fetching all reactions on a question
   async getByQueReactions ({commit}, {id}) {
