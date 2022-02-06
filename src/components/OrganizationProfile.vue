@@ -13,9 +13,15 @@
             <b-nav-item class="nav-item nav-link text-dark h6 my-auto" ><button type="button" class="btn btn-primary" @click="clickFollow(allorgDetails.id)">Follow</button></b-nav-item>
             <div class="moderator-card"><ModeratorCard/></div>
             <hr>
-            <div class="moderator-card"><Followers/></div>
+              <h2 class="followers-text">Followers:-</h2>
+            <div class="container text-center d-flex align-items-strech flex-wrap">
+                <Followers v-for="follower in followersList" :key="follower.id" :follower="follower"/>
+            </div>
             <hr>
-            <div class="moderator-card"><Pending/></div>
+            <h2 class="followers-text">Pending Request:-</h2>
+            <div class="container text-center d-flex align-items-strech flex-wrap">
+                <Pending v-for="pending in pendingList" :key="pending.id" :pending="pending"/>
+            </div>
         </div>
     </div>
 </template>
@@ -37,11 +43,19 @@ export default{
     Pending
   },
   computed: {
-    ...mapGetters(['allorgDetails'])
+    ...mapGetters(['allorgDetails']),
+    ...mapGetters(['pendingList']),
+    ...mapGetters(['followersList'])
   },
   created () {
     this.$store.dispatch('getOrgDetails', {
       orgId: '61fede80895b3f403ca3fa6f'
+    })
+    this.$store.dispatch('addPendingRequest', {
+      mail: 'xyz@gmail.com'
+    })
+    this.$store.dispatch('getFollowersDetails', {
+      mail: 'xyz@gmail.com'
     })
   },
   methods: {
@@ -90,5 +104,11 @@ h3{
 .btn{
     margin-top: 50px;
     margin-left: 380px;
+}
+.followers-text{
+    text-align: center;
+    font-family: fantasy;
+    color: blue;
+    font-weight: bold;
 }
 </style>
