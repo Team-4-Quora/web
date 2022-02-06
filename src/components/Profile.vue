@@ -7,9 +7,9 @@
             </div>
             <div class="user-info">
                 <h4 id="email">Email:- {{user.email}}</h4>
-                <h4 id="points">User Points:- 1500</h4>
-                <h4 id="level">Level:- Gold</h4>
-                <h4>Interests:- Food, Technology, Travelling</h4>
+                <h4 id="points">User Points:- {{status.points}}</h4>
+                <h4 id="level">Level:- {{status.level}}</h4>
+                <!-- <h4>Interests:- Food, Technology, Travelling</h4> -->
             </div>
         </div>
         <button class="button-49" role="button" @click="becomeorg()">Become an organization</button>
@@ -23,81 +23,14 @@
 </div>
         <hr>
         <h2 class="followers-text">Followers:-</h2>
-        <div class="container pt-4 text-center d-flex flex-nowrap overflow-auto scrollbar">
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
+        <div class="container text-center d-flex align-items-strech flex-wrap">
+        <Followers v-for="follower in followersList" :key="follower.id" :follower="follower"/>
             </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
+        <hr>
+            <h2 class="followers-text">Pending Request:-</h2>
+            <div class="container text-center d-flex align-items-strech flex-wrap">
+                <Pending v-for="pending in pendingList" :key="pending.id" :pending="pending"/>
             </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="pending"><Pending/></div>
         <div><Footer/></div>
     </div>
 </template>
@@ -105,13 +38,15 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Pending from '@/components/Pending'
+import Followers from '@/components/Followers'
 import { mapGetters } from 'vuex'
 export default {
   name: 'Profile',
   components: {
     Navbar,
     Footer,
-    Pending
+    Pending,
+    Followers
   },
   data () {
     return {
@@ -122,9 +57,25 @@ export default {
   },
   created () {
     this.user.email = localStorage.getItem('email')
+    this.$store.dispatch('addPendingRequest', {
+      mail: this.user.email
+    })
+    this.$store.dispatch('getFollowersDetails', {
+      mail: this.user.email
+    })
+    this.$store.dispatch('getStatus', {
+      mail: this.user.email
+    })
+    this.$store.dispatch('saveUser', {
+      email: this.user.email,
+      points: 0,
+      level: 'beginner'
+    })
   },
   computed: {
-    ...mapGetters(['addPendingRequest'])
+    ...mapGetters(['pendingList']),
+    ...mapGetters(['followersList']),
+    ...mapGetters(['status'])
   },
   methods: {
     becomeorg () {

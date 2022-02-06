@@ -2,12 +2,14 @@ import axios from 'axios'
 
 const state = {
   pending: [],
-  followers: []
+  followers: [],
+  orgfollowers: []
 }
 
 const getters = {
   pendingList: state => state.pending,
-  followersList: state => state.followers
+  followersList: state => state.followers,
+  orgfollowersList: state => state.orgfollowers
 }
 
 const actions = {
@@ -34,7 +36,7 @@ const actions = {
     axios.post(`http://localhost:8082/follower/accept/${email}/${requesterId}`, {
       requesterId: requesterId,
       email: email
-    }).then((res) => console.log('follwer added successfully'))
+    }).then((res) => console.log('accepted successfully'))
   },
   async addPendingRequest ({commit}, {mail}) {
     console.log('fetch pending request', mail)
@@ -45,11 +47,17 @@ const actions = {
     console.log('fetch followers details', mail)
     const response = await axios.get(`http://localhost:8082/follower/fetch/followers/${mail}`)
     commit('setFollowersDetails', response.data)
+  },
+  async getOrgFollowersDetails ({commit}, {id}) {
+    console.log('fetch followers details', id)
+    const response = await axios.get(`http://localhost:8082/follower/fetch/org/followers/${id}`)
+    commit('setOrgFollowersDetails', response.data)
   }
 }
 const mutations = {
   setPendingRequest: (state, pending) => (state.pending = pending),
-  setFollowersDetails: (state, followers) => (state.followers = followers)
+  setFollowersDetails: (state, followers) => (state.followers = followers),
+  setOrgFollowersDetails: (state, orgfollowers) => (state.orgfollowers = orgfollowers)
 
 }
 

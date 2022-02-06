@@ -49,6 +49,7 @@ export default{
         name: name,
         description: description
       })
+      this.$route.push('/orgprofile')
     }
   }
 }

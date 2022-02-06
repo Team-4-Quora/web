@@ -6,7 +6,7 @@
             <h5 class="card-username"><b>{{item1.answerBy}}</b></h5>
             <p class="timestamp">{{item1.postedOn}}</p>
             </div>
-            <button type="button" class="btn btn-link">Follow</button>
+            <button type="button" class="btn btn-link" @click="clickFollow(item1.answerBy)">Follow</button>
         </div>
         <div class="card-answer">
             <p class="card-answer-title"><b>Answer:-</b></p>
@@ -47,7 +47,8 @@ export default {
       totalCount: 0,
       ansTotalCount: 0,
       ansLikeCount: 0,
-      ansDisLikeCount: 0
+      ansDisLikeCount: 0,
+      email: ''
     }
   },
   components: {
@@ -55,6 +56,7 @@ export default {
   },
   created () {
     let answerId = this.item1.id
+    this.email = localStorage.getItem('email')
     console.log('answerid', answerId)
     this.axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
       this.ansReactionsList = res.data
@@ -88,6 +90,15 @@ export default {
       this.axios.get(`http://localhost:8081/qna/comment/fetch/${answerId}`).then((res) => {
         this.commentsList = res.data; console.log(res.data)
       }).catch(err => console.log(err))
+    },
+    clickFollow (answerBy) {
+      console.log('requestor email', this.email)
+      console.log('email', answerBy)
+      this.$store.dispatch('addFollower', {
+        requesterId: this.email,
+        email: answerBy,
+        status: 0
+      })
     }
   }
 }
