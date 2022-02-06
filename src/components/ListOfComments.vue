@@ -26,7 +26,6 @@ export default {
 <style scoped>
 .main-body{
     border: 1px solid black;
-    margin-right: 55%;
 }
 .card-top{
   display: flex;

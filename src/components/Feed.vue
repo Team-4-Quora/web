@@ -33,7 +33,8 @@
     </div>
     <div v-for="item1 in answersList" :key="item1.id">
       <div v-if="item1.accepted === true">
-            <div class="main-body">
+        <AnswerAccepted  :item1="item1"/>
+            <!-- <div class="main-body">
         <div class="card-top">
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
@@ -61,7 +62,7 @@
         </div>
         <ListOfComments v-for="comment in commentsList" :key="comment.id" :comment="comment"/>
          <Comment v-if="showComment === true" :id="item1.id"/>
-    </div>
+    </div> -->
       </div>
     </div>
     <hr>
@@ -139,13 +140,13 @@ export default {
         reactionBy: 'bag@gmail.com',
         like: true
       })
-      axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
-        this.ansReactionsList = res.data
-        console.log(res.data)
-        this.ansTotalCount = this.ansReactionsList.length
-        this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
-        this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
-      }).catch(err => console.log(err))
+      // axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
+      //   this.ansReactionsList = res.data
+      //   console.log(res.data)
+      //   this.ansTotalCount = this.ansReactionsList.length
+      //   this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
+      //   this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
+      // }).catch(err => console.log(err))
     },
     decReactionAns (answerId) {
       console.log('dec')
@@ -154,13 +155,13 @@ export default {
         reactionBy: 'abc@gmail.com',
         like: false
       })
-      axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
-        this.ansReactionsList = res.data
-        console.log(res.data)
-        this.ansTotalCount = this.ansReactionsList.length
-        this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
-        this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
-      }).catch(err => console.log(err))
+      // axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
+      //   this.ansReactionsList = res.data
+      //   console.log(res.data)
+      //   this.ansTotalCount = this.ansReactionsList.length
+      //   this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
+      //   this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
+      // }).catch(err => console.log(err))
     },
     questionClicked () {
       this.$emit('questionClicked', this.item)

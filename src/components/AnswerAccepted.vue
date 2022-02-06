@@ -31,8 +31,67 @@
 </template>
 <script>
 
+import Comment from '@/components/Comment.vue'
+import ListOfComments from '@/components/ListOfComments.vue'
+import swal from 'sweetalert'
 export default {
-  name: 'AnswerAccepted'
+  name: 'AnswerAccepted',
+  props: ['item1'],
+  data () {
+    return {
+      commentsList: [],
+      queReactionsList: [],
+      ansReactionsList: [],
+      showComment: null,
+      likeCount: 0,
+      disLikeCount: 0,
+      totalCount: 0,
+      ansTotalCount: 0,
+      ansLikeCount: 0,
+      ansDisLikeCount: 0
+    }
+  },
+  components: {
+    Comment, ListOfComments
+  },
+  created () {
+    let answerId = this.item1.id
+    console.log('answerid', answerId)
+    this.axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
+      this.ansReactionsList = res.data
+      console.log(res.data)
+      this.ansTotalCount = this.ansReactionsList.length
+      this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
+      this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
+    }).catch(err => console.log(err))
+  },
+  methods: {
+    incReactionAns (answerId) {
+      console.log('inc')
+      this.ansId = answerId
+      this.$store.dispatch('addReactionAns', {
+        answerId: answerId,
+        reactionBy: 'bag@gmail.com',
+        like: true
+      })
+    },
+    decReactionAns (answerId) {
+      console.log('dec')
+      this.$store.dispatch('addReactionAns', {
+        answerId: answerId,
+        reactionBy: 'abc@gmail.com',
+        like: false
+      })
+    },
+    addComment (answerId) {
+      this.showComment = true
+      console.log('comment clicked', answerId)
+      this.axios.get(`http://localhost:8081/qna/comment/fetch/${answerId}`).then((res) => {
+        this.commentsList = res.data; console.log(res.data)
+        swal('', 'Comment Added', 'success')
+      }).catch(err => console.log(err))
+    }
+  }
 }
 </script>
 <style scoped>
