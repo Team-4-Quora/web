@@ -11,6 +11,11 @@
             <div class="text-black fa-2x mx-5" @click="gohome()" id="home"><i class="fas fa-home"></i></div>
              </div>
                 <div class="navbar-nav ml-5">
+                  <div>
+                  <input class="form-control amber-border" type="text" size="50" placeholder="Search Quora" name="search"/>
+                  </div>
+                  <!-- <input class="form-control amber-border" type="text" size="50" placeholder="Search Quora" name="search" @click="search ()"/> -->
+                  <button type="submit" class="btn btn-secondary" style="height:50px; margin-top:10px;" @click="search ()"><i class="fa fa-search"></i></button>
                   <input class="form-control amber-border" type="text" size="50" placeholder="Search Quora" id="search" />
                   <button type="submit" class="btn btn-secondary" style="height:50px; margin-top:10px;"><i @click="onSearch()" class="fa fa-search"></i></button>
                   <b-nav-item class="nav-item nav-link text-dark h6 my-auto" @click="goaddques()"><button type="button" class="btn btn-danger">Add&nbsp;Question</button></b-nav-item>
@@ -25,6 +30,11 @@
 <script>
 export default {
   name: 'Navbar',
+  data () {
+    return {
+      searchQuery: ''
+    }
+  },
   methods: {
     gohome () {
       this.$router.push('/')

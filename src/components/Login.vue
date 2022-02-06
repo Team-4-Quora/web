@@ -10,11 +10,11 @@
                 <form  method="post">
                   <div class="form-group">
                     <div style="margin-bottom:10px" id="data" ><label>Email address:</label></div>
-                    <input type="email" class="form-control" placeholder="Enter email" required/>
+                    <input type="email" class="form-control" placeholder="Enter email" required v-model="posts.username"/>
                   </div>
                   <div class="form-group">
                     <div style="margin-bottom:10px" id="data"><label>Password: </label></div>
-                    <input type="password" class="form-control" placeholder="Enter Password" required />
+                    <input type="password" class="form-control" placeholder="Enter Password" required v-model="posts.password"/>
                   </div>
                   <div class="submit-button">
                     <button type="submit" class="btn btn-secondary" id="button" @click="loginpost()">Log in</button>
@@ -48,6 +48,15 @@ import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 export default {
   name: 'Login',
+  data () {
+    return {
+      isLogin: false,
+      posts: {
+        'username': null,
+        'password': null
+      }
+    }
+  },
   components: {
     Navbar,
     Footer
