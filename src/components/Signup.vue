@@ -49,7 +49,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn mt-3">Submit</button>
+                                        <button type="submit" class="btn mt-3" @click="onSubmit()">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -72,6 +72,20 @@ export default {
   components: {
     Navbar,
     Footer
+  },
+  methods: {
+    onSubmit () {
+      let name = document.getElementById('name').value
+      let email = document.getElementById('email').value
+      let password = document.getElementById('password').value
+      console.log(name, email, password)
+      this.$store.dispatch('registerUser', {
+        userEmail: email,
+        password: 12345678,
+        appId: 3,
+        name: name
+      })
+    }
   }
 }
 </script>
