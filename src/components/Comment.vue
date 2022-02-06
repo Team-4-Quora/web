@@ -3,7 +3,7 @@
     <div class="card-top">
       <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
       <div class="name-section">
-        <h5 class="card-username"><b>User 1</b></h5>
+        <h5 class="card-username"><b>{{user.email}}</b></h5>
         <p class="timestamp">7:00 AM 1 Feb 2021</p>
       </div>
       <hr>
@@ -20,6 +20,16 @@
 export default {
   name: 'Comment',
   props: ['id'],
+  data () {
+    return {
+      user: {
+        email: ''
+      }
+    }
+  },
+  created () {
+    this.user.email = localStorage.getItem('email')
+  },
   methods: {
     replyClicked () {
       console.log('Reply clicked')
@@ -33,7 +43,7 @@ export default {
       this.$store.dispatch('submitComment', {
         answerId: this.id,
         message: comment,
-        commentBy: 'hi@gmail.com',
+        commentBy: localStorage.getItem('email'),
         parentComponent: null })
       window.location.reload()
     }

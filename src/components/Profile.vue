@@ -6,8 +6,7 @@
                 <img class="image" src="@/assets/profile.png" alt="" width="200px" height="200px">
             </div>
             <div class="user-info">
-                <h4>Name:- User</h4>
-                <h4 id="email">Email:- User@gmail.com</h4>
+                <h4 id="email">Email:- {{user.email}}</h4>
                 <h4 id="points">User Points:- 1500</h4>
                 <h4 id="level">Level:- Gold</h4>
                 <h4>Interests:- Food, Technology, Travelling</h4>
@@ -98,10 +97,7 @@
                 </div>
             </div>
         </div>
-        <h2 class="followers-text">Pending Request:-</h2>
-        <div class="container text-center d-flex align-items-strech flex-wrap">
-            <Pending v-for="pending in pendingList" :key="pending.id" :pending="pending"/>
-        </div>
+        <div class="pending"><Pending/></div>
         <div><Footer/></div>
     </div>
 </template>
@@ -117,10 +113,18 @@ export default {
     Footer,
     Pending
   },
+  data () {
+    return {
+      user: {
+        email: ''
+      }
+    }
+  },
+  created () {
+    this.user.email = localStorage.getItem('email')
+  },
   computed: {
-    ...mapGetters(['addPendingRequest']),
-    ...mapGetters(['followersList']),
-    ...mapGetters(['pendingList'])
+    ...mapGetters(['addPendingRequest'])
   },
   methods: {
     becomeorg () {
@@ -133,21 +137,10 @@ export default {
       this.$store.dispatch('getSearchProfileDetails', {val})
       this.$router.push('/searchuser')
     }
-  },
-  created () {
-    this.$store.dispatch('getFollowersDetails', {
-      mail: 'xyz@gmail.com'
-    })
-    this.$store.dispatch('addPendingRequest', {
-      mail: 'xyz@gmail.com'
-    })
   }
 }
 </script>
 <style scoped>
-.main-body{
-  background-color: #EAE7DC;
-}
 .user-details{
     display: flex;
     justify-content: space-between;
