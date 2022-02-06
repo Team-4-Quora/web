@@ -1,9 +1,13 @@
 import axios from 'axios'
 
 const state = {
+  pending: [],
+  followers: []
 }
 
 const getters = {
+  pendingList: state => state.pending,
+  followersList: state => state.followers
 }
 
 const actions = {
@@ -31,9 +35,22 @@ const actions = {
       requesterId: requesterId,
       email: email
     }).then((res) => console.log('follwer added successfully'))
+  },
+  async addPendingRequest ({commit}, {mail}) {
+    console.log('fetch pending request', mail)
+    const response = await axios.get(`http://localhost:8082/follower/fetch/pending/${mail}`)
+    commit('setPendingRequest', response.data)
+  },
+  async getFollowersDetails ({commit}, {mail}) {
+    console.log('fetch followers details', mail)
+    const response = await axios.get(`http://localhost:8082/follower/fetch/followers/${mail}`)
+    commit('setFollowersDetails', response.data)
   }
 }
 const mutations = {
+  setPendingRequest: (state, pending) => (state.pending = pending),
+  setFollowersDetails: (state, followers) => (state.followers = followers)
+
 }
 
 export default {

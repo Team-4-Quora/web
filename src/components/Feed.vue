@@ -128,10 +128,10 @@ export default {
       this.$emit('questionClicked', this.item)
     },
     clickFollow (questionBy) {
-      console.log('email', questionBy)
+      console.log('requestor email', questionBy)
       this.$store.dispatch('addFollower', {
-        requesterId: 'xyz@gmail.com',
-        email: questionBy,
+        requesterId: questionBy,
+        email: 'xyz@gmail.com',
         status: 0
       })
       // this.$store.dispatch('addFollower', {

@@ -98,12 +98,16 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Pending from '@/components/Pending'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Profile',
   components: {
     Navbar,
     Footer,
     Pending
+  },
+  computed: {
+    ...mapGetters(['addPendingRequest'])
   },
   methods: {
     becomeorg () {
@@ -276,5 +280,11 @@ h4{
 }
 .pending{
     margin-top: 50px;
+}
+.followers-text{
+    text-align: center;
+    font-family: fantasy;
+    color: blue;
+    font-weight: bold;
 }
 </style>
