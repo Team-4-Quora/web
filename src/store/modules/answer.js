@@ -13,7 +13,7 @@ const actions = {
   // adding a answer
   async addAnswer ({commit}, {questionId, message, answerBy}) {
     console.log('action started', questionId, message, answerBy)
-    axios.post('http://localhost:8081/qna/answer/add', {
+    axios.post('http://10.177.1.74:8081/qna/answer/add', {
       questionId: questionId,
       message: message,
       answerBy: answerBy
@@ -23,14 +23,14 @@ const actions = {
   // getting the list of all answers belonging to a particular question
   async getAnswerslist ({commit}, {questionId}) {
     console.log(questionId, ' ::: action start')
-    const response = await axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`)
+    const response = await axios.get(`http://10.177.1.74:8081/qna/answer/fetch/${questionId}`)
     commit('setAnswerslist', response.data)
     console.log('Action end', response.data)
   },
   // accepting an answer
   async acceptans ({commit}, {ansId}) {
     console.log('accepted started', ansId)
-    axios.post(`http://localhost:8081/qna/answer/accepted/${ansId}`, {
+    axios.post(`http://10.177.1.74:8081/qna/answer/accepted/${ansId}`, {
     }).then((res) => console.log('accepted successfully'))
     swal('', 'Answer accepted', 'success')
   }

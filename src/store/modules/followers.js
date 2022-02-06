@@ -14,7 +14,7 @@ const actions = {
   // creating an organization
   async addFollower ({commit}, {requesterId, email, status}) {
     console.log('action started', requesterId, email, status)
-    axios.post('http://localhost:8082/follower/add', {
+    axios.post('http://10.177.1.74:8082/follower/add', {
       requesterId: requesterId,
       email: email,
       status: status
@@ -22,7 +22,7 @@ const actions = {
   },
   async addFollowerOrg ({commit}, {requesterId, email, orgId, status}) {
     console.log('action started', requesterId, email, orgId, status)
-    axios.post('http://localhost:8082/follower/add', {
+    axios.post('http://10.177.1.74:8082/follower/add', {
       requesterId: requesterId,
       email: email,
       orgId: orgId,
@@ -31,19 +31,19 @@ const actions = {
   },
   async acceptRequestUser ({commit}, {email, requesterId}) {
     console.log('action started', email, requesterId)
-    axios.post(`http://localhost:8082/follower/accept/${email}/${requesterId}`, {
+    axios.post(`http://10.177.1.74:8082/follower/accept/${email}/${requesterId}`, {
       requesterId: requesterId,
       email: email
     }).then((res) => console.log('follwer added successfully'))
   },
   async addPendingRequest ({commit}, {mail}) {
     console.log('fetch pending request', mail)
-    const response = await axios.get(`http://localhost:8082/follower/fetch/pending/${mail}`)
+    const response = await axios.get(`http://10.177.1.74:8082/follower/fetch/pending/${mail}`)
     commit('setPendingRequest', response.data)
   },
   async getFollowersDetails ({commit}, {mail}) {
     console.log('fetch followers details', mail)
-    const response = await axios.get(`http://localhost:8082/follower/fetch/followers/${mail}`)
+    const response = await axios.get(`http://10.177.1.74:8082/follower/fetch/followers/${mail}`)
     commit('setFollowersDetails', response.data)
   }
 }

@@ -16,7 +16,7 @@ const actions = {
   // creating an organization
   async addOrganization ({commit}, {owner, name, description}) {
     console.log('action started', owner, name, description)
-    axios.post('http://localhost:8082/organizations/add', {
+    axios.post('http://10.177.1.74:8082/organizations/add', {
       owner: owner,
       name: name,
       description: description
@@ -24,13 +24,13 @@ const actions = {
   },
   async getOrgDetails ({commit}, {orgId}) {
     console.log(orgId, ' ::: action start')
-    const response = await axios.get(`http://localhost:8082/organizations/${orgId}`)
+    const response = await axios.get(`http://10.177.1.74:8082/organizations/${orgId}`)
     commit('setByOrgDetails', response.data)
     console.log('Action end', response.data)
   },
   async getOrganizationsList ({commit}) {
     console.log(' ::: action start')
-    const response = await axios.get('http://10.177.1.115:9000/org/all')
+    const response = await axios.get('http://10.177.1.74:9000/org/all')
     commit('setOrganizationsList', response.data)
     console.log('Action end', response.data)
   }
