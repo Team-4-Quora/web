@@ -7,10 +7,10 @@
                         <div class="card shadow">
                             <div class="card-body">
                                 <h3 class="text-center" id="signup">Sign Up</h3>
-                                <form >
+                                <form @submit.prevent="myMethod">
                                     <div class="form-group">
                                         <label id="detail">Full Name: </label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter Full name" required>
+                                        <input type="text" class="form-control" id="name" placeholder="Enter Full name" required >
                                     </div>
                                     <div class="form-group mt-3">
                                         <label id="detail">Email</label>
@@ -81,8 +81,8 @@ export default {
       console.log(name, email, password)
       this.$store.dispatch('registerUser', {
         userEmail: email,
-        password: 12345678,
-        appId: 3,
+        password: password,
+        appId: '3',
         name: name
       })
     }

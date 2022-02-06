@@ -7,9 +7,9 @@
             </div>
             <div class="user-info">
                 <h4>Name:- User</h4>
-                <h4>Email:- User@gmail.com</h4>
-                <h4>User Points:- 1500</h4>
-                <h4>Level:- Gold</h4>
+                <h4 id="email">Email:- User@gmail.com</h4>
+                <h4 id="points">User Points:- 1500</h4>
+                <h4 id="level">Level:- Gold</h4>
                 <h4>Interests:- Food, Technology, Travelling</h4>
             </div>
         </div>
@@ -24,8 +24,79 @@
 </div>
         <hr>
         <h2 class="followers-text">Followers:-</h2>
-        <div class="container text-center d-flex align-items-strech flex-wrap">
-            <Followers v-for="follower in followersList" :key="follower.id" :follower="follower"/>
+        <div class="container pt-4 text-center d-flex flex-nowrap overflow-auto scrollbar">
+            <div id="card-whole" class="col-12 col-md-2 ">
+                <div class="card shadow h-100 item">
+                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
+                    <div class="card-body">
+                        <div class="card-title" ><h4>Name</h4></div>
+                    </div>
+                </div>
+            </div>
+            <div id="card-whole" class="col-12 col-md-2 ">
+                <div class="card shadow h-100 item">
+                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
+                    <div class="card-body">
+                        <div class="card-title" ><h4>Name</h4></div>
+                    </div>
+                </div>
+            </div>
+            <div id="card-whole" class="col-12 col-md-2 ">
+                <div class="card shadow h-100 item">
+                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
+                    <div class="card-body">
+                        <div class="card-title" ><h4>Name</h4></div>
+                    </div>
+                </div>
+            </div>
+            <div id="card-whole" class="col-12 col-md-2 ">
+                <div class="card shadow h-100 item">
+                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
+                    <div class="card-body">
+                        <div class="card-title" ><h4>Name</h4></div>
+                    </div>
+                </div>
+            </div>
+            <div id="card-whole" class="col-12 col-md-2 ">
+                <div class="card shadow h-100 item">
+                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
+                    <div class="card-body">
+                        <div class="card-title" ><h4>Name</h4></div>
+                    </div>
+                </div>
+            </div>
+            <div id="card-whole" class="col-12 col-md-2 ">
+                <div class="card shadow h-100 item">
+                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
+                    <div class="card-body">
+                        <div class="card-title" ><h4>Name</h4></div>
+                    </div>
+                </div>
+            </div>
+            <div id="card-whole" class="col-12 col-md-2 ">
+                <div class="card shadow h-100 item">
+                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
+                    <div class="card-body">
+                        <div class="card-title" ><h4>Name</h4></div>
+                    </div>
+                </div>
+            </div>
+            <div id="card-whole" class="col-12 col-md-2 ">
+                <div class="card shadow h-100 item">
+                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
+                    <div class="card-body">
+                        <div class="card-title" ><h4>Name</h4></div>
+                    </div>
+                </div>
+            </div>
+            <div id="card-whole" class="col-12 col-md-2 ">
+                <div class="card shadow h-100 item">
+                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
+                    <div class="card-body">
+                        <div class="card-title" ><h4>Name</h4></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <h2 class="followers-text">Pending Request:-</h2>
         <div class="container text-center d-flex align-items-strech flex-wrap">
@@ -38,15 +109,13 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Pending from '@/components/Pending'
-import Followers from '@/components/Followers'
 import { mapGetters } from 'vuex'
 export default {
   name: 'Profile',
   components: {
     Navbar,
     Footer,
-    Pending,
-    Followers
+    Pending
   },
   computed: {
     ...mapGetters(['addPendingRequest']),
@@ -278,7 +347,9 @@ h4{
 }
 .searchTerm {
   border: 3px solid #00B4CC;
+  border-right: none;
   padding: 5px;
+  height: 20px;
   border-radius: 5px 0 0 5px;
   outline: none;
   color: #9DBFAF;
