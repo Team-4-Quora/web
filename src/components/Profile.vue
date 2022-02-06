@@ -16,79 +16,8 @@
         <button class="button-49" role="button" @click="becomeorg()">Become an organization</button>
         <hr>
         <h2 class="followers-text">Followers:-</h2>
-        <div class="container pt-4 text-center d-flex flex-nowrap overflow-auto scrollbar">
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-whole" class="col-12 col-md-2 ">
-                <div class="card shadow h-100 item">
-                  <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
-                    <div class="card-body">
-                        <div class="card-title" ><h4>Name</h4></div>
-                    </div>
-                </div>
-            </div>
+        <div class="container text-center d-flex align-items-strech flex-wrap">
+            <Followers v-for="follower in followersList" :key="follower.id" :follower="follower"/>
         </div>
         <div class="pending"><Pending/></div>
         <div><Footer/></div>
@@ -98,22 +27,30 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Pending from '@/components/Pending'
+import Followers from '@/components/Followers'
 import { mapGetters } from 'vuex'
 export default {
   name: 'Profile',
   components: {
     Navbar,
     Footer,
-    Pending
+    Pending,
+    Followers
   },
   computed: {
-    ...mapGetters(['addPendingRequest'])
+    ...mapGetters(['addPendingRequest']),
+    ...mapGetters(['followersList'])
   },
   methods: {
     becomeorg () {
       this.$router.push('/org')
       console.log(this.$router)
     }
+  },
+  created () {
+    this.$store.dispatch('getFollowersDetails', {
+      mail: 'xyz@gmail.com'
+    })
   }
 }
 </script>
