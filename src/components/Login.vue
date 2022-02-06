@@ -7,14 +7,14 @@
             <div class="card rounded-0 shadow">
               <div class="card-body">
                 <h3 class="h3class">Log in</h3>
-                <form  method="post">
+                <form  method="post" @submit.prevent="myMethod">
                   <div class="form-group">
-                    <div style="margin-bottom:10px" id="data" ><label>Email address:</label></div>
-                    <input type="email" class="form-control" placeholder="Enter email" required v-model="posts.username"/>
+                    <div style="margin-bottom:10px"><label>Email address:</label></div>
+                    <input type="email" class="form-control" id='email' placeholder="Enter email" required/>
                   </div>
                   <div class="form-group">
-                    <div style="margin-bottom:10px" id="data"><label>Password: </label></div>
-                    <input type="password" class="form-control" placeholder="Enter Password" required v-model="posts.password"/>
+                    <div style="margin-bottom:10px"><label>Password: </label></div>
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password" required />
                   </div>
                   <div class="submit-button">
                     <button type="submit" class="btn btn-secondary" id="button" @click="loginpost()">Log in</button>
@@ -48,15 +48,6 @@ import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 export default {
   name: 'Login',
-  data () {
-    return {
-      isLogin: false,
-      posts: {
-        'username': null,
-        'password': null
-      }
-    }
-  },
   components: {
     Navbar,
     Footer
@@ -67,6 +58,14 @@ export default {
       console.log(this.$router)
     },
     loginpost () {
+      var email = document.getElementById('email').value
+      var password = document.getElementById('password').value
+      console.log(email, password)
+      this.$store.dispatch('loginuser', {
+        email: email,
+        password: password,
+        appId: '3'
+      })
       this.$router.push('/')
       console.log(this.$router)
     }
