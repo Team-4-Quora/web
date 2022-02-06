@@ -69,11 +69,6 @@ export default{
         orgId: orgId,
         status: 0
       })
-      // this.$store.dispatch('addFollower', {
-      //   requesterId: 'abc@gmail.com',
-      //   email: questionBy,
-      //   status: 0
-      // })
     }
   }
 }

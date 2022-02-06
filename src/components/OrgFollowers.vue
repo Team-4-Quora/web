@@ -5,7 +5,7 @@
                 <div class="card shadow h-100 item">
                   <img class="card-img-top img-fluid recomImg" src="@/assets/profile.png">
                     <div class="card-body">
-                        <div class="card-title" ><h4>{{orgfollower}}</h4></div>
+                        <div class="card-title" ><h4>{{orgfollower.requesterId}}</h4></div>
                     </div>
                 </div>
             </div>

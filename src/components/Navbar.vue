@@ -16,7 +16,8 @@
                   <input class="form-control amber-border" type="text" size="50" placeholder="Search Quora" id="search" />
                   <button type="submit" class="btn btn-secondary" style="height:50px; margin-top:10px;"><i @click="onSearch()" class="fa fa-search"></i></button>
                   <b-nav-item class="nav-item nav-link text-dark h6 my-auto" @click="goaddques()"><button type="button" class="btn btn-danger">Add&nbsp;Question</button></b-nav-item>
-                  <b-nav-item class="nav-item nav-link text-dark h6 my-auto" @click="gologin()"><button type="button" class="btn btn-danger">Login</button></b-nav-item>
+                  <b-nav-item class="nav-item nav-link h6 mx-3 my-auto" v-if="isLoggedIn" @click="gologout()"><button type="button" class="btn btn-danger">Logout</button></b-nav-item>
+                  <b-nav-item class="nav-item nav-link text-dark h6 my-auto" v-else @click="gologin()"><button type="button" class="btn btn-danger">Login</button></b-nav-item>
                   <b-nav-item class="nav-item nav-link text-dark h6 my-auto text-black fa-2x" @click="goprofile()"><i class="fas fa-user-circle"></i></b-nav-item>
               </div>
       </div>
@@ -29,7 +30,16 @@ export default {
   name: 'Navbar',
   data () {
     return {
-      searchQuery: ''
+      searchQuery: '',
+      email: ''
+    }
+  },
+  created () {
+    this.email = localStorage.getItem('email')
+  },
+  computed: {
+    isLoggedIn () {
+      return window.localStorage.getItem('email')
     }
   },
   methods: {
@@ -58,6 +68,11 @@ export default {
     goOrganizations () {
       this.$router.push('/organizationslist')
       console.log(this.$router)
+    },
+    gologout () {
+      localStorage.removeItem('jwt')
+      localStorage.removeItem('email')
+      this.$router.push('/login')
     }
   }
 }
@@ -92,5 +107,4 @@ input{
 #org{
   cursor: pointer;
 }
-
 </style>

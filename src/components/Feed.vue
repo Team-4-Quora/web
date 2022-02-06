@@ -34,35 +34,6 @@
     <div v-for="item1 in answersList" :key="item1.id">
       <div v-if="item1.accepted === true">
         <AnswerAccepted  :item1="item1"/>
-            <!-- <div class="main-body">
-        <div class="card-top">
-            <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
-            <div class="name-section">
-            <h5 class="card-username"><b>{{item1.answerBy}}</b></h5>
-            <p class="timestamp">{{item1.postedOn}}</p>
-            </div>
-            <button type="button" class="btn btn-link">Follow</button>
-        </div>
-        <div class="card-answer">
-            <p class="card-answer-title"><b>Answer:-</b></p>
-            <p class="card-answered"><b>{{item1.message}}</b></p>
-        </div>
-        <div class="bottom">
-          <div class="likes">
-            <a href="#" class="bg-white text-black fa-1x"><i @click="incReactionAns(item1.id)" class="far fa-smile-wink"></i></a>
-            <p class="likes-count"> {{ansLikeCount}} Upvotes</p>
-          </div>
-          <div class="dislikes">
-            <a href="#" class="bg-white text-black fa-1x"><i @click="decReactionAns(item1.id)" class="far fa-angry"></i></a>
-            <p class="dislike-count">{{ansDisLikeCount}} Downvotes</p>
-          </div>
-          <div class="comments">
-            <a href="#" class="bg-white text-black  fa-1x"><i @click="addComment(item1.id)" class="fas fa-comment-dots"></i></a>
-          </div>
-        </div>
-        <ListOfComments v-for="comment in commentsList" :key="comment.id" :comment="comment"/>
-         <Comment v-if="showComment === true" :id="item1.id"/>
-    </div> -->
       </div>
     </div>
     <hr>
@@ -74,7 +45,6 @@ import AnswerAccepted from '@/components/AnswerAccepted.vue'
 import Comment from '@/components/Comment.vue'
 import ListOfComments from '@/components/ListOfComments.vue'
 
-// import {mapGetters} from 'vuex'
 import axios from 'axios'
 var moment = require('moment')
 export default {
@@ -140,13 +110,6 @@ export default {
         reactionBy: 'bag@gmail.com',
         like: true
       })
-      // axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
-      //   this.ansReactionsList = res.data
-      //   console.log(res.data)
-      //   this.ansTotalCount = this.ansReactionsList.length
-      //   this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
-      //   this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
-      // }).catch(err => console.log(err))
     },
     decReactionAns (answerId) {
       console.log('dec')
@@ -155,13 +118,6 @@ export default {
         reactionBy: 'abc@gmail.com',
         like: false
       })
-      // axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
-      //   this.ansReactionsList = res.data
-      //   console.log(res.data)
-      //   this.ansTotalCount = this.ansReactionsList.length
-      //   this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
-      //   this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
-      // }).catch(err => console.log(err))
     },
     questionClicked () {
       this.$emit('questionClicked', this.item)
@@ -180,11 +136,6 @@ export default {
         email: 'xyz@gmail.com',
         status: 0
       })
-      // this.$store.dispatch('addFollower', {
-      //   requesterId: 'abc@gmail.com',
-      //   email: questionBy,
-      //   status: 0
-      // })
     }
   }
 }

@@ -74,12 +74,6 @@ export default {
     overflow: scroll;
     margin-top: 30px;
 }
-/* .main-body[data-v-6ab2da64] {
-    border: 1px solid black;
-    width: 700px;
-    margin-top: 30px;
-    height: 100vh;
-} */
 .sidebar{
   margin-top: 15px;
 }

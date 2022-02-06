@@ -24,13 +24,13 @@
                                         <label id="detail">Confirm Password:</label>
                                         <input type="password" class="form-control" placeholder="Re Enter Password" required>
                                     </div>
-                                    <div class="form-group mt-3">
+                                    <!-- <div class="form-group mt-3">
                                         <label for="profile" class="profile">Choose a your profile:&nbsp;&nbsp;</label>
                                         <select id="profile">
                                             <option value="volvo">Public</option>
                                             <option value="saab">Private</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group mt-3">
                                     </div>
                                     <div>
@@ -79,12 +79,12 @@ export default {
       let email = document.getElementById('email').value
       let password = document.getElementById('password').value
       console.log(name, email, password)
-    //   this.$store.dispatch('registerUser', {
-    //     userEmail: email,
-    //     password: 12345678,
-    //     appId: 3,
-    //     name: name
-    //   })
+      this.$store.dispatch('registerUser', {
+        userEmail: email,
+        password: password,
+        appId: '3',
+        name: name
+      })
     }
   }
 }
