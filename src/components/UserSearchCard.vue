@@ -1,10 +1,10 @@
 <template>
          <div>
-                 <div class="card shadow h-100">
+                 <div class="card shadow h-100 my-3">
                     <div class="card-body">
                         <div class="card-title py-3" >
-                            <h4 class="px-5">Username : {{item.questionBy}} </h4>
-                            <p class="px-5">Question : {{item.text}}</p>
+                            <h4 class="px-5">Email : {{item.email}} </h4>
+                            <p class="px-5">Name : {{item.name}}</p>
                         </div>
                     </div>
                 </div>

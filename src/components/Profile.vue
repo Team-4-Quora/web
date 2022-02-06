@@ -15,10 +15,10 @@
         </div>
         <button class="button-49" role="button" @click="becomeorg()">Become an organization</button>
         <div class="wrap">
-   <div class="search">
-      <input type="text" class="searchTerm" placeholder="Search" size=50px>
+   <div class="searchclass">
+      <input type="text" class="searchTerm" placeholder="Search" size=50px id="jahnavi"/>
       <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
+        <i @click="onSearchProfile()" class="fa fa-search"></i>
      </button>
    </div>
 </div>
@@ -121,6 +121,12 @@ export default {
     becomeorg () {
       this.$router.push('/org')
       console.log(this.$router)
+    },
+    onSearchProfile () {
+      let val = document.getElementById('jahnavi').value
+      console.log('search', val)
+      this.$store.dispatch('getSearchProfileDetails', {val})
+      this.$router.push('/searchuser')
     }
   }
 }
@@ -308,7 +314,7 @@ h4{
 .searchbar{
   display:flex;
 }
-.search{
+.searchclass{
   text-align: center;
   margin-top:20px;
 }

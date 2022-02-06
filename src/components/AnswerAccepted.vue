@@ -33,7 +33,6 @@
 
 import Comment from '@/components/Comment.vue'
 import ListOfComments from '@/components/ListOfComments.vue'
-import swal from 'sweetalert'
 export default {
   name: 'AnswerAccepted',
   props: ['item1'],
@@ -88,7 +87,6 @@ export default {
       console.log('comment clicked', answerId)
       this.axios.get(`http://localhost:8081/qna/comment/fetch/${answerId}`).then((res) => {
         this.commentsList = res.data; console.log(res.data)
-        swal('', 'Comment Added', 'success')
       }).catch(err => console.log(err))
     }
   }
