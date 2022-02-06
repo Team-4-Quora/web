@@ -1,54 +1,51 @@
 <template>
-     <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h3>Your Search Results</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div v-for="question of searchResults" :key="question.id"
-                 class="col-md-6 col-xl-4 col-12 pt-3 d-flex">
-                <QuestionPage :question="question"/>
-            </div>
-        </div>
+<div>
+    <div>
+        <NavBar/>
     </div>
+    <div class="top">
+        <SearchCard v-for='searchResult in searchResults' :key="searchResult.id" v-bind:searchResult="searchResult"/>
+    </div>
+</div>
 </template>
 <script>
 import axios from 'axios'
-import QuestionPage from '@/components/QuestionPage'
+import NavBar from '@/components/Home/NavBar.vue'
+import SearchCard from '@/components/Search/SearchCard'
 export default{
-  components: {QuestionPage},
-  props: ['baseURL'],
-  setup () {
-
+  name: 'SearchHome',
+  components: {
+    NavBar,
+    SearchCard
   },
   data () {
     return {
-      searchQuery: null,
+      searchQueryLocal: '',
       searchResults: []
     }
   },
   watch: {
     '$route' () {
-      this.searchQuery = this.$route.query.searchQueryKey
-      this.fetchData()
+      this.searchQueryLocal = this.$route.query.searchQuery
+      console.log(this.searchQueryLocal)
     }
   },
-  methods: {
-    async fetchData () {
-      await axios
-        .get(this.baseURL + 'ques/searchques/' + `${this.searchQuery}`)
-        .then((res) => {
-          this.searchResults = res.data
-        })
-        .catch((err) => console.log('Category err', err))
-    }},
   mounted () {
-    this.searchQuery = this.$route.query.searchQueryKey
-    this.fetchData()
-  }
+    this.searchQueryLocal = this.$route.query.searchQuery
+    console.log(this.searchQueryLocal)
+    this.fetchSearch()
+  },
+  methods:
+        {
+          async fetchSearch () {
+            await axios.get(`http://10.177.1.207:9000/user/search/${this.searchQueryLocal}`).then((res) => { this.searchResults = res.data }).catch(err => console.log(err))
+          }
+        }
 }
 </script>
-<style scoped>
 
+<style scoped>
+.top{
+    margin-top: 100px;
+}
 </style>

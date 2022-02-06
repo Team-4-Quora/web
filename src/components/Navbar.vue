@@ -45,26 +45,10 @@ export default {
       this.$router.push('/profile')
       console.log(this.$router)
     },
-    search () {
-      console.log('search started')
-      console.log()
-      if (this.$router.currentRoute._rawValue.text === 'search') {
-        this.$router.replace({
-          name: 'search',
-          query: {
-            searchQueryKey: this.searchQuery
-          }
-        })
-      } else {
-        this.$router.replace({
-          name: 'search',
-          query: {
-            searchQueryKey: this.searchQuery
-          }
-        })
-      }
-      console.log(this.$router.currentRoute)
-      // this.$router.go();
+    goSearch () {
+      console.log(this.searching)
+      // eslint-disable-next-line standard/object-curly-even-spacing
+      this.$router.push({name: 'SearchHome', query: { searchQuery: this.searching}}).catch(() => {})
     }
   }
 }

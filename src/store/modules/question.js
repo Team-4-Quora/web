@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 const state = {
   queCategory: [],
@@ -21,6 +22,7 @@ const actions = {
       text: text,
       category: category
     }).then((res) => console.log('added successfully'))
+    swal('', 'Question added', 'success')
   },
   // fetching all questions based on category
   async getByCategory ({commit}, {categ}) {

@@ -11,7 +11,7 @@ import Profile from '@/components/Profile'
 import Comment from '@/components/Comment'
 import QuestionPage from '@/components/QuestionPage'
 import Organization from '@/components/Organization'
-import Search from '@/components/Search'
+// import Search from '@/components/Search'
 import OrganizationProfile from '@/components/OrganizationProfile'
 import SampleComment from '@/components/SampleComment'
 
@@ -80,11 +80,9 @@ export default new Router({
       name: 'OrganizationProfile',
       component: OrganizationProfile
     },
-    {
-      path: '/search',
-      name: 'search',
-      component: Search
-    },
+    // path: '/search',
+    // name: 'search',
+    // component: Search
     {
       path: '/samplecomment',
       name: 'SampleComment',
