@@ -1,9 +1,5 @@
 import axios from 'axios'
 import swal from 'sweetalert'
-<<<<<<< HEAD
-
-=======
->>>>>>> 3ddfe8c767e8318850bc74a016d50c3bd114f8ba
 const state = {
   queCategory: [],
   org: [],
@@ -26,10 +22,7 @@ const actions = {
       category: category
     }).then((res) => console.log('added successfully'))
     swal('', 'Question added', 'success')
-<<<<<<< HEAD
-=======
     this.$router.push('/')
->>>>>>> 3ddfe8c767e8318850bc74a016d50c3bd114f8ba
   },
   // fetching all questions based on category
   async getByCategory ({commit}, {categ}) {
