@@ -14,6 +14,14 @@
             </div>
         </div>
         <button class="button-49" role="button" @click="becomeorg()">Become an organization</button>
+        <div class="wrap">
+   <div class="searchclass">
+      <input type="text" class="searchTerm" placeholder="Search" size=50px id="jahnavi"/>
+      <button type="submit" class="searchButton">
+        <i @click="onSearchProfile()" class="fa fa-search"></i>
+     </button>
+   </div>
+</div>
         <hr>
         <h2 class="followers-text">Followers:-</h2>
         <div class="container text-center d-flex align-items-strech flex-wrap">
@@ -49,6 +57,12 @@ export default {
     becomeorg () {
       this.$router.push('/org')
       console.log(this.$router)
+    },
+    onSearchProfile () {
+      let val = document.getElementById('jahnavi').value
+      console.log('search', val)
+      this.$store.dispatch('getSearchProfileDetails', {val})
+      this.$router.push('/searchuser')
     }
   },
   created () {
@@ -90,7 +104,9 @@ h4{
   margin-left: 50px;
   margin-right: 50px;
 }
-
+.fa{
+  padding-right: 100px;
+}
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
@@ -145,6 +161,9 @@ h4{
   touch-action: manipulation;
   margin-left: 500px;
 }
+.btn{
+  display: flex;
+}
 
 .button-49:after {
   --slice-0: inset(50% 50% 50% 50%);
@@ -163,6 +182,11 @@ h4{
   background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
   text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
   clip-path: var(--slice-0);
+}
+.form-control{
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 10px;
 }
 
 .button-49:hover:after {
@@ -233,5 +257,30 @@ h4{
     font-family: fantasy;
     color: blue;
     font-weight: bold;
+}
+.searchbar{
+  display:flex;
+}
+.searchclass{
+  text-align: center;
+  margin-top:20px;
+}
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+.searchTerm {
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
 }
 </style>

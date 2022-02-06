@@ -9,8 +9,10 @@
           <div class="home-logo">
             <div class="navbar-brand text-dark font-weight-bold" @click="gohome()"><img id="image-logo" src="@/assets/logo.png" alt="" height="50px" width="50px"></div>
             <div class="text-black fa-2x mx-5" @click="gohome()" id="home"><i class="fas fa-home"></i></div>
+            <div class="text-black fa-2x mx-5" @click="goOrganizations()" id="org"><i class="fas fa-hands"></i></div>
              </div>
                 <div class="navbar-nav ml-5">
+                  <!-- <input class="form-control amber-border" type="text" size="50" placeholder="Search Quora" name="search" @click="search ()"/> -->
                   <input class="form-control amber-border" type="text" size="50" placeholder="Search Quora" id="search" />
                   <button type="submit" class="btn btn-secondary" style="height:50px; margin-top:10px;"><i @click="onSearch()" class="fa fa-search"></i></button>
                   <b-nav-item class="nav-item nav-link text-dark h6 my-auto" @click="goaddques()"><button type="button" class="btn btn-danger">Add&nbsp;Question</button></b-nav-item>
@@ -25,6 +27,11 @@
 <script>
 export default {
   name: 'Navbar',
+  data () {
+    return {
+      searchQuery: ''
+    }
+  },
   methods: {
     gohome () {
       this.$router.push('/')
@@ -46,7 +53,11 @@ export default {
       let val = document.getElementById('search').value
       console.log('search', val)
       this.$store.dispatch('getSearchDetails', {val})
-      this.$router.push('/questionsearchcard')
+      this.$router.push('/searchque')
+    },
+    goOrganizations () {
+      this.$router.push('/organizationslist')
+      console.log(this.$router)
     }
   }
 }
@@ -78,4 +89,8 @@ input{
 #image-logo{
   cursor: pointer;
 }
+#org{
+  cursor: pointer;
+}
+
 </style>
