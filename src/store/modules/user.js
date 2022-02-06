@@ -50,6 +50,18 @@ const actions = {
       // localStorage.setItem('jwt', res.data.jwt)
       // localStorage.setItem('email', email)
     })
+  },
+  async incStatus ({commit}, {email, amount, inc}) {
+    console.log('action started', email, amount, inc)
+    axios.post('http://localhost:8082/user/add', {
+      email: email,
+      amount: amount,
+      inc: inc
+    }).then((res) => {
+      console.log('Incremented status successfully', res.data)
+      // localStorage.setItem('jwt', res.data.jwt)
+      // localStorage.setItem('email', email)
+    })
   }
 }
 const mutations = {
