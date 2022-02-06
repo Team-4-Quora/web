@@ -5,6 +5,7 @@
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
         <div class="card-top">
+          {{comment}}
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
             <h5 class="card-username"><b>{{comment.commentBy}}</b></h5>
@@ -14,6 +15,9 @@
         <div class="card-answer">
             <p class="card-answer-title"><b>Comment:-</b></p>
             <p class="card-answered"><b>{{comment.message}}</b></p>
+        </div>
+        <div class="btn">
+              <button type="button" class="btn btn-secondary" @click="replyClick()">Reply</button>
         </div>
     </div>
 </template>
@@ -71,6 +75,9 @@ export default {
 }
 .dislike-count{
   font-size: 10px;
+}
+.btn{
+  margin-left: 150px;
 }
 
 </style>

@@ -3,6 +3,7 @@
     <div><Navbar/></div>
     <div class="abc">
         <div class="sidebar"><Sidebar/></div>
+        <!-- <div><h2>Welcome to Quora</h2></div> -->
         <div class="feed-area">
           <div v-for="item in queCategory" :key="item.id">
             <Feed :item="item" @questionClicked="questionClicked"/>

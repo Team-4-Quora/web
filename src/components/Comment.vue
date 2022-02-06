@@ -11,7 +11,7 @@
     <textarea placeholder="Write your comment here!" id="comment" class="pb-cmnt-textarea"></textarea>
       <div class="btn">
         <button type="button" class="btn btn-success" @click="submitComment()">Submit</button>
-        <button type="button" class="btn btn-secondary">Reply</button>
+        <!-- <button type="button" class="btn btn-secondary">Reply</button> -->
       </div>
   </div>
 </template>
@@ -69,7 +69,7 @@ textarea {
         border: 1px solid #F2F2F2;
 }
 .btn{
-  margin-left: 100px;
+  margin-left: 150px;
 }
 
 </style>
