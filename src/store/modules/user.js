@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import swal from 'sweetalert'
 const state = {
   status: []
 }
@@ -23,7 +23,12 @@ const actions = {
         name: name
       })
       console.log('register added successfully')
+      swal('', 'Registered successfully', 'success')
     })
+      .catch((err) => {
+        console.log(err.message)
+        return swal('', 'Email already registered', 'error')
+      })
   },
   async loginuser ({commit}, {email, password, appId}) {
     console.log('action started', email, password, appId)
@@ -33,9 +38,14 @@ const actions = {
       appId: appId
     }).then((res) => {
       console.log('logged in successfully', res.data)
+      swal('', 'Logged in successfully', 'success')
       localStorage.setItem('jwt', res.data.jwt)
       localStorage.setItem('email', email)
     })
+      .catch((err) => {
+        console.log(err.message)
+        return swal('', 'Invalid Email/Password', 'error')
+      })
   },
   async getStatus ({commit}, {mail}) {
     console.log(' ::: action start')

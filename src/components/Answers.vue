@@ -54,7 +54,7 @@ export default {
         amount: updatedPoints,
         inc: true
       })
-      // this.$router.go(0)
+      this.$router.go(0)
     },
     addComment () {
       console.log('question page comment clicked')

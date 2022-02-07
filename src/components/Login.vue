@@ -46,6 +46,7 @@
 <script>
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
+import swal from 'sweetalert'
 export default {
   name: 'Login',
   components: {
@@ -66,6 +67,7 @@ export default {
         password: password,
         appId: '3'
       })
+      swal('', 'Logged in', 'success')
       this.$router.push('/')
       console.log(this.$router)
     }

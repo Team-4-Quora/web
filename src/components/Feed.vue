@@ -97,6 +97,7 @@ export default {
         reactionBy: localStorage.getItem('email'),
         like: true
       })
+      this.$router.go(0)
     },
     decReaction () {
       this.$store.dispatch('addReaction', {
@@ -104,6 +105,7 @@ export default {
         reactionBy: localStorage.getItem('email'),
         like: false
       })
+      this.$router.go(0)
     },
     incReactionAns (answerId) {
       console.log('inc')
@@ -113,6 +115,7 @@ export default {
         reactionBy: localStorage.getItem('email'),
         like: true
       })
+      this.$router.go(0)
     },
     decReactionAns (answerId) {
       console.log('dec')
@@ -121,6 +124,7 @@ export default {
         reactionBy: localStorage.getItem('email'),
         like: false
       })
+      this.$router.go(0)
     },
     questionClicked () {
       this.$emit('questionClicked', this.item)
@@ -131,6 +135,7 @@ export default {
       axios.get(`http://10.177.1.115:8081/qna/comment/fetch/${answerId}`).then((res) => {
         this.commentsList = res.data; console.log(res.data)
       }).catch(err => console.log(err))
+      this.$router.go(0)
     },
     clickFollow (questionBy) {
       console.log('requestor email', this.email)

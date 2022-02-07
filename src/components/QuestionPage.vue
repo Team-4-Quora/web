@@ -43,6 +43,7 @@
 <script>
 import Answers from '@/components/Answers.vue'
 import { mapGetters } from 'vuex'
+import swal from 'sweetalert'
 export default {
   name: 'QuestionPage',
   props: ['question'],
@@ -79,16 +80,20 @@ export default {
   },
   methods: {
     addAnswer (questionId) {
-      var answer = document.getElementById('ask').value
-      console.log('answer', answer)
-      console.log(questionId, 'questionid')
-      this.$store.dispatch('addAnswer', {
-        questionId: questionId,
-        message: answer,
-        answerBy: localStorage.getItem('email')
-      })
+      if (localStorage.getItem('email')) {
+        var answer = document.getElementById('ask').value
+        console.log('answer', answer)
+        console.log(questionId, 'questionid')
+        this.$store.dispatch('addAnswer', {
+          questionId: questionId,
+          message: answer,
+          answerBy: localStorage.getItem('email')
+        })
       // window.location.reload()
       // this.$router.go(0)
+      } else {
+        swal('', 'Login first', 'error')
+      }
     }
   },
   computed: {
