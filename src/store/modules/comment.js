@@ -25,7 +25,7 @@ const actions = {
   },
   async nestedComment ({commit}, {answerId, message, commentBy, parentComment}) {
     console.log('action started', answerId, message, commentBy, parentComment)
-    axios.post('http://localhost:8081/qna/comment/add', {
+    axios.post('http://10.177.1.115:8081/qna/comment/add', {
       answerId: answerId,
       message: message,
       commentBy: commentBy,
@@ -35,7 +35,7 @@ const actions = {
   },
   async getNestedComments ({commit}, {ansId, parent}) {
     console.log(ansId, parent, ' ::: action start')
-    const response = await axios.get(`http://localhost:8081/qna/comment/fetch/${ansId}/${parent}`)
+    const response = await axios.get(`http://10.177.1.115:8081/qna/comment/fetch/${ansId}/${parent}`)
     commit('setNestedComments', response.data)
     console.log('Action end', response.data)
   }
