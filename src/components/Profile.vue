@@ -5,7 +5,6 @@
             <div class="user-image">
                 <img class="image" src="@/assets/profile.png" alt="" width="200px" height="200px">
             </div>
-            {{status}}
             <div class="user-info">
                 <h4 id="email">Email:- {{user.email}}</h4>
                 <h4 id="points">User Points:- {{status.points}}</h4>
