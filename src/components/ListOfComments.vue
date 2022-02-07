@@ -48,7 +48,7 @@ export default {
   // computed: {...mapGetters(['nestedComments'])},
   created () {
     console.log('getNestedComments created', this.comment.answerId, this.comment.id)
-    this.axios.get(`http://localhost:8081/qna/comment/fetch/${this.comment.answerId}/${this.comment.id}`).then((res) => {
+    this.axios.get(`http://10.177.1.115:8081/qna/comment/fetch/${this.comment.answerId}/${this.comment.id}`).then((res) => {
       this.nestedComments = res.data
       console.log(res.data)
     }).catch(err => console.log(err))
