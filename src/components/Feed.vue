@@ -79,6 +79,7 @@ export default {
 
     axios.get(`http://10.177.1.115:8081/qna/answer/fetch/${questionId}`).then((res) => {
       this.answersList = res.data
+      res.data.sort((x, y) => y.postedOn - x.postedOn)
       console.log(res.data)
     }).catch(err => console.log(err))
     axios.get(`http://10.177.1.115:8081/qna/reaction/fetch/question/${questionId}`).then((res) => {

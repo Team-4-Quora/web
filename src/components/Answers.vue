@@ -17,19 +17,28 @@
         </div>
         <div class="buttons">
           <div class="accept-button"><button class="button-7" role="button" @click="acceptans()">Accept</button></div>
-          <!-- <div class="delete-button"><button class="button-8" role="button">Delete</button></div> -->
+          <div class="accept-button1"><button class="button-7" role="button" @click="addComment()">Comment</button></div>
         </div>
+         <ListOfComments v-for="comment in commentsList" :key="comment.id" :comment="comment"/>
+         <Comment v-if="showComment === true" :id="item.id"/>
     </div>
 </template>
 <script>
+import Comment from '@/components/Comment.vue'
+import ListOfComments from '@/components/ListOfComments.vue'
 import { mapGetters } from 'vuex'
 export default {
   name: 'Answers',
   props: ['item'],
   data () {
     return {
-      email: ''
+      email: '',
+      commentsList: [],
+      showComment: null
     }
+  },
+  components: {
+    Comment, ListOfComments
   },
   methods: {
     acceptans () {
@@ -45,6 +54,12 @@ export default {
         amount: updatedPoints,
         inc: true
       })
+      // this.$router.go(0)
+    },
+    addComment () {
+      console.log('question page comment clicked')
+      this.showComment = true
+      console.log(this.showComment)
     }
   },
   computed: {
@@ -56,6 +71,10 @@ export default {
     this.$store.dispatch('getStatus', {
       mail: this.item.answerBy
     })
+    console.log('comment list in question page', this.item.id)
+    this.axios.get(`http://10.177.1.115:8081/qna/comment/fetch/${this.item.id}`).then((res) => {
+      this.commentsList = res.data; console.log(res.data)
+    }).catch(err => console.log(err))
   }
 
 }
@@ -197,6 +216,9 @@ export default {
   justify-content: space-between;
 }
 .accept-button{
-  margin-left: 250px;
+  margin-left: 120px;
+}
+.accept-button1{
+  margin-right: 120px;
 }
 </style>

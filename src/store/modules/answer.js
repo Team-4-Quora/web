@@ -24,7 +24,7 @@ const actions = {
   async getAnswerslist ({commit}, {questionId}) {
     console.log(questionId, ' ::: action start')
     const response = await axios.get(`http://10.177.1.115:8081/qna/answer/fetch/${questionId}`)
-    commit('setAnswerslist', response.data)
+    commit('setAnswerslist', response.data.sort((x, y) => y.postedOn - x.postedOn))
     console.log('Action end', response.data)
   },
   // accepting an answer
@@ -32,6 +32,7 @@ const actions = {
     console.log('accepted started', ansId)
     axios.post(`http://10.177.1.115:8081/qna/answer/accepted/${ansId}`, {
     }).then((res) => console.log('accepted successfully'))
+    this.$router.go('/')
     swal('', 'Answer accepted', 'success')
   }
 }
