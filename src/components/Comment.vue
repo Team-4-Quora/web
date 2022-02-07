@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import swal from 'sweetalert'
 export default {
   name: 'Comment',
   props: ['id'],
@@ -36,16 +37,20 @@ export default {
       this.$emit('replyClicked')
     },
     submitComment () {
-      console.log('submited the comment')
-      var comment = document.getElementById('comment').value
-      console.log('comment', comment)
-      console.log('id', this.id)
-      this.$store.dispatch('submitComment', {
-        answerId: this.id,
-        message: comment,
-        commentBy: localStorage.getItem('email'),
-        parentComponent: null })
-      window.location.reload()
+      if (localStorage.getItem('email')) {
+        console.log('submited the comment')
+        var comment = document.getElementById('comment').value
+        console.log('comment', comment)
+        console.log('id', this.id)
+        this.$store.dispatch('submitComment', {
+          answerId: this.id,
+          message: comment,
+          commentBy: localStorage.getItem('email'),
+          parentComponent: null })
+        window.location.reload()
+      } else {
+        swal('', 'Log in first', 'error')
+      }
     }
   }
 }

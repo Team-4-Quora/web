@@ -29,6 +29,7 @@
 <script>
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
+import swal from 'sweetalert'
 export default {
   name: 'Home',
   components: {
@@ -37,17 +38,21 @@ export default {
   },
   methods: {
     addQuestion () {
-      var val = document.getElementById('categories')
-      var cat = val.options[val.selectedIndex].value
-      console.log('category', cat)
-      var que = document.getElementById('ask').value
-      console.log('que', que)
-      this.$store.dispatch('addQuestion', {
-        questionBy: localStorage.getItem('email'),
-        text: que,
-        category: cat
-      })
-      window.location.reload('http://localhost:8084/')
+      if (localStorage.getItem('email')) {
+        var val = document.getElementById('categories')
+        var cat = val.options[val.selectedIndex].value
+        console.log('category', cat)
+        var que = document.getElementById('ask').value
+        console.log('que', que)
+        this.$store.dispatch('addQuestion', {
+          questionBy: localStorage.getItem('email'),
+          text: que,
+          category: cat
+        })
+        window.location.reload('http://localhost:8084/')
+      } else {
+        swal('', 'Login to post', 'error')
+      }
     }
   }
 }
