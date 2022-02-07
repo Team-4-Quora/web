@@ -51,13 +51,13 @@ export default{
   },
   created () {
     this.$store.dispatch('getOrgDetails', {
-      orgId: '61ff7a7248df98793d3eee41'
+      orgId: '61ff1c3c8f048106cdb5379f'
     })
     this.$store.dispatch('addPendingRequest', {
       mail: localStorage.getItem('email')
     })
     this.$store.dispatch('getOrgFollowersDetails', {
-      id: '61fe573b23294108e3dcc3e2'
+      id: '61ff1c3c8f048106cdb5379f'
     })
   },
   methods: {

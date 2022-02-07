@@ -30,7 +30,7 @@ const actions = {
   },
   async getOrganizationsList ({commit}) {
     console.log(' ::: action start')
-    const response = await axios.get('http://10.177.1.74:9000/org/all')
+    const response = await axios.get('http://10.177.1.115:9000/org/all')
     commit('setOrganizationsList', response.data)
     console.log('Action end', response.data)
   }
