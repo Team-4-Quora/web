@@ -54,7 +54,7 @@ export default{
       orgId: '61ff7a7248df98793d3eee41'
     })
     this.$store.dispatch('addPendingRequest', {
-      mail: 'xyz@gmail.com'
+      mail: localStorage.getItem('email')
     })
     this.$store.dispatch('getOrgFollowersDetails', {
       id: '61fe573b23294108e3dcc3e2'
@@ -64,8 +64,8 @@ export default{
     clickFollow (orgId) {
       console.log('email')
       this.$store.dispatch('addFollowerOrg', {
-        requesterId: 'abc@gmail.com',
-        email: 'anush@gmail.com',
+        requesterId: localStorage.getItem('email'),
+        email: this.allorgDetails.orgId.mail,
         orgId: orgId,
         status: 0
       })

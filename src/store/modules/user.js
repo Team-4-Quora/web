@@ -18,6 +18,10 @@ const actions = {
       appId: appId,
       name: name
     }).then((res) => {
+      axios.post('http://10.177.1.115:8082/user/add', {
+        email: userEmail,
+        name: name
+      })
       console.log('register added successfully')
     })
   },
