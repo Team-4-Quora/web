@@ -58,7 +58,7 @@ export default {
     let answerId = this.item1.id
     this.email = localStorage.getItem('email')
     console.log('answerid', answerId)
-    this.axios.get(`http://localhost:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
+    this.axios.get(`http://10.177.1.115:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
       this.ansReactionsList = res.data
       console.log(res.data)
       this.ansTotalCount = this.ansReactionsList.length
@@ -87,7 +87,7 @@ export default {
     addComment (answerId) {
       this.showComment = true
       console.log('comment clicked', answerId)
-      this.axios.get(`http://localhost:8081/qna/comment/fetch/${answerId}`).then((res) => {
+      this.axios.get(`http://10.177.1.115:8081/qna/comment/fetch/${answerId}`).then((res) => {
         this.commentsList = res.data; console.log(res.data)
       }).catch(err => console.log(err))
     },

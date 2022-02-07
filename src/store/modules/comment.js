@@ -15,7 +15,7 @@ const getters = {
 const actions = {
   async submitComment ({commit}, {answerId, message, commentBy, parentComponent}) {
     console.log('action started', answerId, message, commentBy, parentComponent)
-    axios.post('http://localhost:8081/qna/comment/add', {
+    axios.post('http://10.177.1.115:8081/qna/comment/add', {
       answerId: answerId,
       message: message,
       commentBy: commentBy,

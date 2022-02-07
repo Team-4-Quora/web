@@ -14,7 +14,7 @@ const actions = {
   // adding reaction to questions
   async addReaction ({commit}, {questionId, reactionBy, like}) {
     console.log('action started', questionId, reactionBy, like)
-    axios.post('http://localhost:8081/qna/reaction/add', {
+    axios.post('http://10.177.1.115:8081/qna/reaction/add', {
       questionId: questionId,
       reactionBy: reactionBy,
       like: like
@@ -28,7 +28,7 @@ const actions = {
   // adding reaction to answers
   async addReactionAns ({commit}, {answerId, reactionBy, like}) {
     console.log('action started', answerId, reactionBy, like)
-    axios.post('http://localhost:8081/qna/reaction/add', {
+    axios.post('http://10.177.1.115:8081/qna/reaction/add', {
       answerId: answerId,
       reactionBy: reactionBy,
       like: like
@@ -42,7 +42,7 @@ const actions = {
   // fetching all reactions on a question
   async getByQueReactions ({commit}, {id}) {
     console.log('fetch by email action', id)
-    const response = await axios.get(`http://localhost:8081/qna/reaction/fetch/question/${id}`)
+    const response = await axios.get(`http://10.177.1.115:8081/qna/reaction/fetch/question/${id}`)
     commit('setByQueReactions', response.data)
   }
 

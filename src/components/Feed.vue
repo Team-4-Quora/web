@@ -77,11 +77,11 @@ export default {
     this.email = localStorage.getItem('email')
     console.log(questionId, 'questionid')
 
-    axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`).then((res) => {
+    axios.get(`http://10.177.1.115:8081/qna/answer/fetch/${questionId}`).then((res) => {
       this.answersList = res.data
       console.log(res.data)
     }).catch(err => console.log(err))
-    axios.get(`http://localhost:8081/qna/reaction/fetch/question/${questionId}`).then((res) => {
+    axios.get(`http://10.177.1.115:8081/qna/reaction/fetch/question/${questionId}`).then((res) => {
       this.queReactionsList = res.data
       console.log('queresponse', res.data)
       this.totalCount = this.queReactionsList.length
@@ -127,7 +127,7 @@ export default {
     addComment (answerId) {
       this.showComment = true
       console.log('comment clicked', answerId)
-      axios.get(`http://localhost:8081/qna/comment/fetch/${answerId}`).then((res) => {
+      axios.get(`http://10.177.1.115:8081/qna/comment/fetch/${answerId}`).then((res) => {
         this.commentsList = res.data; console.log(res.data)
       }).catch(err => console.log(err))
     },

@@ -66,11 +66,11 @@ export default {
     let questionId = this.questionId
     this.$store.dispatch('getAnswerslist', {questionId})
     console.log(questionId, 'questionid')
-    this.axios.get(`http://localhost:8081/qna/answer/fetch/${questionId}`).then((res) => {
+    this.axios.get(`http://10.177.1.115:8081/qna/answer/fetch/${questionId}`).then((res) => {
       this.answersList = res.data
       console.log(res.data)
     }).catch(err => console.log(err))
-    this.axios.get(`http://localhost:8081/qna/reaction/fetch/question/${questionId}`).then((res) => {
+    this.axios.get(`http://10.177.1.115:8081/qna/reaction/fetch/question/${questionId}`).then((res) => {
       this.queReactionsList = res.data
       console.log(res.data)
       this.totalCount = this.queReactionsList.length
