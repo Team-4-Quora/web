@@ -7,7 +7,7 @@
             <h1>Create an Organization</h1>
         </div>
         <div class="login-box">
-  <form>
+  <form @submit.prevent="myMethod">
     <div class="user-box">
       <input id="one" type="text" name="" required="">
       <label>Owner</label>
@@ -20,9 +20,8 @@
       <input id="three" type="text" name="" required="">
       <label>Description</label>
     </div>
-    <a href="" @click="createorg()">
-      Submit
-    </a>
+    <!-- <a href="" @click="createOrg()">Submit</a> -->
+    <button type="submit" class="btn btn-primary" @click="onSubmitOrg()">Submit</button>
   </form>
 </div>
     </div>
@@ -37,19 +36,18 @@ export default{
     Footer
   },
   methods: {
-    createorg () {
+    onSubmitOrg () {
       var owner = document.getElementById('one').value
       console.log('owner', owner)
       var name = document.getElementById('two').value
       console.log('name', name)
       var description = document.getElementById('three').value
       console.log('description', description)
-      this.$store.dispatch('addOrganization', {
+      this.axios.post('http://10.177.1.115:8082/organizations/add', {
         owner: owner,
         name: name,
         description: description
-      })
-      this.$route.push('/orgprofile')
+      }).then((res) => console.log(res.data, 'organization added successfully'))
     }
   }
 }

@@ -38,13 +38,13 @@ const actions = {
     } else {
       swal('', 'Disiked', 'error')
     }
-  },
-  // fetching all reactions on a question
-  async getByQueReactions ({commit}, {id}) {
-    console.log('fetch by email action', id)
-    const response = await axios.get(`http://10.177.1.115:8081/qna/reaction/fetch/question/${id}`)
-    commit('setByQueReactions', response.data)
   }
+  // fetching all reactions on a question
+  // async getByQueReactions ({commit}, {id}) {
+  //   console.log('fetch by email action', id)
+  //   const response = await axios.get(`http://10.177.1.115:8081/qna/reaction/fetch/question/${id}`)
+  //   commit('setByQueReactions', response.data)
+  // }
 
 }
 const mutations = {

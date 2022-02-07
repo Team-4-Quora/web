@@ -5,6 +5,7 @@
             <div class="user-image">
                 <img class="image" src="@/assets/profile.png" alt="" width="200px" height="200px">
             </div>
+            {{status}}
             <div class="user-info">
                 <h4 id="email">Email:- {{user.email}}</h4>
                 <h4 id="points">User Points:- {{status.points}}</h4>
@@ -50,6 +51,7 @@ export default {
   },
   data () {
     return {
+      status: [],
       user: {
         email: ''
       }
@@ -63,19 +65,18 @@ export default {
     this.$store.dispatch('getFollowersDetails', {
       mail: this.user.email
     })
-    this.$store.dispatch('getStatus', {
-      mail: this.user.email
-    })
-    this.$store.dispatch('saveUser', {
-      email: this.user.email,
-      points: 0,
-      level: 'beginner'
-    })
+    // this.$store.dispatch('getStatus', {
+    //   mail: this.user.email
+    // })
+    this.axios.get(`http://10.177.1.115:8082/user/stats/${this.user.email}`).then((res) => {
+      this.status = res.data
+      console.log(res.data)
+    }).catch(err => console.log(err))
   },
   computed: {
     ...mapGetters(['pendingList']),
-    ...mapGetters(['followersList']),
-    ...mapGetters(['status'])
+    ...mapGetters(['followersList'])
+    // ...mapGetters(['status'])
   },
   methods: {
     becomeorg () {

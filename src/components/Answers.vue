@@ -4,6 +4,7 @@
         href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
+        {{status}}
         <div class="card-top">
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
@@ -26,7 +27,7 @@
 <script>
 import Comment from '@/components/Comment.vue'
 import ListOfComments from '@/components/ListOfComments.vue'
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   name: 'Answers',
   props: ['item'],
@@ -47,14 +48,15 @@ export default {
       this.$store.dispatch('acceptans', {
         ansId: this.item.id
       })
-      let updatedPoints = this.status.points + 5
-      console.log('status points', updatedPoints, this.item.answerBy)
-      this.$store.dispatch('incStatus', {
+      console.log(this.item.answerBy, 'email')
+      this.axios.post('http://10.177.1.115:8082/user/add', {
         email: this.item.answerBy,
-        amount: updatedPoints,
-        inc: true
+        amount: 5,
+        inc: 'true'
+      }).then((res) => {
+        console.log('Incremented status successfully', res.data)
       })
-      this.$router.go(0)
+      // this.$router.go(0)
     },
     addComment () {
       console.log('question page comment clicked')
@@ -62,15 +64,9 @@ export default {
       console.log(this.showComment)
     }
   },
-  computed: {
-    ...mapGetters(['status'])
-  },
   created () {
     this.email = localStorage.getItem('email')
     console.log(this.email)
-    this.$store.dispatch('getStatus', {
-      mail: this.item.answerBy
-    })
     console.log('comment list in question page', this.item.id)
     this.axios.get(`http://10.177.1.115:8081/qna/comment/fetch/${this.item.id}`).then((res) => {
       this.commentsList = res.data; console.log(res.data)

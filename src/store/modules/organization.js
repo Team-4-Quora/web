@@ -13,15 +13,6 @@ const getters = {
 }
 
 const actions = {
-  // creating an organization
-  async addOrganization ({commit}, {owner, name, description}) {
-    console.log('action started', owner, name, description)
-    axios.post('http://10.177.1.115:8082/organizations/add', {
-      owner: owner,
-      name: name,
-      description: description
-    }).then((res) => console.log('added successfully'))
-  },
   async getOrgDetails ({commit}, {orgId}) {
     console.log(orgId, ' ::: action start')
     const response = await axios.get(`http://10.177.1.115:8082/organizations/${orgId}`)

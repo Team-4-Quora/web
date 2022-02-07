@@ -92,6 +92,7 @@ export default {
   },
   methods: {
     incReaction () {
+      console.log(this.item.id, this.email)
       this.$store.dispatch('addReaction', {
         questionId: this.item.id,
         reactionBy: localStorage.getItem('email'),
