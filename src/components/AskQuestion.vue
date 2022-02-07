@@ -47,7 +47,7 @@ export default {
         text: que,
         category: cat
       })
-      window.location.reload('http://localhost:8084/')
+      window.location.reload('http://10.177.1.115:8084/')
     }
   }
 }
