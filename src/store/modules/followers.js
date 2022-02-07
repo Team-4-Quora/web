@@ -16,7 +16,11 @@ const actions = {
   // creating an organization
   async addFollower ({commit}, {requesterId, email, status}) {
     console.log('action started', requesterId, email, status)
+<<<<<<< HEAD
     axios.post('http://10.177.1.74:8082/follower/add', {
+=======
+    axios.post('http://10.177.1.115:8082/follower/add', {
+>>>>>>> 98fbab17923ad3438a9d70659c995ab8ed554aff
       requesterId: requesterId,
       email: email,
       status: status
@@ -24,7 +28,11 @@ const actions = {
   },
   async addFollowerOrg ({commit}, {requesterId, email, orgId, status}) {
     console.log('action started', requesterId, email, orgId, status)
+<<<<<<< HEAD
     axios.post('http://10.177.1.74:8082/follower/add', {
+=======
+    axios.post('http://10.177.1.115:8082/follower/add', {
+>>>>>>> 98fbab17923ad3438a9d70659c995ab8ed554aff
       requesterId: requesterId,
       email: email,
       orgId: orgId,
@@ -33,24 +41,36 @@ const actions = {
   },
   async acceptRequestUser ({commit}, {email, requesterId}) {
     console.log('action started', email, requesterId)
+<<<<<<< HEAD
     axios.post(`http://10.177.1.74:8082/follower/accept/${email}/${requesterId}`, {
+=======
+    axios.post(`http://10.177.1.115:8082/follower/accept/${email}/${requesterId}`, {
+>>>>>>> 98fbab17923ad3438a9d70659c995ab8ed554aff
       requesterId: requesterId,
       email: email
     }).then((res) => console.log('accepted successfully'))
   },
   async addPendingRequest ({commit}, {mail}) {
     console.log('fetch pending request', mail)
+<<<<<<< HEAD
     const response = await axios.get(`http://10.177.1.74:8082/follower/fetch/pending/${mail}`)
+=======
+    const response = await axios.get(`http://10.177.1.115:8082/follower/fetch/pending/${mail}`)
+>>>>>>> 98fbab17923ad3438a9d70659c995ab8ed554aff
     commit('setPendingRequest', response.data)
   },
   async getFollowersDetails ({commit}, {mail}) {
     console.log('fetch followers details', mail)
+<<<<<<< HEAD
     const response = await axios.get(`http://10.177.1.74:8082/follower/fetch/followers/${mail}`)
+=======
+    const response = await axios.get(`http://10.177.1.115:8082/follower/fetch/followers/${mail}`)
+>>>>>>> 98fbab17923ad3438a9d70659c995ab8ed554aff
     commit('setFollowersDetails', response.data)
   },
   async getOrgFollowersDetails ({commit}, {id}) {
     console.log('fetch followers details', id)
-    const response = await axios.get(`http://localhost:8082/follower/fetch/org/followers/${id}`)
+    const response = await axios.get(`http://10.177.1.115:8082/follower/fetch/org/followers/${id}`)
     commit('setOrgFollowersDetails', response.data)
   }
 }

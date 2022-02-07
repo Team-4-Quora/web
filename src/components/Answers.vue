@@ -5,6 +5,7 @@
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
         <div class="card-top">
+          {{status}}
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
             <h5 class="card-username"><b>{{item.answerBy}}</b></h5>
@@ -22,9 +23,15 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Answers',
   props: ['item'],
+  data () {
+    return {
+      email: ''
+    }
+  },
   methods: {
     acceptans () {
       console.log('answerid', this.item.id)
@@ -32,8 +39,24 @@ export default {
       this.$store.dispatch('acceptans', {
         ansId: this.item.id
       })
-      this.$router.go()
+      let updatedPoints = this.status.points + 5
+      console.log('status points', updatedPoints, this.item.answerBy)
+      this.$store.dispatch('incStatus', {
+        email: this.item.answerBy,
+        amount: updatedPoints,
+        inc: true
+      })
     }
+  },
+  computed: {
+    ...mapGetters(['status'])
+  },
+  created () {
+    this.email = localStorage.getItem('email')
+    console.log(this.email)
+    this.$store.dispatch('getStatus', {
+      mail: this.item.answerBy
+    })
   }
 
 }

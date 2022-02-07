@@ -10,7 +10,7 @@ const actions = {
   // adding reaction to questions
   async Points ({commit}, {email, amount, inc}) {
     console.log('action started', email, amount, inc)
-    axios.post('http://localhost:8082/user/points', {
+    axios.post('http://10.177.1.115:8082/user/points', {
       email: email,
       amount: amount,
       inc: inc
