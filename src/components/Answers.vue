@@ -5,7 +5,6 @@
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
         <div class="card-top">
-          {{status}}
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
             <h5 class="card-username"><b>{{item.answerBy}}</b></h5>

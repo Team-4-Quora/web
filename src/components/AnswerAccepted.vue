@@ -1,5 +1,5 @@
 <template>
-              <div class="main-body">
+      <div class="main-body">
         <div class="card-top">
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
