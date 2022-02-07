@@ -46,6 +46,7 @@ export default {
         amount: updatedPoints,
         inc: true
       })
+      // this.$router.go(0)
     }
   },
   computed: {

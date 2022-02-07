@@ -28,7 +28,7 @@ const actions = {
   async getByCategory ({commit}, {categ}) {
     console.log('fetch by category action', categ)
     const response = await axios.get(`http://10.177.1.115:8081/qna/question/fetch/category/${categ}`)
-    commit('setByCategory', response.data)
+    commit('setByCategory', response.data.sort((x, y) => y.postedOn - x.postedOn))
   },
   // fetching all questions that belong to a particular organization
   async getByOrgId ({commit}, {orgid}) {
