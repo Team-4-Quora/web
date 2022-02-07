@@ -74,6 +74,9 @@ export default {
 }
 </script>
 <style scoped>
+.main-body{
+  background-color: #EAE7DC;
+}
 .submit-button {
   margin-top: 10px;
   text-align: center;

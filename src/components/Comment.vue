@@ -3,7 +3,7 @@
     <div class="card-top">
       <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
       <div class="name-section">
-        <h5 class="card-username"><b>User 1</b></h5>
+        <h5 class="card-username"><b>{{user.email}}</b></h5>
         <p class="timestamp">7:00 AM 1 Feb 2021</p>
       </div>
       <hr>
@@ -11,7 +11,7 @@
     <textarea placeholder="Write your comment here!" id="comment" class="pb-cmnt-textarea"></textarea>
       <div class="btn">
         <button type="button" class="btn btn-success" @click="submitComment()">Submit</button>
-        <button type="button" class="btn btn-secondary">Reply</button>
+        <!-- <button type="button" class="btn btn-secondary">Reply</button> -->
       </div>
   </div>
 </template>
@@ -20,6 +20,16 @@
 export default {
   name: 'Comment',
   props: ['id'],
+  data () {
+    return {
+      user: {
+        email: ''
+      }
+    }
+  },
+  created () {
+    this.user.email = localStorage.getItem('email')
+  },
   methods: {
     replyClicked () {
       console.log('Reply clicked')
@@ -33,7 +43,7 @@ export default {
       this.$store.dispatch('submitComment', {
         answerId: this.id,
         message: comment,
-        commentBy: 'hi@gmail.com',
+        commentBy: localStorage.getItem('email'),
         parentComponent: null })
       window.location.reload()
     }
@@ -69,7 +79,7 @@ textarea {
         border: 1px solid #F2F2F2;
 }
 .btn{
-  margin-left: 100px;
+  margin-left: 150px;
 }
 
 </style>

@@ -10,7 +10,7 @@
                                 <form @submit.prevent="myMethod">
                                     <div class="form-group">
                                         <label id="detail">Full Name: </label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter Full name" required >
+                                        <input type="text" class="form-control" id="name" placeholder="Enter Full name" required>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label id="detail">Email</label>
@@ -24,13 +24,13 @@
                                         <label id="detail">Confirm Password:</label>
                                         <input type="password" class="form-control" placeholder="Re Enter Password" required>
                                     </div>
-                                    <div class="form-group mt-3">
+                                    <!-- <div class="form-group mt-3">
                                         <label for="profile" class="profile">Choose a your profile:&nbsp;&nbsp;</label>
                                         <select id="profile">
                                             <option value="volvo">Public</option>
                                             <option value="saab">Private</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group mt-3">
                                     </div>
                                     <div>
@@ -90,6 +90,9 @@ export default {
 }
 </script>
 <style scoped>
+.main-body{
+  background-color: #EAE7DC;
+}
 #signup{
   color: #9a1750;
   font-weight: bold;

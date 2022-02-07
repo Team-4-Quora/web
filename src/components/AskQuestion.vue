@@ -43,7 +43,7 @@ export default {
       var que = document.getElementById('ask').value
       console.log('que', que)
       this.$store.dispatch('addQuestion', {
-        questionBy: 'abc@gmail.com',
+        questionBy: localStorage.getItem('email'),
         text: que,
         category: cat
       })

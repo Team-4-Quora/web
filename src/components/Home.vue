@@ -3,6 +3,7 @@
     <div><Navbar/></div>
     <div class="abc">
         <div class="sidebar"><Sidebar/></div>
+        <!-- <div><h2>Welcome to Quora</h2></div> -->
         <div class="feed-area">
           <div v-for="item in queCategory" :key="item.id">
             <Feed :item="item" @questionClicked="questionClicked"/>
@@ -73,12 +74,6 @@ export default {
     overflow: scroll;
     margin-top: 30px;
 }
-/* .main-body[data-v-6ab2da64] {
-    border: 1px solid black;
-    width: 700px;
-    margin-top: 30px;
-    height: 100vh;
-} */
 .sidebar{
   margin-top: 15px;
 }

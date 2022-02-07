@@ -1,9 +1,11 @@
 import axios from 'axios'
 
 const state = {
+  status: []
 }
 
 const getters = {
+  status: state => state.status
 }
 
 const actions = {
@@ -30,9 +32,28 @@ const actions = {
       localStorage.setItem('jwt', res.data.jwt)
       localStorage.setItem('email', email)
     })
+  },
+  async getStatus ({commit}, {mail}) {
+    console.log(' ::: action start')
+    const response = await axios.get(`http://localhost:8082/user/stats/${mail}`)
+    commit('setStatus', response.data)
+    console.log('Action end', response.data)
+  },
+  async saveUser ({commit}, {email, points, level}) {
+    console.log('action started', email, points, level)
+    axios.post('http://localhost:8082/user/add', {
+      email: email,
+      points: points,
+      level: level
+    }).then((res) => {
+      console.log('saved successfully', res.data)
+      // localStorage.setItem('jwt', res.data.jwt)
+      // localStorage.setItem('email', email)
+    })
   }
 }
 const mutations = {
+  setStatus: (state, status) => (state.status = status)
 }
 
 export default {

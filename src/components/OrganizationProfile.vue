@@ -4,6 +4,7 @@
         <div class="heading">
             <h1 class="profile-heading">Organization Profile</h1>
             <div class="profile-details">
+              {{allOrgDetails}}
                 <img class="profile-image" src="@/assets/logo.png" alt="" width="200px" height="200px">
                 <div class="details">
                     <h3>Name:-{{allorgDetails.name}} </h3>
@@ -15,7 +16,7 @@
             <hr>
               <h2 class="followers-text">Followers:-</h2>
             <div class="container text-center d-flex align-items-strech flex-wrap">
-                <Followers v-for="follower in followersList" :key="follower.id" :follower="follower"/>
+                <OrgFollowers v-for="orgfollower in orgfollowersList" :key="orgfollower.id" :orgfollower="orgfollower"/>
             </div>
             <hr>
             <h2 class="followers-text">Pending Request:-</h2>
@@ -30,7 +31,7 @@
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import ModeratorCard from '@/components/ModeratorCard.vue'
-import Followers from '@/components/Followers.vue'
+import OrgFollowers from '@/components/OrgFollowers.vue'
 import Pending from '@/components/Pending.vue'
 import { mapGetters } from 'vuex'
 export default{
@@ -40,13 +41,13 @@ export default{
     Navbar,
     Footer,
     ModeratorCard,
-    Followers,
+    OrgFollowers,
     Pending
   },
   computed: {
     ...mapGetters(['allorgDetails']),
     ...mapGetters(['pendingList']),
-    ...mapGetters(['followersList'])
+    ...mapGetters(['orgfollowersList'])
   },
   created () {
     this.$store.dispatch('getOrgDetails', {
@@ -58,6 +59,9 @@ export default{
     this.$store.dispatch('getFollowersDetails', {
       mail: localStorage.getItem('email')
     })
+    this.$store.dispatch('getOrgFollowersDetails', {
+      id: '61fe573b23294108e3dcc3e2'
+    })
   },
   methods: {
     clickFollow (orgId) {
@@ -68,11 +72,6 @@ export default{
         orgId: orgId,
         status: 0
       })
-      // this.$store.dispatch('addFollower', {
-      //   requesterId: 'abc@gmail.com',
-      //   email: questionBy,
-      //   status: 0
-      // })
     }
   }
 }

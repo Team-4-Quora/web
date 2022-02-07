@@ -85,7 +85,7 @@ export default {
       this.$store.dispatch('addAnswer', {
         questionId: questionId,
         message: answer,
-        answerBy: 'hi@gmail.com'
+        answerBy: localStorage.getItem('email')
       })
       window.location.reload()
       // this.$router.go(0)
