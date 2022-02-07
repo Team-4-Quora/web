@@ -7,11 +7,11 @@
           <div>
               <label for="category" id="detail">Choose your interested category: </label>
               <select id="categories">
-                <option value="sports">Sports</option>
-                <option value="lifestyle">LifeStyle</option>
-                <option value="ecommerce">E-commerce</option>
-                <option value="education">Education</option>
-                <option value="bollywood">Bollywood</option>
+                <option value="Sports">Sports</option>
+                <option value="Lifestyle">LifeStyle</option>
+                <option value="E-commerce">E-commerce</option>
+                <option value="Education">Education</option>
+                <option value="Bollywood">Bollywood</option>
               </select>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default {
         text: que,
         category: cat
       })
-      window.location.reload('http://10.177.1.115:8084/')
+      window.location.reload('http://localhost:8084/')
     }
   }
 }
