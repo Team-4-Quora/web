@@ -5,59 +5,29 @@
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
         <div class="card-top">
-          <!-- {{comment}} -->
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
-            <h5 class="card-username"><b>{{comment.commentBy}}</b></h5>
-            <p class="timestamp">{{comment.postedOn}}</p>
+            <h5 class="card-username"><b>{{nestedComment.commentBy}}</b></h5>
+            <p class="timestamp">{{nestedComment.postedOn}}</p>
             </div>
         </div>
         <div class="card-answer">
             <p class="card-answer-title"><b>Comment:-</b></p>
-            <p class="card-answered"><b>{{comment.message}}</b></p>
+            <p class="card-answered"><b>{{nestedComment.message}}</b></p>
         </div>
-        <div class="btn">
-              <button type="button" class="btn btn-secondary" @click="replyClick(comment.answerId,comment.id)">Reply</button>
-        </div>
-        <ListOfNestedComments v-for="nestedComment in nestedComments" :key="nestedComment.id" :nestedComment="nestedComment"/>
-        <NestedComment v-if="replyComment === true" :item="comment"/>
     </div>
 </template>
 <script>
-import NestedComment from '@/components/NestedComment.vue'
-import ListOfNestedComments from '@/components/ListOfNestedComments.vue'
-// import { mapGetters } from 'vuex'
 export default {
-  name: 'ListOfComments',
-  props: ['comment'],
-  data () {
-    return {
-      replyComment: null,
-      nestedComments: []
-    }
-  },
-  components: {
-    NestedComment,
-    ListOfNestedComments
-  },
-  methods: {
-    replyClick () {
-      this.replyComment = true
-    }
-  },
-  // computed: {...mapGetters(['nestedComments'])},
-  created () {
-    console.log('getNestedComments created', this.comment.answerId, this.comment.id)
-    this.axios.get(`http://localhost:8081/qna/comment/fetch/${this.comment.answerId}/${this.comment.id}`).then((res) => {
-      this.nestedComments = res.data
-      console.log(res.data)
-    }).catch(err => console.log(err))
-  }
+  name: 'ListOfNestedComments',
+  props: ['nestedComment']
 }
 </script>
 <style scoped>
 .main-body{
     border: 1px solid black;
+    padding-left: 20px;
+    margin-left: 50px;
 }
 .card-top{
   display: flex;

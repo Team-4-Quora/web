@@ -87,7 +87,7 @@ export default {
         message: answer,
         answerBy: localStorage.getItem('email')
       })
-      window.location.reload()
+      // window.location.reload()
       // this.$router.go(0)
     }
   },
