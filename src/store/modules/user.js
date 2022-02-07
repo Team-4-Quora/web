@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import swal from 'sweetalert'
 const state = {
   status: []
 }
@@ -23,7 +23,12 @@ const actions = {
         name: name
       })
       console.log('register added successfully')
+      swal('', 'Registered successfully', 'success')
     })
+      .catch((err) => {
+        console.log(err.message)
+        return swal('', 'Email already registered', 'error')
+      })
   },
   async loginuser ({commit}, {email, password, appId}) {
     console.log('action started', email, password, appId)
@@ -33,9 +38,14 @@ const actions = {
       appId: appId
     }).then((res) => {
       console.log('logged in successfully', res.data)
+      swal('', 'Logged in successfully', 'success')
       localStorage.setItem('jwt', res.data.jwt)
       localStorage.setItem('email', email)
     })
+      .catch((err) => {
+        console.log(err.message)
+        return swal('', 'Invalid Email/Password', 'error')
+      })
   },
   async getStatus ({commit}, {mail}) {
     console.log(' ::: getStatus action start', mail)
@@ -43,16 +53,6 @@ const actions = {
     commit('setStatus', response.data)
     console.log('Action end', response.data)
   }
-  // async incStatus ({commit}, {email, amount, inc}) {
-  //   console.log('action started', email, amount, inc)
-  //   axios.post('http://10.177.1.115:8082/user/add', {
-  //     email: email,
-  //     amount: amount,
-  //     inc: inc
-  //   }).then((res) => {
-  //     console.log('Incremented status successfully', res.data)
-  //   })
-  // }
 }
 const mutations = {
   setStatus: (state, status) => (state.status = status)

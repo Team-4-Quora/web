@@ -75,6 +75,7 @@ export default {
         reactionBy: localStorage.getItem('email'),
         like: true
       })
+      this.$router.go(0)
     },
     decReactionAns (answerId) {
       console.log('dec')
@@ -83,6 +84,7 @@ export default {
         reactionBy: localStorage.getItem('email'),
         like: false
       })
+      this.$router.go(0)
     },
     addComment (answerId) {
       this.showComment = true

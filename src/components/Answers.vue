@@ -55,6 +55,7 @@ export default {
       }).then((res) => {
         console.log('Incremented status successfully', res.data)
       })
+      // this.$router.go(0)
     },
     addComment () {
       console.log('question page comment clicked')
