@@ -4,6 +4,7 @@
     <div class="abc">
         <div class="sidebar"><Sidebar/></div>
         <!-- <div><h2>Welcome to Quora</h2></div> -->
+        <!-- <div v-if="!title">{{queMail}}</div> -->
         <div class="feed-area">
           <div v-for="item in queCategory" :key="item.id">
             <Feed :item="item" @questionClicked="questionClicked"/>
@@ -31,7 +32,8 @@ export default {
   data () {
     return {
       question: null,
-      title: null
+      title: null,
+      email: ''
     }
   },
   components: {
@@ -44,12 +46,18 @@ export default {
     Ads
   },
   computed: {
-    ...mapGetters(['queCategory'])
+    ...mapGetters(['queCategory']),
+    ...mapGetters(['queMail'])
   },
   methods: {
     questionClicked (item) {
       this.question = item
     }
+  },
+  created () {
+    this.email = localStorage.getItem('email')
+    console.log('email', this.email)
+    this.$store.dispatch('getByMail', {mail: this.email})
   }
 }
 </script>

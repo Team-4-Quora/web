@@ -1,5 +1,5 @@
 <template>
-              <div class="main-body">
+      <div class="main-body">
         <div class="card-top">
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
@@ -72,7 +72,7 @@ export default {
       this.ansId = answerId
       this.$store.dispatch('addReactionAns', {
         answerId: answerId,
-        reactionBy: 'bag@gmail.com',
+        reactionBy: localStorage.getItem('email'),
         like: true
       })
     },
@@ -80,7 +80,7 @@ export default {
       console.log('dec')
       this.$store.dispatch('addReactionAns', {
         answerId: answerId,
-        reactionBy: 'abc@gmail.com',
+        reactionBy: localStorage.getItem('email'),
         like: false
       })
     },
