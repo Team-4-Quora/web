@@ -94,6 +94,7 @@ export default {
       } else {
         swal('', 'Login first', 'error')
       }
+      this.$router.go(0)
     }
   },
   computed: {
