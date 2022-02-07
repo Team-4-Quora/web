@@ -93,14 +93,14 @@ export default {
     incReaction () {
       this.$store.dispatch('addReaction', {
         questionId: this.item.id,
-        reactionBy: 'bag@gmail.com',
+        reactionBy: localStorage.getItem('email'),
         like: true
       })
     },
     decReaction () {
       this.$store.dispatch('addReaction', {
         questionId: this.item.id,
-        reactionBy: 'bag@gmail.com',
+        reactionBy: localStorage.getItem('email'),
         like: false
       })
     },
@@ -109,7 +109,7 @@ export default {
       this.ansId = answerId
       this.$store.dispatch('addReactionAns', {
         answerId: answerId,
-        reactionBy: 'bag@gmail.com',
+        reactionBy: localStorage.getItem('email'),
         like: true
       })
     },
@@ -117,7 +117,7 @@ export default {
       console.log('dec')
       this.$store.dispatch('addReactionAns', {
         answerId: answerId,
-        reactionBy: 'abc@gmail.com',
+        reactionBy: localStorage.getItem('email'),
         like: false
       })
     },
