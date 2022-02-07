@@ -56,9 +56,6 @@ export default{
     this.$store.dispatch('addPendingRequest', {
       mail: localStorage.getItem('email')
     })
-    this.$store.dispatch('getFollowersDetails', {
-      mail: localStorage.getItem('email')
-    })
     this.$store.dispatch('getOrgFollowersDetails', {
       id: '61fe573b23294108e3dcc3e2'
     })
@@ -68,7 +65,7 @@ export default{
       console.log('email')
       this.$store.dispatch('addFollowerOrg', {
         requesterId: localStorage.getItem('email'),
-        email: 'anush@gmail.com',
+        email: this.allorgDetails.orgId.mail,
         orgId: orgId,
         status: 0
       })
