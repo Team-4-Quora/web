@@ -4,11 +4,11 @@
     <div>
       <h5>Categories:</h5>
       <div id="radios">
-        <input class="opt" type="radio" id="Sports" name="fav_category" value="sports">  Sports<br>
-        <input class="opt" type="radio" id="Lifestyle" name="fav_category" value="lifestyle">  LifeStyle<br>
-        <input class="opt" type="radio" id="E-commerce" name="fav_category" value="ecommerce">  Ecommerce<br>
-        <input class="opt" type="radio" id="Education" name="fav_category" value="education">  Education<br>
-        <input class="opt" type="radio" id="Bollywood" name="fav_category" value="bollywood">  Bollywood<br>
+        <input class="opt" type="radio" id="Sports" name="fav_category" value="Sports">  Sports<br>
+        <input class="opt" type="radio" id="Lifestyle" name="fav_category" value="Lifestyle">  LifeStyle<br>
+        <input class="opt" type="radio" id="E-commerce" name="fav_category" value="E-commerce">  Ecommerce<br>
+        <input class="opt" type="radio" id="Education" name="fav_category" value="Education">  Education<br>
+        <input class="opt" type="radio" id="Bollywood" name="fav_category" value="Bollywood">  Bollywood<br>
       </div>
       <button type="button" class="btn btn-secondary mt-2" @click="onSubmitCategory()">Submit</button>
     </div>
