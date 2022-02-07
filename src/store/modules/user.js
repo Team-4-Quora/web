@@ -52,6 +52,33 @@ const actions = {
     const response = await axios.get(`http://10.177.1.115:8082/user/stats/${mail}`)
     commit('setStatus', response.data)
     console.log('Action end', response.data)
+<<<<<<< HEAD
+=======
+  },
+  // async saveUser ({commit}, {email, points, level}) {
+  //   console.log('action started', email, points, level)
+  //   axios.post('http://10.177.1.115:8082/user/add', {
+  //     email: email,
+  //     points: points,
+  //     level: level
+  //   }).then((res) => {
+  //     console.log('saved successfully', res.data)
+  //     // localStorage.setItem('jwt', res.data.jwt)
+  //     // localStorage.setItem('email', email)
+  //   })
+  // },
+  async incStatus ({commit}, {email, amount, inc}) {
+    console.log('action started', email, amount, inc)
+    axios.post('http://10.177.1.115:8082/user/add', {
+      email: email,
+      amount: amount,
+      inc: inc
+    }).then((res) => {
+      console.log('Incremented status successfully', res.data)
+      // localStorage.setItem('jwt', res.data.jwt)
+      // localStorage.setItem('email', email)
+    })
+>>>>>>> 7c5109f6ac5147ce9e9291faa2de8052fad31a73
   }
 }
 const mutations = {
