@@ -4,6 +4,7 @@
         href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
+        {{status}}
         <div class="card-top">
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
@@ -44,16 +45,16 @@ export default {
     acceptans () {
       console.log('answerid', this.item.id)
       console.log('questionid', this.item.questionId)
-      this.$store.dispatch('acceptans', {
-        ansId: this.item.id
-      })
-      let updatedPoints = this.status.points + 5
-      console.log('status points', updatedPoints, this.item.answerBy)
-      this.$store.dispatch('incStatus', {
-        email: this.item.answerBy,
-        amount: updatedPoints,
-        inc: true
-      })
+      // this.$store.dispatch('acceptans', {
+      //   ansId: this.item.id
+      // })
+      // let updatedPoints = this.status.points + 5
+      // console.log('status points', updatedPoints, this.item.answerBy)
+      // this.$store.dispatch('incStatus', {
+      //   email: this.item.answerBy,
+      //   amount: updatedPoints,
+      //   inc: true
+      // })
       // this.$router.go(0)
     },
     addComment () {

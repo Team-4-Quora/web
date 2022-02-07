@@ -34,7 +34,7 @@ const actions = {
     })
   },
   async getStatus ({commit}, {mail}) {
-    console.log(' ::: action start')
+    console.log(' ::: getStatus action start', mail)
     const response = await axios.get(`http://10.177.1.115:8082/user/stats/${mail}`)
     commit('setStatus', response.data)
     console.log('Action end', response.data)

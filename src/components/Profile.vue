@@ -5,6 +5,7 @@
             <div class="user-image">
                 <img class="image" src="@/assets/profile.png" alt="" width="200px" height="200px">
             </div>
+            {{status}}
             <div class="user-info">
                 <h4 id="email">Email:- {{user.email}}</h4>
                 <h4 id="points">User Points:- {{status.points}}</h4>
@@ -65,11 +66,6 @@ export default {
     })
     this.$store.dispatch('getStatus', {
       mail: this.user.email
-    })
-    this.$store.dispatch('saveUser', {
-      email: this.user.email,
-      points: 0,
-      level: 'beginner'
     })
   },
   computed: {
