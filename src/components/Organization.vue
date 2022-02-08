@@ -29,6 +29,7 @@
 <script>
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
+import swal from 'sweetalert'
 export default{
   name: 'Organization',
   components: {
@@ -47,7 +48,10 @@ export default{
         owner: owner,
         name: name,
         description: description
-      }).then((res) => console.log(res.data, 'organization added successfully'))
+      }).then((res) => {
+        console.log(res.data, 'organization added successfully')
+        swal('', 'Created Successfully', 'success')
+      })
     }
   }
 }
