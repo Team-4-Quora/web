@@ -35,13 +35,13 @@ const actions = {
     console.log('fetch by organization action', orgid)
     const response = await axios.get(`http://10.177.1.115:8081/qna/question/fetch/orgId/${orgid}`)
     commit('setByOrgId', response.data)
-  }
+  },
   // fetching all question that belong to a particular person/user
-  // async getByMail ({commit}, {mail}) {
-  //   console.log('fetch by email action', mail)
-  //   const response = await axios.get(`http://10.177.1.115:8081/qna/question/fetch/questionBy/${mail}`)
-  //   commit('setByMail', response.data)
-  // }
+  async getByMail ({commit}, {mail}) {
+    console.log('fetch by email action', mail)
+    const response = await axios.get(`http://10.177.1.115:8081/qna/question/fetch/questionBy/${mail}`)
+    commit('setByMail', response.data)
+  }
 }
 
 const mutations = {
