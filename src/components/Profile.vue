@@ -12,6 +12,8 @@
                 <!-- <h4>Interests:- Food, Technology, Travelling</h4> -->
             </div>
         </div>
+        <!-- {{queMail}} -->
+        <button class="button-49" role="button" @click="viewQuestions()">View Questions</button>
         <button class="button-49" role="button" @click="becomeorg()">Become an organization</button>
         <button class="button-49" role="button" @click="vieworg()">View an organization</button>
         <div class="wrap">
@@ -80,7 +82,8 @@ export default {
   },
   computed: {
     ...mapGetters(['pendingList']),
-    ...mapGetters(['followersList'])
+    ...mapGetters(['followersList']),
+    ...mapGetters(['queMail'])
     // ...mapGetters(['status'])
   },
   methods: {
@@ -97,6 +100,11 @@ export default {
     vieworg () {
       this.$router.push('/orgprofile')
       console.log(this.$router)
+    },
+    viewQuestions () {
+      console.log(this.user.email)
+      this.$store.dispatch('getByMail', {mail: this.user.email})
+      this.$router.push('/viewque')
     }
   }
 }
