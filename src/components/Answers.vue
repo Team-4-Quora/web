@@ -26,10 +26,11 @@
 <script>
 import Comment from '@/components/Comment.vue'
 import ListOfComments from '@/components/ListOfComments.vue'
+import swal from 'sweetalert'
 // import { mapGetters } from 'vuex'
 export default {
   name: 'Answers',
-  props: ['item'],
+  props: ['item', 'questionBy'],
   data () {
     return {
       email: '',
@@ -42,19 +43,23 @@ export default {
   },
   methods: {
     acceptans () {
-      console.log('answerid', this.item.id)
-      console.log('questionid', this.item.questionId)
-      this.$store.dispatch('acceptans', {
-        ansId: this.item.id
-      })
-      console.log(this.item.answerBy, 'email')
-      this.axios.post('http://10.177.1.115:8082/user/points', {
-        email: this.item.answerBy,
-        amount: 5,
-        inc: 'true'
-      }).then((res) => {
-        console.log('Incremented status successfully', res.data)
-      })
+      if (this.questionBy === localStorage.getItem('email')) {
+        console.log('answerid', this.item.id)
+        console.log('questionid', this.item.questionId)
+        this.$store.dispatch('acceptans', {
+          ansId: this.item.id
+        })
+        console.log(this.item.answerBy, 'email')
+        this.axios.post('http://10.177.1.115:8082/user/points', {
+          email: this.item.answerBy,
+          amount: 5,
+          inc: 'true'
+        }).then((res) => {
+          console.log('Incremented status successfully', res.data)
+        })
+      } else {
+        swal('', 'You cannot accept', 'error')
+      }
       // this.$router.go(0)
     },
     addComment () {

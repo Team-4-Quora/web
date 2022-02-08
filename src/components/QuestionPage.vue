@@ -36,7 +36,7 @@
       <button class="button-56" role="button" @click="addAnswer(question.id)">Submit</button>
     </div>
     <hr>
-    <Answers v-for="item in allAnswerslist" :key="item.id" :item="item"/>
+    <Answers v-for="item in allAnswerslist" :key="item.id" :item="item" :questionBy = "question.questionBy"/>
   </div>
 </template>
 

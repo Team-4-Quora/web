@@ -86,6 +86,17 @@ export default {
         name: name
       })
     }
+    // onSubmitCategory () {
+    //   var checkbox = document.getElementsByName('')
+    //   for (var check of checkbox) {
+    //     if (check.checked) {
+    //       // console.log('hiiii', radio.value)
+    //       var categ = check.value
+    //     }
+    //   }
+    //   console.log(categ, 'hi')
+    //   this.$store.dispatch('getByCategory', {categ})
+    // }
   }
 }
 </script>
