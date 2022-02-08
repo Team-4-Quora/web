@@ -8,7 +8,7 @@
               <label for="category" id="detail">Choose your interested category: </label>
               <select id="categories">
                 <option value="Sports">Sports</option>
-                <option value="Lifestyle">LifeStyle</option>
+                <option value="LifeStyle">LifeStyle</option>
                 <option value="E-commerce">E-commerce</option>
                 <option value="Education">Education</option>
                 <option value="Bollywood">Bollywood</option>
