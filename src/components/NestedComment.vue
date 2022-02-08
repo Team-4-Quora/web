@@ -38,6 +38,7 @@ export default {
         commentBy: this.email,
         parentComment: this.item.id
       })
+      this.$router.go(0)
     }
   }
 }
