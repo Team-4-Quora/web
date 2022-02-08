@@ -9,6 +9,7 @@
    </div>
 </div>
   <h2 class="text-center p-5">Organizations List</h2>
+  <!-- {{allOrgList}} -->
 <div v-for="item in allOrgList" :key="item.id">
   <!-- {{item}}
   {{item.id}} -->

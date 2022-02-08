@@ -51,6 +51,7 @@ export default {
       } else {
         swal('', 'Log in first', 'error')
       }
+      this.$router.go(0)
     }
   }
 }
