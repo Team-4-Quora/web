@@ -19,6 +19,7 @@ import QuestionSearchPage from '@/components/QuestionSearchPage'
 import UserSearchPage from '@/components/UserSearchPage'
 import OrganizationsList from '@/components/OrganizationsList'
 import OrgSearchPage from '@/components/OrgSearchPage'
+import QuestionSearch from '@/components/QuestionSearch'
 
 Vue.use(Router)
 
@@ -117,6 +118,11 @@ export default new Router({
       path: '/searchorg',
       name: 'OrgSearchPage',
       component: OrgSearchPage
+    },
+    {
+      path: '/quesearch',
+      name: 'QuestionSearch',
+      component: QuestionSearch
     }
   ]
 })

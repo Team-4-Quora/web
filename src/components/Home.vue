@@ -2,12 +2,13 @@
 <div class="main-body">
     <div><Navbar/></div>
     <div class="abc">
-        <div class="sidebar"><Sidebar/></div>
+        <div class="sidebar"><Sidebar @onSubmitCategory="onSubmitCategory"/></div>
         <!-- <div><h2>Welcome to Quora</h2></div> -->
         <!-- <div v-if="!title">{{queMail}}</div> -->
         <div class="feed-area">
+          <h1 v-if="!radioSelect"><p>Welcome To Kuch Toh Poocho</p></h1>
           <div v-for="item in queCategory" :key="item.id">
-            <Feed :item="item" @questionClicked="questionClicked"/>
+            <Feed v-if="radioSelect" :item="item" @questionClicked="questionClicked"/>
           </div>
         </div>
         <div class="emptyDiv">
@@ -33,7 +34,8 @@ export default {
     return {
       question: null,
       title: null,
-      email: ''
+      email: '',
+      radioSelect: ''
     }
   },
   components: {
@@ -52,6 +54,9 @@ export default {
   methods: {
     questionClicked (item) {
       this.question = item
+    },
+    onSubmitCategory (categ) {
+      this.radioSelect = categ
     }
   },
   created () {
@@ -84,5 +89,12 @@ export default {
 }
 .sidebar{
   margin-top: 15px;
+}
+p{
+  font-family: fantasy;
+  text-align: center;
+  padding-top: 200px;
+  font-size: 100px;
+  color: rgb(236, 40, 72);
 }
 </style>
