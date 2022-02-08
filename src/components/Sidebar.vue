@@ -29,7 +29,11 @@ export default {
       }
       console.log(categ, 'hi')
       this.$store.dispatch('getByCategory', {categ})
+      this.$emit('onSubmitCategory', categ)
     }
+  },
+  created () {
+    console.log('Hi hello hhahha')
   }
 
 }
