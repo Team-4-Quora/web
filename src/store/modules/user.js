@@ -47,6 +47,12 @@ const actions = {
         return swal('', 'Invalid Email/Password', 'error')
       })
   },
+  async getStatus ({commit}, {mail}) {
+    console.log(' ::: getStatus action start', mail)
+    const response = await axios.get(`http://10.177.1.115:8082/user/stats/${mail}`)
+    commit('setStatus', response.data)
+    console.log('Action end', response.data)
+  },
   // async getStatus ({commit}, {mail}) {
   //   console.log(' ::: getStatus action start', mail)
   //   const response = await axios.get(`http://10.177.1.115:8082/user/stats/${mail}`)
@@ -76,6 +82,24 @@ const actions = {
       // localStorage.setItem('jwt', res.data.jwt)
       // localStorage.setItem('email', email)
     })
+  },
+  async logout ({commit}, {email, appId}) {
+    console.log('action started', email, appId)
+    axios.post('http://10.177.1.200:8000/authentication/authenticate/logout', {
+      userEmail: email,
+      appId: appId
+    }).then((res) => {
+      console.log('logged out successfully', res.data)
+      swal('', 'Logged out successfully', 'error')
+      localStorage.removeItem('jwt')
+      localStorage.removeItem('email')
+      this.$router.push('/login')
+      // localStorage.setItem('jwt', res.data.jwt)
+      // localStorage.setItem('email', email)
+    })
+      .catch((err) => {
+        console.log(err.message)
+      })
   }
 }
 const mutations = {

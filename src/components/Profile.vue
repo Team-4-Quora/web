@@ -65,6 +65,11 @@ export default {
     this.$store.dispatch('getFollowersDetails', {
       mail: this.user.email
     })
+    if (this.user.email !== null) {
+      this.$store.dispatch('getStatus', {
+        mail: this.user.email
+      })
+    }
     // this.$store.dispatch('getStatus', {
     //   mail: this.user.email
     // })
