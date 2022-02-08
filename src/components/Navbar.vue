@@ -70,9 +70,13 @@ export default {
       console.log(this.$router)
     },
     gologout () {
-      localStorage.removeItem('jwt')
-      localStorage.removeItem('email')
-      this.$router.push('/login')
+      this.$store.dispatch('logout', {
+        email: localStorage.getItem('email'),
+        appId: '3'
+      })
+      // localStorage.removeItem('jwt')
+      // localStorage.removeItem('email')
+      // this.$router.push('/login')
     }
   }
 }
