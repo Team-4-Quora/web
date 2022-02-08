@@ -85,6 +85,7 @@ export default {
         appId: '3',
         name: name
       })
+      this.$route.push('/login')
     }
     // onSubmitCategory () {
     //   var checkbox = document.getElementsByName('')

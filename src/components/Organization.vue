@@ -21,8 +21,10 @@
       <label>Description</label>
     </div>
     <!-- <a href="" @click="createOrg()">Submit</a> -->
-    <button type="submit" class="btn btn-primary" @click="onSubmitOrg()">Submit</button>
+    <button type="submit" class="btn btn-primary" @click="onSubmitOrg()">Submit</button>&nbsp;&nbsp;&nbsp;
   </form>
+  <br>
+  <button class="btn-btn-secondary" role="button" @click="vieworg()">View an organization</button>
 </div>
     </div>
 </template>
@@ -48,6 +50,10 @@ export default{
         name: name,
         description: description
       }).then((res) => console.log(res.data, 'organization added successfully'))
+    },
+    vieworg () {
+      this.$router.push('/orgprofile')
+      console.log(this.$router)
     }
   }
 }
