@@ -6,11 +6,7 @@
         <!-- <div><h2>Welcome to Quora</h2></div> -->
         <!-- <div v-if="!title">{{queMail}}</div> -->
         <div class="feed-area">
-<<<<<<< HEAD
           <h1 v-if="!radioSelect"><p>Welcome To Kuch Toh Poocho</p></h1>
-=======
-          <h1 v-if="!radioSelect"><p>Welcome To Kuch Toh Pooch</p></h1>
->>>>>>> 17a785c657b4bfb85fcd6f95d2b36dc1c7cf78f6
           <div v-for="item in queCategory" :key="item.id">
             <Feed v-if="radioSelect" :item="item" @questionClicked="questionClicked"/>
           </div>
