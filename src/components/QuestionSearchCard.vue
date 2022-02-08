@@ -3,10 +3,11 @@
                  <div class="card shadow h-100">
                     <div class="card-body">
                         <div class="card-title py-3" >
+                            <!-- {{item}} -->
                             <h4 class="px-5">Username : {{item.questionBy}} </h4>
                             <p class="px-5">Question : {{item.text}}</p>
                         </div>
-                        <!-- <router-link :to="{name: 'ProductDescription', params: {id: product.id}}" class="stretched-link"></router-link> -->
+                        <router-link :to="{name: 'QuestionSearchList', params: {queItemId: item}}" class="stretched-link"></router-link>
                     </div>
                 </div>
         </div>
