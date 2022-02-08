@@ -10,6 +10,8 @@
 </div>
   <h2 class="text-center p-5">Organizations List</h2>
 <div v-for="item in allOrgList" :key="item.id">
+  <!-- {{item}}
+  {{item.id}} -->
                  <div class="card shadow h-100 my-3">
                     <div class="card-body">
                         <div class="card-title py-3" >
@@ -17,6 +19,7 @@
                             <p class="px-5">Name :{{item.name}}}</p>
                             <p class="px-5">Description: {{item.description}}</p>
                         </div>
+                        <!-- <router-link :to="{name: 'OrganizationProfile', params: {hello: item.id}}" class="stretched-link"></router-link> -->
                     </div>
                 </div>
 </div>

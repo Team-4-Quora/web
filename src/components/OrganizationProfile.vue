@@ -4,15 +4,15 @@
         <div class="heading">
             <h1 class="profile-heading">Organization Profile</h1>
             <div class="profile-details">
-              {{allOrgDetails}}
                 <img class="profile-image" src="@/assets/logo.png" alt="" width="200px" height="200px">
                 <div class="details">
-                    <h3>Name:-{{allorgDetails.name}} </h3>
-                    <h3>Description:- {{allorgDetails.description}}</h3>
+                    <!-- {{fetchOrg}} -->
+                    <h3>Name:-{{fetchOrg.name}}</h3>
+                    <h3>Description:-{{fetchOrg.description}}</h3>
                 </div>
             </div>
-            <b-nav-item class="nav-item nav-link text-dark h6 my-auto" ><button type="button" class="btn btn-primary" @click="clickFollow(allorgDetails.id)">Follow</button></b-nav-item>
-            <div class="moderator-card"><ModeratorCard/></div>
+            <!-- <b-nav-item class="nav-item nav-link text-dark h6 my-auto" ><button type="button" class="btn btn-primary" @click="clickFollow(allorgDetails.id)">Follow</button></b-nav-item> -->
+            <!-- <div class="moderator-card"><ModeratorCard/></div> -->
             <hr>
               <h2 class="followers-text">Followers:-</h2>
             <div class="container text-center d-flex align-items-strech flex-wrap">
@@ -36,7 +36,13 @@ import Pending from '@/components/Pending.vue'
 import { mapGetters } from 'vuex'
 export default{
   name: 'OrganizationProfile',
-  props: ['item', 'item1'],
+  props: ['item', 'item1', 'hello'],
+  data () {
+    return {
+      email: '',
+      fetchOrg: []
+    }
+  },
   components: {
     Navbar,
     Footer,
@@ -50,15 +56,26 @@ export default{
     ...mapGetters(['orgfollowersList'])
   },
   created () {
+    let id = this.$route.params.hello
+    console.log('orgid', id)
     this.$store.dispatch('getOrgDetails', {
-      orgId: '61ff1c3c8f048106cdb5379f'
+      orgId: id
     })
     this.$store.dispatch('addPendingRequest', {
       mail: localStorage.getItem('email')
     })
-    this.$store.dispatch('getOrgFollowersDetails', {
-      id: '61ff1c3c8f048106cdb5379f'
+    this.$store.dispatch('getFollowersDetails', {
+      mail: localStorage.getItem('email')
     })
+    this.$store.dispatch('getOrgFollowersDetails', {
+      id: '61fe573b23294108e3dcc3e2'
+    })
+    this.email = localStorage.getItem('email')
+    console.log('email org fetching', this.email)
+    this.axios.get(`http://10.177.1.115:8082/organizations/email/${this.email}`).then((res) => {
+      this.fetchOrg = res.data
+      console.log('fetch org responce', res.data)
+    }).catch(err => console.log(err))
   },
   methods: {
     clickFollow (orgId) {

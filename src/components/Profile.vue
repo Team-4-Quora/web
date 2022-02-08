@@ -13,6 +13,7 @@
             </div>
         </div>
         <button class="button-49" role="button" @click="becomeorg()">Become an organization</button>
+        <button class="button-49" role="button" @click="vieworg()">View an organization</button>
         <div class="wrap">
    <div class="searchclass">
       <input type="text" class="searchTerm" placeholder="Search" size=50px id="jahnavi"/>
@@ -87,6 +88,10 @@ export default {
       console.log('search', val)
       this.$store.dispatch('getSearchProfileDetails', {val})
       this.$router.push('/searchuser')
+    },
+    vieworg () {
+      this.$router.push('/orgprofile')
+      console.log(this.$router)
     }
   }
 }
