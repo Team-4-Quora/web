@@ -17,6 +17,14 @@
         </div>
         <div class="buttons">
           <div class="accept-button"><button class="button-7" role="button" @click="acceptans()">Accept</button></div>
+          <div class="likes">
+            <a href="#" class="bg-white text-black fa-1x"><i @click="incReactionAns(item.id)" class="far fa-smile-wink"></i></a>
+            <p class="likes-count"> {{ansLikeCount}} Upvotes</p>
+          </div>
+          <div class="dislikes">
+            <a href="#" class="bg-white text-black fa-1x"><i @click="decReactionAns(item.id)" class="far fa-angry"></i></a>
+            <p class="dislike-count">{{ansDisLikeCount}} Downvotes</p>
+          </div>
           <div class="accept-button1"><button class="button-7" role="button" @click="addComment()">Comment</button></div>
         </div>
          <ListOfComments v-for="comment in commentsList" :key="comment.id" :comment="comment"/>
@@ -35,7 +43,11 @@ export default {
     return {
       email: '',
       commentsList: [],
-      showComment: null
+      showComment: null,
+      ansTotalCount: 0,
+      ansLikeCount: 0,
+      ansDisLikeCount: 0,
+      ansReactionsList: []
     }
   },
   components: {
@@ -62,6 +74,25 @@ export default {
       }
       // this.$router.go(0)
     },
+    incReactionAns (answerId) {
+      console.log('inc')
+      this.ansId = answerId
+      this.$store.dispatch('addReactionAns', {
+        answerId: answerId,
+        reactionBy: localStorage.getItem('email'),
+        like: true
+      })
+      this.$router.go(0)
+    },
+    decReactionAns (answerId) {
+      console.log('dec')
+      this.$store.dispatch('addReactionAns', {
+        answerId: answerId,
+        reactionBy: localStorage.getItem('email'),
+        like: false
+      })
+      this.$router.go(0)
+    },
     addComment () {
       console.log('question page comment clicked')
       this.showComment = true
@@ -74,6 +105,17 @@ export default {
     console.log('comment list in question page', this.item.id)
     this.axios.get(`http://10.177.1.115:8081/qna/comment/fetch/${this.item.id}`).then((res) => {
       this.commentsList = res.data; console.log(res.data)
+    }).catch(err => console.log(err))
+
+    let answerId = this.item.id
+    this.email = localStorage.getItem('email')
+    console.log('answerid', answerId)
+    this.axios.get(`http://10.177.1.115:8081/qna/reaction/fetch/answer/${answerId}`).then((res) => {
+      this.ansReactionsList = res.data
+      console.log(res.data)
+      this.ansTotalCount = this.ansReactionsList.length
+      this.ansLikeCount = this.ansReactionsList.filter(x => x.like === true).length
+      this.ansDisLikeCount = this.ansTotalCount - this.ansLikeCount
     }).catch(err => console.log(err))
   }
 
