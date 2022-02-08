@@ -13,7 +13,7 @@
             </div>
             <!-- <b-nav-item class="nav-item nav-link text-dark h6 my-auto" ><button type="button" class="btn btn-primary" @click="clickFollow(allorgDetails.id)">Follow</button></b-nav-item> -->
             <!-- <div class="moderator-card"><ModeratorCard/></div> -->
-            <hr>
+            <!-- <hr>
               <h2 class="followers-text">Followers:-</h2>
             <div class="container text-center d-flex align-items-strech flex-wrap">
                 <OrgFollowers v-for="orgfollower in orgfollowersList" :key="orgfollower.id" :orgfollower="orgfollower"/>
@@ -22,7 +22,7 @@
             <h2 class="followers-text">Pending Request:-</h2>
             <div class="container text-center d-flex align-items-strech flex-wrap">
                 <Pending v-for="pending in pendingList" :key="pending.id" :pending="pending"/>
-            </div>
+            </div> -->
         </div>
         <div><Footer/></div>
     </div>

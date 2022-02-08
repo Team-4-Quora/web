@@ -10,11 +10,11 @@
   <form @submit.prevent="myMethod">
     <div class="user-box">
       <input id="one" type="text" name="" required="">
-      <label>Owner</label>
+      <label>Owner's Email</label>
     </div>
     <div class="user-box">
       <input id="two" type="text" name="" required="">
-      <label>Name</label>
+      <label>Name of Organization</label>
     </div>
     <div class="user-box">
       <input id="three" type="text" name="" required="">
