@@ -6,7 +6,7 @@
         <!-- <div><h2>Welcome to Quora</h2></div> -->
         <!-- <div v-if="!title">{{queMail}}</div> -->
         <div class="feed-area">
-          <h1 v-if="!radioSelect"><p>Welcome To Quora</p></h1>
+          <h1 v-if="!radioSelect"><p>Welcome To Kuch Toh Pooch</p></h1>
           <div v-for="item in queCategory" :key="item.id">
             <Feed v-if="radioSelect" :item="item" @questionClicked="questionClicked"/>
           </div>
@@ -93,8 +93,8 @@ export default {
 p{
   font-family: fantasy;
   text-align: center;
-  padding-top: 200px;
-  font-size: 100px;
+  padding-top: 220px;
+  font-size: 95px;
   color: rgb(236, 40, 72);
 }
 </style>
