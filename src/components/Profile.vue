@@ -195,7 +195,7 @@ h4{
   --slice-3: inset(10% -6px 85% 0);
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
-  content: 'Lets do it';
+  content: 'Kookie Gulati';
   display: block;
   position: absolute;
   top: 0;
@@ -307,5 +307,9 @@ h4{
   border-radius: 5px 0 0 5px;
   outline: none;
   color: #9DBFAF;
+}
+#h4{
+    font-weight: bold;
+    font-family: cursive;
 }
 </style>

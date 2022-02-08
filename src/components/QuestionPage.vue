@@ -18,13 +18,13 @@
     </div>
     <div class="card-bottom">
       <div class="likes">
-        <a href="#" class="bg-white text-black fa-1x"><i class="far fa-smile-wink"></i></a>
+        <a href="#" class="bg-white text-black fa-1x"><i @click="incReaction(question.id)" class="far fa-smile-wink"></i></a>
         <p class="likes-count">{{likeCount}} Upvotes</p>
         <p></p>
       </div>
       <div class="dislikes">
-        <a href="#" class="bg-white text-black fa-1x"><i class="far fa-angry"></i></a>
-        <p class="dislike-count">{{totalCount}} Downvotes</p>
+        <a href="#" class="bg-white text-black fa-1x"><i @click="decReaction(question.id)" class="far fa-angry"></i></a>
+        <p class="dislike-count">{{disLikeCount}} Downvotes</p>
       </div>
       <div class="share">
         <a href="#" class="bg-white text-black  fa-1x"><i class="fas fa-share"></i></a>
@@ -54,7 +54,8 @@ export default {
     return {
       questionId: this.question.id,
       likeCount: 0,
-      totalCount: 0
+      totalCount: 0,
+      disLikeCount: 0
     }
   },
   watch: {
@@ -76,6 +77,7 @@ export default {
       console.log(res.data)
       this.totalCount = this.queReactionsList.length
       this.likeCount = this.queReactionsList.filter(x => x.like === true).length
+      this.disLikeCount = this.totalCount - this.likeCount
     }).catch(err => console.log(err))
   },
   methods: {
@@ -94,6 +96,24 @@ export default {
       } else {
         swal('', 'Login first', 'error')
       }
+      this.$router.go(0)
+    },
+    incReaction (questionId) {
+      console.log(questionId)
+      console.log(localStorage.getItem('email'))
+      this.$store.dispatch('addReaction', {
+        questionId: questionId,
+        reactionBy: localStorage.getItem('email'),
+        like: true
+      })
+      this.$router.go(0)
+    },
+    decReaction (questionId) {
+      this.$store.dispatch('addReaction', {
+        questionId: questionId,
+        reactionBy: localStorage.getItem('email'),
+        like: false
+      })
       this.$router.go(0)
     }
   },
