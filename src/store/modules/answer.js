@@ -32,7 +32,6 @@ const actions = {
     console.log('accepted started', ansId)
     axios.post(`http://10.177.1.115:8081/qna/answer/accepted/${ansId}`, {
     }).then((res) => console.log('accepted successfully'))
-    this.$router.go('/')
     swal('', 'Answer accepted', 'success')
   }
 }

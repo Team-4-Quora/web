@@ -53,6 +53,12 @@ const actions = {
     commit('setStatus', response.data)
     console.log('Action end', response.data)
   },
+  // async getStatus ({commit}, {mail}) {
+  //   console.log(' ::: getStatus action start', mail)
+  //   const response = await axios.get(`http://10.177.1.115:8082/user/stats/${mail}`)
+  //   commit('setStatus', response.data)
+  //   console.log('Action end', response.data)
+  // },
   // async saveUser ({commit}, {email, points, level}) {
   //   console.log('action started', email, points, level)
   //   axios.post('http://10.177.1.115:8082/user/add', {

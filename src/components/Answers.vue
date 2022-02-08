@@ -4,7 +4,6 @@
         href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
-        {{status}}
         <div class="card-top">
             <img class="card-image" src="@/assets/user.png" alt="" height="50px" width="50px">
             <div class="name-section">
@@ -48,10 +47,11 @@ export default {
       this.$store.dispatch('acceptans', {
         ansId: this.item.id
       })
-      this.axios.post('http://10.177.1.115:8082/user/add', {
+      console.log(this.item.answerBy, 'email')
+      this.axios.post('http://10.177.1.115:8082/user/points', {
         email: this.item.answerBy,
         amount: 5,
-        inc: true
+        inc: 'true'
       }).then((res) => {
         console.log('Incremented status successfully', res.data)
       })
