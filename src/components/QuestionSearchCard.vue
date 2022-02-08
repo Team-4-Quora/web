@@ -3,7 +3,7 @@
                  <div class="card shadow h-100">
                     <div class="card-body">
                         <div class="card-title py-3" >
-                            {{item}}
+                            <!-- {{item}} -->
                             <h4 class="px-5">Username : {{item.questionBy}} </h4>
                             <p class="px-5">Question : {{item.text}}</p>
                         </div>
